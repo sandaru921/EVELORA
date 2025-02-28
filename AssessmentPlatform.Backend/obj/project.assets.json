@@ -3247,11 +3247,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\EVELORA\\AssessmentPlatform.Backend\\AssessmentPlatform.Backend.csproj",
+      "projectUniqueName": "D:\\tsts clone\\EVELORA\\AssessmentPlatform.Backend\\AssessmentPlatform.Backend.csproj",
       "projectName": "AssessmentPlatform.Backend",
-      "projectPath": "D:\\EVELORA\\AssessmentPlatform.Backend\\AssessmentPlatform.Backend.csproj",
+      "projectPath": "D:\\tsts clone\\EVELORA\\AssessmentPlatform.Backend\\AssessmentPlatform.Backend.csproj",
       "packagesPath": "C:\\Users\\SANDARU\\.nuget\\packages\\",
-      "outputPath": "D:\\EVELORA\\AssessmentPlatform.Backend\\obj\\",
+      "outputPath": "D:\\tsts clone\\EVELORA\\AssessmentPlatform.Backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\SANDARU\\AppData\\Roaming\\NuGet\\NuGet.Config"
