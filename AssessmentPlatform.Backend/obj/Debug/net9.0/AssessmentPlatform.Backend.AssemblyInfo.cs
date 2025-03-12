@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AssessmentPlatform.Backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3c9a4f01366f29122b6ce7d15b68c58b7db9ebe8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+acc785ec154fe812815c94e3eb112cb6c5c9ddff")]
 [assembly: System.Reflection.AssemblyProductAttribute("AssessmentPlatform.Backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AssessmentPlatform.Backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

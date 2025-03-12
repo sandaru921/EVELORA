@@ -3242,24 +3242,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\SANDARU\\.nuget\\packages\\": {}
+    "C:\\Users\\kalani\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\tsts clone\\EVELORA\\AssessmentPlatform.Backend\\AssessmentPlatform.Backend.csproj",
+      "projectUniqueName": "C:\\Users\\kalani\\EVELORA-1\\AssessmentPlatform.Backend\\AssessmentPlatform.Backend.csproj",
       "projectName": "AssessmentPlatform.Backend",
-      "projectPath": "D:\\tsts clone\\EVELORA\\AssessmentPlatform.Backend\\AssessmentPlatform.Backend.csproj",
-      "packagesPath": "C:\\Users\\SANDARU\\.nuget\\packages\\",
-      "outputPath": "D:\\tsts clone\\EVELORA\\AssessmentPlatform.Backend\\obj\\",
+      "projectPath": "C:\\Users\\kalani\\EVELORA-1\\AssessmentPlatform.Backend\\AssessmentPlatform.Backend.csproj",
+      "packagesPath": "C:\\Users\\kalani\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kalani\\EVELORA-1\\AssessmentPlatform.Backend\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\SANDARU\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\kalani\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3276,9 +3283,9 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
+        "auditMode": "all"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net9.0": {
@@ -3326,7 +3333,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
