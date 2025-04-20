@@ -1,0 +1,52 @@
+﻿<Project>
+  <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/EverolaBlogAPI/images/blogs/1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"87035"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM=\u0022"},{"Name":"Last-Modified","Value":"Fri, 11 Apr 2025 05:19:13 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EverolaBlogAPI/images/blogs/1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.y4gd09u3o9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"y4gd09u3o9"},{"Name":"integrity","Value":"sha256-Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM="},{"Name":"label","Value":"_content/EverolaBlogAPI/images/blogs/1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"87035"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM=\u0022"},{"Name":"Last-Modified","Value":"Fri, 11 Apr 2025 05:19:13 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EverolaBlogAPI/images/blogs/5ccce000-7265-42af-bb96-fd0da33d8d5a_security.imumfz85r5.jpeg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"imumfz85r5"},{"Name":"integrity","Value":"sha256-diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow="},{"Name":"label","Value":"_content/EverolaBlogAPI/images/blogs/5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"13107"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=\u0022"},{"Name":"Last-Modified","Value":"Fri, 11 Apr 2025 05:35:58 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EverolaBlogAPI/images/blogs/5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"13107"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=\u0022"},{"Name":"Last-Modified","Value":"Fri, 11 Apr 2025 05:35:58 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EverolaBlogAPI/images/blogs/99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.imumfz85r5.jpeg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"imumfz85r5"},{"Name":"integrity","Value":"sha256-diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow="},{"Name":"label","Value":"_content/EverolaBlogAPI/images/blogs/99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"13107"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=\u0022"},{"Name":"Last-Modified","Value":"Fri, 11 Apr 2025 04:01:51 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EverolaBlogAPI/images/blogs/99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"13107"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=\u0022"},{"Name":"Last-Modified","Value":"Fri, 11 Apr 2025 04:01:51 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EverolaBlogAPI/images/blogs/c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.7gdqynt5ma.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"7gdqynt5ma"},{"Name":"integrity","Value":"sha256-l/R4rx/q\u002BME84kTiZbSLVrjAYBLr8bJemT0yDDkMIWw="},{"Name":"label","Value":"_content/EverolaBlogAPI/images/blogs/c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1050325"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022l/R4rx/q\u002BME84kTiZbSLVrjAYBLr8bJemT0yDDkMIWw=\u0022"},{"Name":"Last-Modified","Value":"Fri, 11 Apr 2025 04:06:39 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EverolaBlogAPI/images/blogs/c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-l/R4rx/q\u002BME84kTiZbSLVrjAYBLr8bJemT0yDDkMIWw="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1050325"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022l/R4rx/q\u002BME84kTiZbSLVrjAYBLr8bJemT0yDDkMIWw=\u0022"},{"Name":"Last-Modified","Value":"Fri, 11 Apr 2025 04:06:39 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+  </ItemGroup>
+</Project>

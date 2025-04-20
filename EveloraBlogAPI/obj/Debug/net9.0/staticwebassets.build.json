@@ -1,0 +1,434 @@
+{
+  "Version": 1,
+  "Hash": "gJ26bJORNt+xU60rwgVZYKb+44oqTYROFkIVbM809iM=",
+  "Source": "EverolaBlogAPI",
+  "BasePath": "_content/EverolaBlogAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "EverolaBlogAPI\\wwwroot",
+      "Source": "EverolaBlogAPI",
+      "ContentRoot": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\",
+      "BasePath": "_content/EverolaBlogAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png",
+      "SourceId": "EverolaBlogAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\",
+      "BasePath": "_content/EverolaBlogAPI",
+      "RelativePath": "images/blogs/1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "y4gd09u3o9",
+      "Integrity": "Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\blogs\\1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png"
+    },
+    {
+      "Identity": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg",
+      "SourceId": "EverolaBlogAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\",
+      "BasePath": "_content/EverolaBlogAPI",
+      "RelativePath": "images/blogs/5ccce000-7265-42af-bb96-fd0da33d8d5a_security#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "imumfz85r5",
+      "Integrity": "diDMfWEfv+SOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\blogs\\5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg",
+      "SourceId": "EverolaBlogAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\",
+      "BasePath": "_content/EverolaBlogAPI",
+      "RelativePath": "images/blogs/99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "imumfz85r5",
+      "Integrity": "diDMfWEfv+SOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\blogs\\99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg",
+      "SourceId": "EverolaBlogAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\",
+      "BasePath": "_content/EverolaBlogAPI",
+      "RelativePath": "images/blogs/c8a5050a-d5e6-442a-ab52-de35cf21f822_blog#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "7gdqynt5ma",
+      "Integrity": "l/R4rx/q+ME84kTiZbSLVrjAYBLr8bJemT0yDDkMIWw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\blogs\\c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "images/blogs/1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png",
+      "AssetFile": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "87035"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 05:19:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM="
+        }
+      ]
+    },
+    {
+      "Route": "images/blogs/1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.y4gd09u3o9.png",
+      "AssetFile": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "87035"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 05:19:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "y4gd09u3o9"
+        },
+        {
+          "Name": "label",
+          "Value": "images/blogs/1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM="
+        }
+      ]
+    },
+    {
+      "Route": "images/blogs/5ccce000-7265-42af-bb96-fd0da33d8d5a_security.imumfz85r5.jpeg",
+      "AssetFile": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "13107"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"diDMfWEfv+SOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 05:35:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "imumfz85r5"
+        },
+        {
+          "Name": "label",
+          "Value": "images/blogs/5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-diDMfWEfv+SOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow="
+        }
+      ]
+    },
+    {
+      "Route": "images/blogs/5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg",
+      "AssetFile": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "13107"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"diDMfWEfv+SOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 05:35:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-diDMfWEfv+SOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow="
+        }
+      ]
+    },
+    {
+      "Route": "images/blogs/99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.imumfz85r5.jpeg",
+      "AssetFile": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "13107"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"diDMfWEfv+SOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 04:01:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "imumfz85r5"
+        },
+        {
+          "Name": "label",
+          "Value": "images/blogs/99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-diDMfWEfv+SOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow="
+        }
+      ]
+    },
+    {
+      "Route": "images/blogs/99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg",
+      "AssetFile": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "13107"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"diDMfWEfv+SOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 04:01:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-diDMfWEfv+SOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow="
+        }
+      ]
+    },
+    {
+      "Route": "images/blogs/c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.7gdqynt5ma.jpg",
+      "AssetFile": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1050325"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"l/R4rx/q+ME84kTiZbSLVrjAYBLr8bJemT0yDDkMIWw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 04:06:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7gdqynt5ma"
+        },
+        {
+          "Name": "label",
+          "Value": "images/blogs/c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-l/R4rx/q+ME84kTiZbSLVrjAYBLr8bJemT0yDDkMIWw="
+        }
+      ]
+    },
+    {
+      "Route": "images/blogs/c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg",
+      "AssetFile": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1050325"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"l/R4rx/q+ME84kTiZbSLVrjAYBLr8bJemT0yDDkMIWw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 04:06:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-l/R4rx/q+ME84kTiZbSLVrjAYBLr8bJemT0yDDkMIWw="
+        }
+      ]
+    }
+  ]
+}

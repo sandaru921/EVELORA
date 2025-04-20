@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png",
+      "PackagePath": "staticwebassets\\images\\blogs\\1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png"
+    },
+    {
+      "Id": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg",
+      "PackagePath": "staticwebassets\\images\\blogs\\5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg",
+      "PackagePath": "staticwebassets\\images\\blogs\\99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg",
+      "PackagePath": "staticwebassets\\images\\blogs\\c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.EverolaBlogAPI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.EverolaBlogAPI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.EverolaBlogAPI.props",
+      "PackagePath": "build\\EverolaBlogAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.EverolaBlogAPI.props",
+      "PackagePath": "buildMultiTargeting\\EverolaBlogAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.EverolaBlogAPI.props",
+      "PackagePath": "buildTransitive\\EverolaBlogAPI.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

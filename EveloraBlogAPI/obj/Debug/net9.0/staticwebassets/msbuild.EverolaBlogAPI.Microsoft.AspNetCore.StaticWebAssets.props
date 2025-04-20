@@ -1,0 +1,76 @@
+﻿<Project>
+  <ItemGroup>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>EverolaBlogAPI</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/EverolaBlogAPI</BasePath>
+      <RelativePath>images/blogs/1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>y4gd09u3o9</Fingerprint>
+      <Integrity>Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>EverolaBlogAPI</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/EverolaBlogAPI</BasePath>
+      <RelativePath>images/blogs/5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>imumfz85r5</Fingerprint>
+      <Integrity>diDMfWEfv+SOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>EverolaBlogAPI</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/EverolaBlogAPI</BasePath>
+      <RelativePath>images/blogs/99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>imumfz85r5</Fingerprint>
+      <Integrity>diDMfWEfv+SOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>EverolaBlogAPI</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/EverolaBlogAPI</BasePath>
+      <RelativePath>images/blogs/c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>7gdqynt5ma</Fingerprint>
+      <Integrity>l/R4rx/q+ME84kTiZbSLVrjAYBLr8bJemT0yDDkMIWw=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+  </ItemGroup>
+</Project>
