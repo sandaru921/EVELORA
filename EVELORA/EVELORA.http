@@ -1,0 +1,6 @@
+@EVELORA_HostAddress = http://localhost:5167
+
+GET {{EVELORA_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

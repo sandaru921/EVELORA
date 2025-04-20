@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "eUc/XNp5zCo=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EVELORA\\EVELORA.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Amaya\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.3\\microsoft.aspnetcore.openapi.9.0.3.nupkg.sha512",
+    "C:\\Users\\Amaya\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
