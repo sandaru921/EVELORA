@@ -1,10 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using AssessmentPlatform.Data; // Ensure correct namespace
-using AssessmentPlatform.Models; // Ensure correct namespace
-using Microsoft.AspNetCore.Http;
-using System.IO;
-using System.Threading.Tasks;
+using AssessmentPlatform.Backend.Data; // Ensure correct namespace
 
 namespace AssessmentPlatform.Controllers
 {
