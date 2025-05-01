@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SANDARU\\Desktop\\ongoing\\EVELORA\\AssessmentPlatform.Backend\\AssessmentPlatform.Backend.csproj": {}
+    "C:\\Users\\SANDARU\\Desktop\\newww\\EVELORA\\AssessmentPlatform.Backend\\AssessmentPlatform.Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SANDARU\\Desktop\\ongoing\\EVELORA\\AssessmentPlatform.Backend\\AssessmentPlatform.Backend.csproj": {
+    "C:\\Users\\SANDARU\\Desktop\\newww\\EVELORA\\AssessmentPlatform.Backend\\AssessmentPlatform.Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SANDARU\\Desktop\\ongoing\\EVELORA\\AssessmentPlatform.Backend\\AssessmentPlatform.Backend.csproj",
+        "projectUniqueName": "C:\\Users\\SANDARU\\Desktop\\newww\\EVELORA\\AssessmentPlatform.Backend\\AssessmentPlatform.Backend.csproj",
         "projectName": "AssessmentPlatform.Backend",
-        "projectPath": "C:\\Users\\SANDARU\\Desktop\\ongoing\\EVELORA\\AssessmentPlatform.Backend\\AssessmentPlatform.Backend.csproj",
+        "projectPath": "C:\\Users\\SANDARU\\Desktop\\newww\\EVELORA\\AssessmentPlatform.Backend\\AssessmentPlatform.Backend.csproj",
         "packagesPath": "C:\\Users\\SANDARU\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SANDARU\\Desktop\\ongoing\\EVELORA\\AssessmentPlatform.Backend\\obj\\",
+        "outputPath": "C:\\Users\\SANDARU\\Desktop\\newww\\EVELORA\\AssessmentPlatform.Backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SANDARU\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[9.0.2, )"
             },
+            "Microsoft.AspNetCore.SignalR": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.3, )"
@@ -56,7 +60,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.3, )"
+              "version": "[9.0.4, )"
             },
             "Npgsql": {
               "target": "Package",
