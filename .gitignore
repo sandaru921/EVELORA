@@ -1,6 +1,9 @@
 # Backend
-backend/bin/
-backend/obj/
+bin/
+obj/
+.idea/
+
+
 backend/appsettings.Development.json
 
 # Frontend
