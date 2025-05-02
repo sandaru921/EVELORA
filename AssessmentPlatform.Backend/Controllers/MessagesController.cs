@@ -1,6 +1,6 @@
+using AssessmentPlatform.Backend.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using AssessmentPlatform.Data;
 
 namespace AssessmentPlatform.Controllers
 {
