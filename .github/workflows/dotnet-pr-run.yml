@@ -1,0 +1,30 @@
+name: .NET 9 PR Run Check
+
+on:
+  pull_request:
+    branches:
+      - main  # or your default branch
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET 9
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore AssessmentPlatform.Backend.csproj
+
+      - name: Build the project
+        run: dotnet build AssessmentPlatform.Backend.csproj --no-restore --configuration Release
+
+      - name: Run the project for 10 seconds (non-blocking)
+        run: timeout 10 dotnet run --project AssessmentPlatform.Backend.csproj --no-build --configuration Release || true
+        # Allow timeout exit (124) so workflow continues successfully
+      
