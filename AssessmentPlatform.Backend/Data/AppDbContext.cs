@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using AssessmentPlatform.Models;
+using AssessmentPlatform.Backend.Models;
 
-namespace AssessmentPlatform.Data
+namespace AssessmentPlatform.Backend.Data
 {
     public class AppDbContext : DbContext
     {
