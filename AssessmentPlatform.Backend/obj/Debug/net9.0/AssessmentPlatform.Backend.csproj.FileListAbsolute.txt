@@ -1,0 +1,526 @@
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\appsettings.Development.json
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\appsettings.json
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.staticwebassets.endpoints.json
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.exe
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.deps.json
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.runtimeconfig.json
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.pdb
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Humanizer.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Build.Locator.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.OpenApi.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Mono.TextTemplating.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Npgsql.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\System.CodeDom.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.Convention.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.Hosting.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.Runtime.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.TypedParts.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.csproj.AssemblyReference.cache
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.GeneratedMSBuildEditorConfig.editorconfig
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.AssemblyInfoInputs.cache
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.AssemblyInfo.cs
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.csproj.CoreCompileInputs.cache
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.MvcApplicationPartsAssemblyInfo.cs
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.MvcApplicationPartsAssemblyInfo.cache
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\scopedcss\bundle\AssessmentPlatform.Backend.styles.css
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets.build.json
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets.development.json
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.AssessmentPlatform.Backend.Microsoft.AspNetCore.StaticWebAssets.props
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.AssessmentPlatform.Backend.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.build.AssessmentPlatform.Backend.props
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.AssessmentPlatform.Backend.props
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.AssessmentPlatform.Backend.props
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets.pack.json
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\Assessme.4175AEEF.Up2Date
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.dll
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\refint\AssessmentPlatform.Backend.dll
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.pdb
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.genruntimeconfig.cache
+D:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\ref\AssessmentPlatform.Backend.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\appsettings.Development.json
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\appsettings.json
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.staticwebassets.endpoints.json
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.exe
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.deps.json
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.runtimeconfig.json
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.pdb
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Humanizer.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Build.Locator.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.OpenApi.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Mono.TextTemplating.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Npgsql.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\System.CodeDom.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.Convention.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.Hosting.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.Runtime.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.TypedParts.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.csproj.AssemblyReference.cache
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.GeneratedMSBuildEditorConfig.editorconfig
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.AssemblyInfoInputs.cache
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.AssemblyInfo.cs
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.csproj.CoreCompileInputs.cache
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.MvcApplicationPartsAssemblyInfo.cs
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.MvcApplicationPartsAssemblyInfo.cache
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.sourcelink.json
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\scopedcss\bundle\AssessmentPlatform.Backend.styles.css
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets.build.json
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets.development.json
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.AssessmentPlatform.Backend.Microsoft.AspNetCore.StaticWebAssets.props
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.AssessmentPlatform.Backend.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.build.AssessmentPlatform.Backend.props
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.AssessmentPlatform.Backend.props
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.AssessmentPlatform.Backend.props
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets.pack.json
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\Assessme.4175AEEF.Up2Date
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\refint\AssessmentPlatform.Backend.dll
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.pdb
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.genruntimeconfig.cache
+D:\tsts clone\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\ref\AssessmentPlatform.Backend.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.exe
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.OpenApi.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Text.Json.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\appsettings.Development.json
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\appsettings.json
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.staticwebassets.endpoints.json
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Humanizer.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Build.Locator.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Mono.TextTemplating.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Npgsql.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\System.CodeDom.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.Convention.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.Hosting.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.Runtime.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.TypedParts.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.csproj.AssemblyReference.cache
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.AssemblyInfoInputs.cache
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.AssemblyInfo.cs
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.csproj.CoreCompileInputs.cache
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.sourcelink.json
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\scopedcss\bundle\AssessmentPlatform.Backend.styles.css
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets.development.json
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.AssessmentPlatform.Backend.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.AssessmentPlatform.Backend.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.build.AssessmentPlatform.Backend.props
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.AssessmentPlatform.Backend.props
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.AssessmentPlatform.Backend.props
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets.pack.json
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\Assessme.4175AEEF.Up2Date
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\refint\AssessmentPlatform.Backend.dll
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.pdb
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.deps.json
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.runtimeconfig.json
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.pdb
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.genruntimeconfig.cache
+C:\Users\kalani\EVELORA-1\AssessmentPlatform.Backend\obj\Debug\net9.0\ref\AssessmentPlatform.Backend.dll
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.csproj.AssemblyReference.cache
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.GeneratedMSBuildEditorConfig.editorconfig
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.AssemblyInfoInputs.cache
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.AssemblyInfo.cs
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.csproj.CoreCompileInputs.cache
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.MvcApplicationPartsAssemblyInfo.cs
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.MvcApplicationPartsAssemblyInfo.cache
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.sourcelink.json
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\appsettings.Development.json
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\appsettings.json
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.staticwebassets.endpoints.json
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.exe
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.deps.json
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.runtimeconfig.json
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\AssessmentPlatform.Backend.pdb
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Humanizer.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Build.Locator.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Microsoft.OpenApi.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Mono.TextTemplating.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Npgsql.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\System.CodeDom.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.Convention.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.Hosting.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.Runtime.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\System.Composition.TypedParts.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\scopedcss\bundle\AssessmentPlatform.Backend.styles.css
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets.build.json
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets.development.json
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.AssessmentPlatform.Backend.Microsoft.AspNetCore.StaticWebAssets.props
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.AssessmentPlatform.Backend.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.build.AssessmentPlatform.Backend.props
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.AssessmentPlatform.Backend.props
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.AssessmentPlatform.Backend.props
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\staticwebassets.pack.json
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\Assessme.4175AEEF.Up2Date
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.dll
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\refint\AssessmentPlatform.Backend.dll
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.pdb
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\AssessmentPlatform.Backend.genruntimeconfig.cache
+G:\EVELORA\AssessmentPlatform.Backend\obj\Debug\net9.0\ref\AssessmentPlatform.Backend.dll

@@ -1,0 +1,3 @@
+"DefaultConnection": "Host=localhost;Database=EVELORA;Username=postgres;Password=4321"
+"DefaultConnection": "Host=evelora12.postgres.database.azure.com;Database=postgres;Username=rohana;Password=Evelora@123SSL;Mode=prefer;Trust Server Certificate=true"
+  
