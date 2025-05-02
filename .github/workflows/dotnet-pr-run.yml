@@ -3,7 +3,7 @@ name: .NET 9 PR Run Check
 on:
   pull_request:
     branches:
-      - main  # or your target branch
+      - main  # or your default branch
 
 jobs:
   build-and-run:
@@ -19,10 +19,10 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore AssessmentPlatform.Backend.csproj
 
       - name: Build the project
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build AssessmentPlatform.Backend.csproj --no-restore --configuration Release
 
       - name: Run the project
-        run: dotnet run --no-build --configuration Release
+        run: dotnet run --project AssessmentPlatform.Backend.csproj --no-build --configuration Release
