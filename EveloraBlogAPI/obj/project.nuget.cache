@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bRSeXlvZ5i0=",
+  "dgSpecHash": "YfO2r93EApE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\EverolaBlogAPI.csproj",
+  "projectFilePath": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\EveloraBlogAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Amaya\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Amaya\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.3.0\\microsoft.aspnetcore.cors.2.3.0.nupkg.sha512",

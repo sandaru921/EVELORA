@@ -1,8 +1,16 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\19c51d83-7b5f-40e8-ad91-0c2696431b7b_agile.png",
+      "PackagePath": "staticwebassets\\images\\blogs\\19c51d83-7b5f-40e8-ad91-0c2696431b7b_agile.png"
+    },
+    {
       "Id": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png",
       "PackagePath": "staticwebassets\\images\\blogs\\1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png"
+    },
+    {
+      "Id": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\362d8c02-d11f-4a9f-ab7d-8812fafca21a_agile.png",
+      "PackagePath": "staticwebassets\\images\\blogs\\362d8c02-d11f-4a9f-ab7d-8812fafca21a_agile.png"
     },
     {
       "Id": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg",
@@ -13,28 +21,40 @@
       "PackagePath": "staticwebassets\\images\\blogs\\99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg"
     },
     {
+      "Id": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\ac0a2825-593f-4006-8eae-44d753d26905_security.jpeg",
+      "PackagePath": "staticwebassets\\images\\blogs\\ac0a2825-593f-4006-8eae-44d753d26905_security.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\c00c9863-1571-4d1d-8f68-a6d530c3fb02_security.jpeg",
+      "PackagePath": "staticwebassets\\images\\blogs\\c00c9863-1571-4d1d-8f68-a6d530c3fb02_security.jpeg"
+    },
+    {
       "Id": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg",
       "PackagePath": "staticwebassets\\images\\blogs\\c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg"
     },
     {
-      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.EverolaBlogAPI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "Id": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\wwwroot\\images\\blogs\\d4272f56-ee7e-40be-9e5f-faa8eb3c3be5_agile.png",
+      "PackagePath": "staticwebassets\\images\\blogs\\d4272f56-ee7e-40be-9e5f-faa8eb3c3be5_agile.png"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.EveloraBlogAPI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
-      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.EverolaBlogAPI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.EveloraBlogAPI.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.EverolaBlogAPI.props",
-      "PackagePath": "build\\EverolaBlogAPI.props"
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.EveloraBlogAPI.props",
+      "PackagePath": "build\\EveloraBlogAPI.props"
     },
     {
-      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.EverolaBlogAPI.props",
-      "PackagePath": "buildMultiTargeting\\EverolaBlogAPI.props"
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.EveloraBlogAPI.props",
+      "PackagePath": "buildMultiTargeting\\EveloraBlogAPI.props"
     },
     {
-      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.EverolaBlogAPI.props",
-      "PackagePath": "buildTransitive\\EverolaBlogAPI.props"
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.EveloraBlogAPI.props",
+      "PackagePath": "buildTransitive\\EveloraBlogAPI.props"
     }
   ],
   "ElementsToRemove": []

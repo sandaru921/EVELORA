@@ -3558,9 +3558,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\EverolaBlogAPI.csproj",
-      "projectName": "EverolaBlogAPI",
-      "projectPath": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\EverolaBlogAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\EveloraBlogAPI.csproj",
+      "projectName": "EveloraBlogAPI",
+      "projectPath": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\EveloraBlogAPI.csproj",
       "packagesPath": "C:\\Users\\Amaya\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Amaya\\Desktop\\EVELORA\\EveloraBlogAPI\\obj\\",
       "projectStyle": "PackageReference",

@@ -1,8 +1,8 @@
 // // Data/ApplicationDbContext.cs
 // using Microsoft.EntityFrameworkCore;
-// using EverolaBlogAPI.Models;
+// using EveloraBlogAPI.Models;
 
-// namespace EverolaBlogAPI.Data
+// namespace EveloraBlogAPI.Data
 // {
 //     public class ApplicationDbContext : DbContext
 //     {
@@ -43,9 +43,9 @@
 // }
 
 using Microsoft.EntityFrameworkCore;
-using EverolaBlogAPI.Models;
+using EveloraBlogAPI.Models;
 
-namespace EverolaBlogAPI.Data
+namespace EveloraBlogAPI.Data
 {
     public class ApplicationDbContext : DbContext
     {

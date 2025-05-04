@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EverolaBlogAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4cd750a975b6e2ca9c7b4f4b604bfc6ad6ad7acc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+38365eb97c767de9a0b2401fa1b8dd5dfa910b08")]
 [assembly: System.Reflection.AssemblyProductAttribute("EverolaBlogAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EverolaBlogAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

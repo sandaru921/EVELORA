@@ -1,0 +1,112 @@
+﻿<Project>
+  <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/EveloraBlogAPI/images/blogs/19c51d83-7b5f-40e8-ad91-0c2696431b7b_agile.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\19c51d83-7b5f-40e8-ad91-0c2696431b7b_agile.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"87035"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM=\u0022"},{"Name":"Last-Modified","Value":"Mon, 21 Apr 2025 13:59:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EveloraBlogAPI/images/blogs/19c51d83-7b5f-40e8-ad91-0c2696431b7b_agile.y4gd09u3o9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\19c51d83-7b5f-40e8-ad91-0c2696431b7b_agile.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"y4gd09u3o9"},{"Name":"integrity","Value":"sha256-Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM="},{"Name":"label","Value":"_content/EveloraBlogAPI/images/blogs/19c51d83-7b5f-40e8-ad91-0c2696431b7b_agile.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"87035"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM=\u0022"},{"Name":"Last-Modified","Value":"Mon, 21 Apr 2025 13:59:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EveloraBlogAPI/images/blogs/1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"87035"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM=\u0022"},{"Name":"Last-Modified","Value":"Sun, 20 Apr 2025 18:13:16 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EveloraBlogAPI/images/blogs/1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.y4gd09u3o9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"y4gd09u3o9"},{"Name":"integrity","Value":"sha256-Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM="},{"Name":"label","Value":"_content/EveloraBlogAPI/images/blogs/1ed7f4ab-90a3-4e49-991d-a1935dc1c96e_agile.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"87035"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM=\u0022"},{"Name":"Last-Modified","Value":"Sun, 20 Apr 2025 18:13:16 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EveloraBlogAPI/images/blogs/362d8c02-d11f-4a9f-ab7d-8812fafca21a_agile.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\362d8c02-d11f-4a9f-ab7d-8812fafca21a_agile.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"87035"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM=\u0022"},{"Name":"Last-Modified","Value":"Wed, 23 Apr 2025 07:21:44 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EveloraBlogAPI/images/blogs/362d8c02-d11f-4a9f-ab7d-8812fafca21a_agile.y4gd09u3o9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\362d8c02-d11f-4a9f-ab7d-8812fafca21a_agile.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"y4gd09u3o9"},{"Name":"integrity","Value":"sha256-Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM="},{"Name":"label","Value":"_content/EveloraBlogAPI/images/blogs/362d8c02-d11f-4a9f-ab7d-8812fafca21a_agile.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"87035"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM=\u0022"},{"Name":"Last-Modified","Value":"Wed, 23 Apr 2025 07:21:44 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EveloraBlogAPI/images/blogs/5ccce000-7265-42af-bb96-fd0da33d8d5a_security.imumfz85r5.jpeg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"imumfz85r5"},{"Name":"integrity","Value":"sha256-diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow="},{"Name":"label","Value":"_content/EveloraBlogAPI/images/blogs/5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"13107"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=\u0022"},{"Name":"Last-Modified","Value":"Sun, 20 Apr 2025 18:13:16 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EveloraBlogAPI/images/blogs/5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\5ccce000-7265-42af-bb96-fd0da33d8d5a_security.jpeg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"13107"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=\u0022"},{"Name":"Last-Modified","Value":"Sun, 20 Apr 2025 18:13:16 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EveloraBlogAPI/images/blogs/99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.imumfz85r5.jpeg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"imumfz85r5"},{"Name":"integrity","Value":"sha256-diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow="},{"Name":"label","Value":"_content/EveloraBlogAPI/images/blogs/99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"13107"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=\u0022"},{"Name":"Last-Modified","Value":"Sun, 20 Apr 2025 18:13:16 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EveloraBlogAPI/images/blogs/99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\99b90e0b-18e1-4ffa-9e0b-403211e1b62c_security.jpeg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"13107"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=\u0022"},{"Name":"Last-Modified","Value":"Sun, 20 Apr 2025 18:13:16 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EveloraBlogAPI/images/blogs/ac0a2825-593f-4006-8eae-44d753d26905_security.imumfz85r5.jpeg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\ac0a2825-593f-4006-8eae-44d753d26905_security.jpeg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"imumfz85r5"},{"Name":"integrity","Value":"sha256-diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow="},{"Name":"label","Value":"_content/EveloraBlogAPI/images/blogs/ac0a2825-593f-4006-8eae-44d753d26905_security.jpeg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"13107"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=\u0022"},{"Name":"Last-Modified","Value":"Wed, 23 Apr 2025 08:13:37 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EveloraBlogAPI/images/blogs/ac0a2825-593f-4006-8eae-44d753d26905_security.jpeg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\ac0a2825-593f-4006-8eae-44d753d26905_security.jpeg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"13107"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=\u0022"},{"Name":"Last-Modified","Value":"Wed, 23 Apr 2025 08:13:37 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EveloraBlogAPI/images/blogs/c00c9863-1571-4d1d-8f68-a6d530c3fb02_security.imumfz85r5.jpeg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\c00c9863-1571-4d1d-8f68-a6d530c3fb02_security.jpeg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"imumfz85r5"},{"Name":"integrity","Value":"sha256-diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow="},{"Name":"label","Value":"_content/EveloraBlogAPI/images/blogs/c00c9863-1571-4d1d-8f68-a6d530c3fb02_security.jpeg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"13107"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=\u0022"},{"Name":"Last-Modified","Value":"Thu, 24 Apr 2025 09:44:05 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EveloraBlogAPI/images/blogs/c00c9863-1571-4d1d-8f68-a6d530c3fb02_security.jpeg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\c00c9863-1571-4d1d-8f68-a6d530c3fb02_security.jpeg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"13107"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022diDMfWEfv\u002BSOnQlhwwOp8oyy7YJ3V0OBzVC8F5ksXow=\u0022"},{"Name":"Last-Modified","Value":"Thu, 24 Apr 2025 09:44:05 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EveloraBlogAPI/images/blogs/c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.7gdqynt5ma.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"7gdqynt5ma"},{"Name":"integrity","Value":"sha256-l/R4rx/q\u002BME84kTiZbSLVrjAYBLr8bJemT0yDDkMIWw="},{"Name":"label","Value":"_content/EveloraBlogAPI/images/blogs/c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1050325"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022l/R4rx/q\u002BME84kTiZbSLVrjAYBLr8bJemT0yDDkMIWw=\u0022"},{"Name":"Last-Modified","Value":"Sun, 20 Apr 2025 18:13:16 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EveloraBlogAPI/images/blogs/c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\c8a5050a-d5e6-442a-ab52-de35cf21f822_blog.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-l/R4rx/q\u002BME84kTiZbSLVrjAYBLr8bJemT0yDDkMIWw="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1050325"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022l/R4rx/q\u002BME84kTiZbSLVrjAYBLr8bJemT0yDDkMIWw=\u0022"},{"Name":"Last-Modified","Value":"Sun, 20 Apr 2025 18:13:16 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EveloraBlogAPI/images/blogs/d4272f56-ee7e-40be-9e5f-faa8eb3c3be5_agile.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\d4272f56-ee7e-40be-9e5f-faa8eb3c3be5_agile.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"87035"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM=\u0022"},{"Name":"Last-Modified","Value":"Wed, 23 Apr 2025 13:25:31 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/EveloraBlogAPI/images/blogs/d4272f56-ee7e-40be-9e5f-faa8eb3c3be5_agile.y4gd09u3o9.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\blogs\d4272f56-ee7e-40be-9e5f-faa8eb3c3be5_agile.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"y4gd09u3o9"},{"Name":"integrity","Value":"sha256-Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM="},{"Name":"label","Value":"_content/EveloraBlogAPI/images/blogs/d4272f56-ee7e-40be-9e5f-faa8eb3c3be5_agile.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"87035"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Dgn8bVkyS0LIXHrTMRFEXpAL72Hej4K6/8P3MnENeBM=\u0022"},{"Name":"Last-Modified","Value":"Wed, 23 Apr 2025 13:25:31 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+  </ItemGroup>
+</Project>
