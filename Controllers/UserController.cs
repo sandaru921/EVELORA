@@ -1,7 +1,10 @@
+using AssessmentPlatform.Backend.Data;
 using Microsoft.AspNetCore.Mvc;
 using AssessmentPlatform.DTO;
 using Microsoft.AspNetCore.Authorization;
 using AssessmentPlatform.Backend.Service; // Ensure this namespace contains UserService
+using AssessmentPlatform.Backend.DTO;
+using Microsoft.EntityFrameworkCore;
 
 namespace AssessmentPlatform.Backend.Controllers
 {
@@ -10,10 +13,12 @@ namespace AssessmentPlatform.Backend.Controllers
     public class UserController : ControllerBase
     {
         private readonly UserService _userService;
-
-        public UserController(UserService userService)
+        private readonly AppDbContext _context;
+    
+        public UserController(UserService userService, AppDbContext context)
         {
             _userService = userService;
+            _context = context;
         }
 
         // POST: api/user/register
@@ -81,6 +86,30 @@ namespace AssessmentPlatform.Backend.Controllers
                 claims = claims
             });
         }
+        
+        // POST: api/user/reset-password
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDto dto)
+        {
+            if (string.IsNullOrWhiteSpace(dto.Email) || string.IsNullOrWhiteSpace(dto.NewPassword))
+            {
+                return BadRequest("Email and new password are required.");
+            }
 
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            // Optional: check dto.Token if using token-based reset in future
+
+            user.HashPassword = PasswordHasher.Hash(dto.NewPassword);
+
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+
+            return Ok("Password has been reset successfully.");
+        }
     }
 }
