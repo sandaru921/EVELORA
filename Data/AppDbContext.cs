@@ -9,6 +9,8 @@ namespace AssessmentPlatform.Backend.Data
         public DbSet<Jobs> Jobs { get; set; }
         public DbSet<Message> Messages { get; set; }
 
+        public DbSet<Blog> Blogs { get; set; }
+
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
@@ -26,6 +28,11 @@ namespace AssessmentPlatform.Backend.Data
             modelBuilder.Entity<Jobs>()
                 .Property(j => j.Id)
                 .UseIdentityAlwaysColumn();
+
+            // Configure the Blog entity
+            modelBuilder.Entity<Blog>()
+                .Property(b => b.Slug)
+                .HasMaxLength(200);    
         }
     }
 
