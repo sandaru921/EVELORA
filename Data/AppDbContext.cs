@@ -8,6 +8,8 @@ namespace AssessmentPlatform.Backend.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Jobs> Jobs { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<Quiz> Quizes { get; set; }
+        public DbSet<QuestionType> QuestionTypes { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
