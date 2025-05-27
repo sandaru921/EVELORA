@@ -11,5 +11,7 @@ namespace AssessmentPlatform.Backend.Models
         public required string HashPassword { get; set; }
         // public string Auth0Id { get; set; }
         
+        // Navigation property for the many-to-many relationship
+        public ICollection<UserPermission> UserPermissions { get; set; }
     }
 }

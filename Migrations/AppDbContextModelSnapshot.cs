@@ -23,90 +23,90 @@ namespace AssessmentPlatform.Backend.Migrations
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("AssessmentPlatform.Backend.Data.Message", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
+                NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Recipient")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Recipient")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<string>("Sender")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Sender")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Text")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<string>("Timestamp")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Timestamp")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Messages");
-                });
+                b.ToTable("Messages");
+            });
 
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
+                NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Email")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<string>("HashPassword")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("HashPassword")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Username")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Users");
-                });
+                b.ToTable("Users");
+            });
 
             modelBuilder.Entity("Jobs", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
+                NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                b.Property<DateTime>("CreatedAt")
+                    .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Description")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("ImageUrl")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<string>("JobType")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("JobType")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Title")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Jobs");
-                });
+                b.ToTable("Jobs");
+            });
 #pragma warning restore 612, 618
         }
     }
