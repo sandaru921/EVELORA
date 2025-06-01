@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AssessmentPlatform.Backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250517093113_addQuizesTable")]
-    partial class addQuizesTable
+    [Migration("20250526141811_addQuiz")]
+    partial class addQuiz
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,6 +54,73 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.ToTable("Messages");
                 });
 
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Option", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("Options");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Question", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CodeSnippet")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("CorrectAnswers")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ImageURL")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Marks")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("QuestionText")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("QuizId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuizId");
+
+                    b.ToTable("Questions");
+                });
+
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.Quiz", b =>
                 {
                     b.Property<int>("Id")
@@ -62,17 +129,20 @@ namespace AssessmentPlatform.Backend.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("JobId")
-                        .HasColumnType("integer");
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                    b.Property<int>("JobsId")
-                        .HasColumnType("integer");
-
-                    b.Property<DateOnly>("QuizDate")
-                        .HasColumnType("date");
+                    b.Property<string>("JobCategory")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int>("QuizDuration")
                         .HasColumnType("integer");
+
+                    b.Property<string>("QuizLevel")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("QuizName")
                         .IsRequired()
@@ -80,9 +150,7 @@ namespace AssessmentPlatform.Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("JobsId");
-
-                    b.ToTable("Quizes");
+                    b.ToTable("Quizzes");
                 });
 
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.User", b =>
@@ -142,15 +210,36 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.ToTable("Jobs");
                 });
 
-            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Quiz", b =>
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Option", b =>
                 {
-                    b.HasOne("Jobs", "Jobs")
-                        .WithMany()
-                        .HasForeignKey("JobsId")
+                    b.HasOne("AssessmentPlatform.Backend.Models.Question", "Question")
+                        .WithMany("Options")
+                        .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Jobs");
+                    b.Navigation("Question");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Question", b =>
+                {
+                    b.HasOne("AssessmentPlatform.Backend.Models.Quiz", "Quiz")
+                        .WithMany("Questions")
+                        .HasForeignKey("QuizId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Quiz");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Question", b =>
+                {
+                    b.Navigation("Options");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Quiz", b =>
+                {
+                    b.Navigation("Questions");
                 });
 #pragma warning restore 612, 618
         }

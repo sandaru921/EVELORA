@@ -6,8 +6,17 @@ using AssessmentPlatform.Backend.Data;
 using AssessmentPlatform.Backend.Models; // For JwtSettings
 using Microsoft.OpenApi.Models;
 using AssessmentPlatform.Backend.Service;
+using AssessmentPlatform.Backend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddScoped<IQuizService, QuizService>();
+
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+        options.JsonSerializerOptions.WriteIndented = true;
+    });
 
 // Configure JwtSettings from appsettings.json
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
