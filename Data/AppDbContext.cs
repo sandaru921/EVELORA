@@ -53,7 +53,8 @@ namespace AssessmentPlatform.Backend.Data
                 new Permission { Id = 1, Name = "EditQuiz" },
                 new Permission { Id = 2, Name = "DeleteQuiz" },
                 new Permission { Id = 3, Name = "CreateQuestion" },
-                new Permission { Id = 4, Name = "ViewResults" }
+                new Permission { Id = 4, Name = "ViewResults" },
+                new Permission { Id = 5, Name = "Admin" }
             );
         }
     }

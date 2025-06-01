@@ -1,4 +1,3 @@
-using AssessmentPlatform.Backend.Data;
 using Microsoft.AspNetCore.Mvc;
 using AssessmentPlatform.DTO;
 using Microsoft.AspNetCore.Authorization;
@@ -12,7 +11,7 @@ namespace AssessmentPlatform.Backend.Controllers
     public class UserController : ControllerBase
     {
         private readonly UserService _userService;
-        public UserController(UserService userService, AppDbContext context)
+        public UserController(UserService userService)
         {
             _userService = userService;
         }
@@ -87,5 +86,15 @@ namespace AssessmentPlatform.Backend.Controllers
 
             return Ok("Password has been reset successfully.");
         }
+        
+        // GET: api/user/with-permissions
+        [HttpGet("with-permissions")]
+        [Authorize(Roles = "Admin")] // Optional: Restrict to Admins
+        public async Task<IActionResult> GetAllUsersWithPermissions()
+        {
+            var users = await _userService.GetAllUsersWithPermissionsAsync();
+            return Ok(users);
+        }
+
     }
 }

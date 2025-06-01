@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using AssessmentPlatform.Backend.DTO;
+
 namespace AssessmentPlatform.Backend.Service
 {
     public class UserService
@@ -57,8 +58,8 @@ namespace AssessmentPlatform.Backend.Service
                 .Include(u => u.UserPermissions)
                     .ThenInclude(up => up.Permission)
                 .FirstOrDefaultAsync(u =>
-                (!string.IsNullOrEmpty(loginDto.Email) && u.Email == loginDto.Email) ||
-                (!string.IsNullOrEmpty(loginDto.Username) && u.Username == loginDto.Username));
+                (!string.IsNullOrWhiteSpace(loginDto.Email) && u.Email == loginDto.Email) ||
+                (!string.IsNullOrWhiteSpace(loginDto.Username) && u.Username == loginDto.Username));
             
             if (user == null)
                 return (null, string.Empty, new List<string>());
@@ -92,16 +93,36 @@ namespace AssessmentPlatform.Backend.Service
             return null;
         }
         
+        public async Task<List<UserWithPermissionsDTO>> GetAllUsersWithPermissionsAsync()
+        {
+            var users = await _context.Users
+                .Include(u => u.UserPermissions)
+                .ThenInclude(up => up.Permission)
+                .ToListAsync();
+
+            return users.Select(u => new UserWithPermissionsDTO
+            {
+                Id = u.Id,
+                Username = u.Username,
+                Email = u.Email,
+                Permissions = u.UserPermissions.Select(up => up.Permission.Name).ToList()
+            }).ToList();
+        }
+        
         private string GenerateJwtToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(_jwtSettings.SecretKey);
+            
+            // Determine the user's role based on their permissions
+            var role = user.UserPermissions.Any(up => up.Permission.Name == "Admin") ? "Admin" : "User";
 
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Username ?? ""),
-                new Claim(ClaimTypes.Email, user.Email ?? "")
+                new Claim(ClaimTypes.Email, user.Email ?? ""),
+                new Claim(ClaimTypes.Role, role)
             };
 
             var tokenDescriptor = new SecurityTokenDescriptor

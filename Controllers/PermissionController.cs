@@ -1,7 +1,7 @@
-// Controllers/PermissionController.cs
 using AssessmentPlatform.Backend.Data;
 using AssessmentPlatform.Backend.DTO;
 using AssessmentPlatform.Backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +19,8 @@ namespace AssessmentPlatform.Backend.Controllers
         }
 
         // POST: api/permission/assign
-        [HttpPost("assign")]
+        [HttpPut("assign")] 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AssignPermissions(AssignPermissionDTO dto)
         {
             var user = await _context.Users
@@ -50,9 +51,10 @@ namespace AssessmentPlatform.Backend.Controllers
             await _context.SaveChangesAsync();
             return Ok("Permissions assigned successfully.");
         }
-
+        
         // GET: api/permission/user/{userId}
         [HttpGet("user/{userId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetUserPermissions(int userId)
         {
             var userPermissions = await _context.UserPermissions
@@ -66,6 +68,22 @@ namespace AssessmentPlatform.Backend.Controllers
                 .ToListAsync();
 
             return Ok(userPermissions);
+        }
+        
+        // GET: api/permission/all
+        [HttpGet("all")]
+         [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetAllPermissions()
+        {
+            var permissions = await _context.Permissions
+                .Select(p => new
+                {
+                    p.Id,
+                    p.Name
+                })
+                .ToListAsync();
+
+            return Ok(permissions);
         }
     }
 }
