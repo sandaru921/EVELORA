@@ -22,6 +22,7 @@ namespace AssessmentPlatform.Backend.Service
             _jwtSettings = jwtSettings.Value;
         }
 
+        // Register new user after checking for duplicates and hashing password
         public async Task<(User?, string?)> RegisterUserAsync(UserRegisterDTO registerDto)
         {
             if (await _context.Users.AnyAsync(u => u.Email == registerDto.Email))
@@ -45,6 +46,7 @@ namespace AssessmentPlatform.Backend.Service
             return (user, null);
         }
 
+        //Login user and return token and permission list if valid
         public async Task<(User? User, string Token, List<string> Permissions)> AuthenticateUserAsync(UserLoginDTO loginDto)
         {
             if (string.IsNullOrWhiteSpace(loginDto.Password) || 
@@ -69,7 +71,9 @@ namespace AssessmentPlatform.Backend.Service
             if (!isPasswordValid)
                 return (null, string.Empty, new List<string>());
             
+            // Generate JWT token
             var token = GenerateJwtToken(user);
+            // Extract permission names
             var permissions = user.UserPermissions
                 .Select(up => up.Permission.Name)
                 .ToList();
@@ -77,6 +81,7 @@ namespace AssessmentPlatform.Backend.Service
             return (user, token, permissions);
         }
 
+        // Change user's password
         public async Task<string?> ResetPasswordAsync(ResetPasswordDto dto)
         {
             if (string.IsNullOrWhiteSpace(dto.Email) || string.IsNullOrWhiteSpace(dto.NewPassword))
@@ -93,6 +98,7 @@ namespace AssessmentPlatform.Backend.Service
             return null;
         }
         
+        // Get list of all users with their permissions
         public async Task<List<UserWithPermissionsDTO>> GetAllUsersWithPermissionsAsync()
         {
             var users = await _context.Users
@@ -105,10 +111,17 @@ namespace AssessmentPlatform.Backend.Service
                 Id = u.Id,
                 Username = u.Username,
                 Email = u.Email,
-                Permissions = u.UserPermissions.Select(up => up.Permission.Name).ToList()
+                Permissions = u.UserPermissions
+                    .Where(up => up.Permission != null)
+                    .Select(up => new PermissionDTO
+                    {
+                        Id = up.Permission.Id,
+                        Name = up.Permission.Name
+                    }).ToList()
             }).ToList();
         }
         
+        // Create JWT token with user claims
         private string GenerateJwtToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
