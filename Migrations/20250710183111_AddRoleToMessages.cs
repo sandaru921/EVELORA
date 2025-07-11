@@ -5,7 +5,7 @@
 namespace AssessmentPlatform.Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class AddUserProfileTable : Migration
+    public partial class AddRoleToMessages : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

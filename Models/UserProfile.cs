@@ -8,7 +8,10 @@ namespace AssessmentPlatform.Backend.Models
         [Key]
         public int Id { get; set; }
 
-        // Foreign key as string to match frontend userId (will be mapped to User.Id int)
+        // Foreign key to match User.Id (int)
+        public int UserIdInt { get; set; } // Added for foreign key relationship
+
+        // Keep this for frontend compatibility (string userId)
         [Required]
         public string UserId { get; set; } = string.Empty;
 
