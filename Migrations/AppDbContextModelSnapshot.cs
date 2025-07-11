@@ -59,6 +59,10 @@ namespace AssessmentPlatform.Backend.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
@@ -70,26 +74,31 @@ namespace AssessmentPlatform.Backend.Migrations
                         new
                         {
                             Id = 1,
+                            DisplayName = "Edit Quiz",
                             Name = "EditQuiz"
                         },
                         new
                         {
                             Id = 2,
+                            DisplayName = "Delete Quiz",
                             Name = "DeleteQuiz"
                         },
                         new
                         {
                             Id = 3,
+                            DisplayName = "Create Question",
                             Name = "CreateQuestion"
                         },
                         new
                         {
                             Id = 4,
+                            DisplayName = "View Results",
                             Name = "ViewResults"
                         },
                         new
                         {
                             Id = 5,
+                            DisplayName = "Admin",
                             Name = "Admin"
                         });
                 });

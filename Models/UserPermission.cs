@@ -1,5 +1,3 @@
-using AssessmentPlatform.Backend.Models;
-
 namespace AssessmentPlatform.Backend.Models
 {
     public class UserPermission

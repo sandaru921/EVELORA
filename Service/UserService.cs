@@ -116,7 +116,7 @@ namespace AssessmentPlatform.Backend.Service
                     .Select(up => new PermissionDTO
                     {
                         Id = up.Permission.Id,
-                        Name = up.Permission.Name
+                        Name = up.Permission.DisplayName
                     }).ToList()
             }).ToList();
         }

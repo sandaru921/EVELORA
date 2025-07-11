@@ -82,7 +82,8 @@ namespace AssessmentPlatform.Backend.Controllers
                 .Select(p => new
                 {
                     p.Id,
-                    p.Name
+                    p.Name,
+                    p.DisplayName
                 })
                 .ToListAsync();
 
