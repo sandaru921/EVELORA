@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using AssessmentPlatform.Backend.Models;
+using System.Text.RegularExpressions;
 
 namespace AssessmentPlatform.Backend.Data
 {
@@ -29,7 +30,6 @@ namespace AssessmentPlatform.Backend.Data
                 .Property(j => j.Id)
                 .UseIdentityAlwaysColumn();
             
-            //newly added
             modelBuilder.Entity<Permission>()
                 .Property(p => p.Id)
                 .UseIdentityAlwaysColumn();
@@ -48,13 +48,22 @@ namespace AssessmentPlatform.Backend.Data
                 .WithMany(p => p.UserPermissions)
                 .HasForeignKey(up => up.PermissionId);
             
-            // Seed data
-            modelBuilder.Entity<Permission>().HasData(
-                new Permission { Id = 1, Name = "EditQuiz" },
-                new Permission { Id = 2, Name = "DeleteQuiz" },
-                new Permission { Id = 3, Name = "CreateQuestion" },
-                new Permission { Id = 4, Name = "ViewResults" }
-            );
+            // Seed permissions with DisplayName
+            var permissions = new[]
+            {
+                new Permission { Id = 1, Name = "EditQuiz", DisplayName = GenerateDisplayName("EditQuiz") },
+                new Permission { Id = 2, Name = "DeleteQuiz", DisplayName = GenerateDisplayName("DeleteQuiz") },
+                new Permission { Id = 3, Name = "CreateQuestion", DisplayName = GenerateDisplayName("CreateQuestion") },
+                new Permission { Id = 4, Name = "ViewResults", DisplayName = GenerateDisplayName("ViewResults") },
+                new Permission { Id = 5, Name = "Admin", DisplayName = GenerateDisplayName("Admin") }
+            };
+            
+            modelBuilder.Entity<Permission>().HasData(permissions);
+        }
+        // Helper: convert camelCase to spaced words
+        private string GenerateDisplayName(string name)
+        {
+            return Regex.Replace(name, "(\\B[A-Z])", " $1");
         }
     }
 

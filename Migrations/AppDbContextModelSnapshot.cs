@@ -23,90 +23,186 @@ namespace AssessmentPlatform.Backend.Migrations
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("AssessmentPlatform.Backend.Data.Message", b =>
-            {
-                b.Property<int>("Id")
-                    .ValueGeneratedOnAdd()
-                    .HasColumnType("integer");
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
 
-                NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
 
-                b.Property<string>("Recipient")
-                    .IsRequired()
-                    .HasColumnType("text");
+                    b.Property<string>("Recipient")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                b.Property<string>("Sender")
-                    .IsRequired()
-                    .HasColumnType("text");
+                    b.Property<string>("Sender")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                b.Property<string>("Text")
-                    .IsRequired()
-                    .HasColumnType("text");
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                b.Property<string>("Timestamp")
-                    .IsRequired()
-                    .HasColumnType("text");
+                    b.Property<string>("Timestamp")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                b.HasKey("Id");
+                    b.HasKey("Id");
 
-                b.ToTable("Messages");
-            });
+                    b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Permission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Permissions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DisplayName = "Edit Quiz",
+                            Name = "EditQuiz"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DisplayName = "Delete Quiz",
+                            Name = "DeleteQuiz"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DisplayName = "Create Question",
+                            Name = "CreateQuestion"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DisplayName = "View Results",
+                            Name = "ViewResults"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DisplayName = "Admin",
+                            Name = "Admin"
+                        });
+                });
 
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.User", b =>
-            {
-                b.Property<int>("Id")
-                    .ValueGeneratedOnAdd()
-                    .HasColumnType("integer");
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
 
-                NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
 
-                b.Property<string>("Email")
-                    .IsRequired()
-                    .HasColumnType("text");
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                b.Property<string>("HashPassword")
-                    .IsRequired()
-                    .HasColumnType("text");
+                    b.Property<string>("HashPassword")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                b.Property<string>("Username")
-                    .IsRequired()
-                    .HasColumnType("text");
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                b.HasKey("Id");
+                    b.HasKey("Id");
 
-                b.ToTable("Users");
-            });
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.UserPermission", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("PermissionId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("UserId", "PermissionId");
+
+                    b.HasIndex("PermissionId");
+
+                    b.ToTable("UserPermissions");
+                });
 
             modelBuilder.Entity("Jobs", b =>
-            {
-                b.Property<int>("Id")
-                    .ValueGeneratedOnAdd()
-                    .HasColumnType("integer");
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
 
-                NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
 
-                b.Property<DateTime>("CreatedAt")
-                    .HasColumnType("timestamp with time zone");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
 
-                b.Property<string>("Description")
-                    .IsRequired()
-                    .HasColumnType("text");
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                b.Property<string>("ImageUrl")
-                    .IsRequired()
-                    .HasColumnType("text");
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                b.Property<string>("JobType")
-                    .IsRequired()
-                    .HasColumnType("text");
+                    b.Property<string>("JobType")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                b.Property<string>("Title")
-                    .IsRequired()
-                    .HasColumnType("text");
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                b.HasKey("Id");
+                    b.HasKey("Id");
 
-                b.ToTable("Jobs");
-            });
+                    b.ToTable("Jobs");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.UserPermission", b =>
+                {
+                    b.HasOne("AssessmentPlatform.Backend.Models.Permission", "Permission")
+                        .WithMany("UserPermissions")
+                        .HasForeignKey("PermissionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AssessmentPlatform.Backend.Models.User", "User")
+                        .WithMany("UserPermissions")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Permission");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Permission", b =>
+                {
+                    b.Navigation("UserPermissions");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.User", b =>
+                {
+                    b.Navigation("UserPermissions");
+                });
 #pragma warning restore 612, 618
         }
     }

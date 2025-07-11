@@ -1,7 +1,7 @@
-// Controllers/PermissionController.cs
 using AssessmentPlatform.Backend.Data;
 using AssessmentPlatform.Backend.DTO;
 using AssessmentPlatform.Backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,8 +18,10 @@ namespace AssessmentPlatform.Backend.Controllers
             _context = context;
         }
 
+        //PUT: Assign a list of permissions to a user (Admin only)
         // POST: api/permission/assign
-        [HttpPost("assign")]
+        [HttpPut("assign")] 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AssignPermissions(AssignPermissionDTO dto)
         {
             var user = await _context.Users
@@ -31,7 +33,7 @@ namespace AssessmentPlatform.Backend.Controllers
                 return NotFound("User not found.");
             }
 
-            // Remove existing permissions
+            // Remove all existing permissions
             user.UserPermissions.Clear();
 
             // Add new permissions
@@ -50,9 +52,11 @@ namespace AssessmentPlatform.Backend.Controllers
             await _context.SaveChangesAsync();
             return Ok("Permissions assigned successfully.");
         }
-
+        
+        // GET: All permissions for a specific user (Admin only)
         // GET: api/permission/user/{userId}
         [HttpGet("user/{userId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetUserPermissions(int userId)
         {
             var userPermissions = await _context.UserPermissions
@@ -66,6 +70,24 @@ namespace AssessmentPlatform.Backend.Controllers
                 .ToListAsync();
 
             return Ok(userPermissions);
+        }
+        
+        //GET: All available permissions in the system (Admin only)
+        // GET: api/permission/all
+        [HttpGet("all")]
+         [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetAllPermissions()
+        {
+            var permissions = await _context.Permissions
+                .Select(p => new
+                {
+                    p.Id,
+                    p.Name,
+                    p.DisplayName
+                })
+                .ToListAsync();
+
+            return Ok(permissions);
         }
     }
 }

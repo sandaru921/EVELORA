@@ -1,6 +1,4 @@
 // Models/User.cs
-using System.ComponentModel.DataAnnotations;
-
 namespace AssessmentPlatform.Backend.Models
 {
     public class User
