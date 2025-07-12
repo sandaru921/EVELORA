@@ -3,6 +3,7 @@ using System;
 using AssessmentPlatform.Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AssessmentPlatform.Backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250526141811_addQuiz")]
+    partial class addQuiz
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,36 +54,28 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.ToTable("Messages");
                 });
 
-            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Permission", b =>
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Option", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
-
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Key")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("character varying(10)");
+                        .HasColumnType("text");
 
                     b.Property<int>("QuestionId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Value")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("character varying(500)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("QuestionId")
-                        .HasDatabaseName("IX_Option_QuestionId");
-
-                    b.HasIndex("QuestionId", "Key")
-                        .IsUnique()
-                        .HasDatabaseName("IX_Option_QuestionId_Key");
+                    b.HasIndex("QuestionId");
 
                     b.ToTable("Options");
                 });
@@ -91,40 +86,37 @@ namespace AssessmentPlatform.Backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CodeSnippet")
-                        .HasMaxLength(4000)
-                        .HasColumnType("character varying(4000)");
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("CorrectAnswers")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("ImageURL")
-                        .HasMaxLength(500)
-                        .HasColumnType("character varying(500)");
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int>("Marks")
                         .HasColumnType("integer");
 
                     b.Property<string>("QuestionText")
                         .IsRequired()
-                        .HasMaxLength(2000)
-                        .HasColumnType("character varying(2000)");
+                        .HasColumnType("text");
 
                     b.Property<int>("QuizId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Type")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("QuizId")
-                        .HasDatabaseName("IX_Question_QuizId");
+                    b.HasIndex("QuizId");
 
                     b.ToTable("Questions");
                 });
@@ -135,82 +127,30 @@ namespace AssessmentPlatform.Backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("character varying(1000)");
+                        .HasColumnType("text");
 
                     b.Property<string>("JobCategory")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasColumnType("text");
 
                     b.Property<int>("QuizDuration")
                         .HasColumnType("integer");
 
                     b.Property<string>("QuizLevel")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                        .HasColumnType("text");
 
                     b.Property<string>("QuizName")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("character varying(200)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("QuizName")
-                        .IsUnique()
-                        .HasDatabaseName("IX_Quiz_QuizName");
 
                     b.ToTable("Quizzes");
-
-                    b.Property<string>("DisplayName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Permissions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DisplayName = "Edit Quiz",
-                            Name = "EditQuiz"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DisplayName = "Delete Quiz",
-                            Name = "DeleteQuiz"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DisplayName = "Create Question",
-                            Name = "CreateQuestion"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            DisplayName = "View Results",
-                            Name = "ViewResults"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            DisplayName = "Admin",
-                            Name = "Admin"
-                        });
-
                 });
 
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.User", b =>
@@ -236,21 +176,6 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("AssessmentPlatform.Backend.Models.UserPermission", b =>
-                {
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("PermissionId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("UserId", "PermissionId");
-
-                    b.HasIndex("PermissionId");
-
-                    b.ToTable("UserPermissions");
                 });
 
             modelBuilder.Entity("Jobs", b =>
@@ -285,7 +210,6 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.ToTable("Jobs");
                 });
 
-
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.Option", b =>
                 {
                     b.HasOne("AssessmentPlatform.Backend.Models.Question", "Question")
@@ -316,35 +240,6 @@ namespace AssessmentPlatform.Backend.Migrations
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.Quiz", b =>
                 {
                     b.Navigation("Questions");
-
-            modelBuilder.Entity("AssessmentPlatform.Backend.Models.UserPermission", b =>
-                {
-                    b.HasOne("AssessmentPlatform.Backend.Models.Permission", "Permission")
-                        .WithMany("UserPermissions")
-                        .HasForeignKey("PermissionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AssessmentPlatform.Backend.Models.User", "User")
-                        .WithMany("UserPermissions")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Permission");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Permission", b =>
-                {
-                    b.Navigation("UserPermissions");
-                });
-
-            modelBuilder.Entity("AssessmentPlatform.Backend.Models.User", b =>
-                {
-                    b.Navigation("UserPermissions");
-
                 });
 #pragma warning restore 612, 618
         }

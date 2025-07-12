@@ -3,6 +3,7 @@ using System;
 using AssessmentPlatform.Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AssessmentPlatform.Backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250527133657_CreateQuizTables")]
+    partial class CreateQuizTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,14 +54,13 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.ToTable("Messages");
                 });
 
-            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Permission", b =>
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Option", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
-
 
                     b.Property<string>("Key")
                         .IsRequired()
@@ -167,50 +169,6 @@ namespace AssessmentPlatform.Backend.Migrations
                         .HasDatabaseName("IX_Quiz_QuizName");
 
                     b.ToTable("Quizzes");
-
-                    b.Property<string>("DisplayName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Permissions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DisplayName = "Edit Quiz",
-                            Name = "EditQuiz"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DisplayName = "Delete Quiz",
-                            Name = "DeleteQuiz"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DisplayName = "Create Question",
-                            Name = "CreateQuestion"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            DisplayName = "View Results",
-                            Name = "ViewResults"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            DisplayName = "Admin",
-                            Name = "Admin"
-                        });
-
                 });
 
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.User", b =>
@@ -236,21 +194,6 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("AssessmentPlatform.Backend.Models.UserPermission", b =>
-                {
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("PermissionId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("UserId", "PermissionId");
-
-                    b.HasIndex("PermissionId");
-
-                    b.ToTable("UserPermissions");
                 });
 
             modelBuilder.Entity("Jobs", b =>
@@ -285,7 +228,6 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.ToTable("Jobs");
                 });
 
-
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.Option", b =>
                 {
                     b.HasOne("AssessmentPlatform.Backend.Models.Question", "Question")
@@ -316,35 +258,6 @@ namespace AssessmentPlatform.Backend.Migrations
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.Quiz", b =>
                 {
                     b.Navigation("Questions");
-
-            modelBuilder.Entity("AssessmentPlatform.Backend.Models.UserPermission", b =>
-                {
-                    b.HasOne("AssessmentPlatform.Backend.Models.Permission", "Permission")
-                        .WithMany("UserPermissions")
-                        .HasForeignKey("PermissionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AssessmentPlatform.Backend.Models.User", "User")
-                        .WithMany("UserPermissions")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Permission");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Permission", b =>
-                {
-                    b.Navigation("UserPermissions");
-                });
-
-            modelBuilder.Entity("AssessmentPlatform.Backend.Models.User", b =>
-                {
-                    b.Navigation("UserPermissions");
-
                 });
 #pragma warning restore 612, 618
         }
