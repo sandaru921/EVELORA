@@ -4,6 +4,20 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using AssessmentPlatform.Backend.Data;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Add services to the container.
