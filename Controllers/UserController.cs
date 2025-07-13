@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using AssessmentPlatform.DTO;
 using Microsoft.AspNetCore.Authorization;
 using AssessmentPlatform.Backend.Service; // Ensure this namespace contains UserService
+using AssessmentPlatform.Backend.DTO;
 
 namespace AssessmentPlatform.Backend.Controllers
 {
@@ -10,12 +11,12 @@ namespace AssessmentPlatform.Backend.Controllers
     public class UserController : ControllerBase
     {
         private readonly UserService _userService;
-
         public UserController(UserService userService)
         {
             _userService = userService;
         }
 
+        //POST: Register a new user
         // POST: api/user/register
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserRegisterDTO dto)
@@ -36,38 +37,34 @@ namespace AssessmentPlatform.Backend.Controllers
 
             return CreatedAtAction(nameof(Register), new { id = user.Id }, new
             {
-                id = user.Id,
-                username = user.Username,
-                email = user.Email
+                message = "User registered successfully",
             });
         }
 
+        //POST: Log in and get token with permissions
         // POST: api/user/login
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserLoginDTO login)
         {
+            var (user, token, permissions) = await _userService.AuthenticateUserAsync(login);
+            
             if (string.IsNullOrEmpty(login.Email) && string.IsNullOrEmpty(login.Username))
                 return BadRequest("Email or Username is required.");
 
             if (string.IsNullOrEmpty(login.Password))
                 return BadRequest("Password is required.");
 
-            var (user, token) = await _userService.AuthenticateUserAsync(login);
-
             if (user == null || string.IsNullOrEmpty(token))
-                return Unauthorized("Invalid username/email or password.");
-
+                return Unauthorized("Invalid credentials");
+            
             return Ok(new
             {
-                message = "Login successful",
-                token = token
-                // userId = user.Id,
-                // username = user.Username,
-                // email = user.Email
+                token = token,
+                permissions = permissions
             });
         }
-
-
+        
+        //GET: A sample protected endpoint (token required)
         // GET: api/user/protected
         [HttpGet("protected")]
         [Authorize]
@@ -80,6 +77,27 @@ namespace AssessmentPlatform.Backend.Controllers
                 message = "You have accessed a protected endpoint!",
                 claims = claims
             });
+        }
+        
+        // POST: api/user/reset-password
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDto dto)
+        {
+            var error = await _userService.ResetPasswordAsync(dto);
+            if (error != null)
+                return BadRequest(error);
+
+            return Ok("Password has been reset successfully.");
+        }
+        
+        //GET: All users with their permissions (Admin only)
+        // GET: api/user/with-permissions
+        [HttpGet("with-permissions")]
+        [Authorize(Roles = "Admin")] // Optional: Restrict to Admins
+        public async Task<IActionResult> GetAllUsersWithPermissions()
+        {
+            var users = await _userService.GetAllUsersWithPermissionsAsync();
+            return Ok(users);
         }
 
     }

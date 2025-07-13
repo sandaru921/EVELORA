@@ -1,15 +1,13 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using AssessmentPlatform.Backend.Data;
 using AssessmentPlatform.Backend.Models;
 using Microsoft.OpenApi.Models;
 using AssessmentPlatform.Backend.Service;
+using AssessmentPlatform.Backend.Authorization; // Add this for custom auth
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -49,6 +47,27 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+;
+
+// Register Authorization Policies for Permissions 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("CanEditQuiz", policy =>
+        policy.Requirements.Add(new PermissionRequirement("EditQuiz")));
+
+    options.AddPolicy("CanDeleteQuiz", policy =>
+        policy.Requirements.Add(new PermissionRequirement("DeleteQuiz")));
+
+    options.AddPolicy("CanCreateQuestion", policy =>
+        policy.Requirements.Add(new PermissionRequirement("CreateQuestion")));
+
+    // Add more policies as needed
+});
+
+// Register custom permission handler
+builder.Services.AddScoped<IAuthorizationHandler, PermissionHandler>();
+
+// Add CORS (adjust origin as needed for frontend)
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", builder =>

@@ -60,6 +60,58 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.ToTable("Messages");
                 });
 
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Permission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Permissions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DisplayName = "Edit Quiz",
+                            Name = "EditQuiz"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DisplayName = "Delete Quiz",
+                            Name = "DeleteQuiz"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DisplayName = "Create Question",
+                            Name = "CreateQuestion"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DisplayName = "View Results",
+                            Name = "ViewResults"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DisplayName = "Admin",
+                            Name = "Admin"
+                        });
+                });
+
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -83,6 +135,21 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.UserPermission", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("PermissionId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("UserId", "PermissionId");
+
+                    b.HasIndex("PermissionId");
+
+                    b.ToTable("UserPermissions");
                 });
 
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.UserProfile", b =>
@@ -171,6 +238,35 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Jobs");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.UserPermission", b =>
+                {
+                    b.HasOne("AssessmentPlatform.Backend.Models.Permission", "Permission")
+                        .WithMany("UserPermissions")
+                        .HasForeignKey("PermissionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AssessmentPlatform.Backend.Models.User", "User")
+                        .WithMany("UserPermissions")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Permission");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Permission", b =>
+                {
+                    b.Navigation("UserPermissions");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.User", b =>
+                {
+                    b.Navigation("UserPermissions");
                 });
 
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.UserProfile", b =>

@@ -26,3 +26,4 @@ namespace AssessmentPlatform.Backend.Models
         public string LinkedIn { get; set; } = string.Empty;
     }
 }
+
