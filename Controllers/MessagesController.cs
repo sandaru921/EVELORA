@@ -44,7 +44,7 @@ namespace AssessmentPlatform.Controllers
 
         // GET: api/messages (for admins only)
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<Message>>> GetAllMessages()
         {
             try
