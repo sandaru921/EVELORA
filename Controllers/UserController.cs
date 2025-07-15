@@ -47,7 +47,7 @@ namespace AssessmentPlatform.Backend.Controllers
         public async Task<IActionResult> Login([FromBody] UserLoginDTO login)
         {
             var (user, token, permissions) = await _userService.AuthenticateUserAsync(login);
-            
+
             if (string.IsNullOrEmpty(login.Email) && string.IsNullOrEmpty(login.Username))
                 return BadRequest("Email or Username is required.");
 
@@ -56,14 +56,14 @@ namespace AssessmentPlatform.Backend.Controllers
 
             if (user == null || string.IsNullOrEmpty(token))
                 return Unauthorized("Invalid credentials");
-            
+
             return Ok(new
             {
                 token = token,
                 permissions = permissions
             });
         }
-        
+
         //GET: A sample protected endpoint (token required)
         // GET: api/user/protected
         [HttpGet("protected")]
@@ -78,7 +78,7 @@ namespace AssessmentPlatform.Backend.Controllers
                 claims = claims
             });
         }
-        
+
         // POST: api/user/reset-password
         [HttpPost("reset-password")]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDto dto)
@@ -89,7 +89,7 @@ namespace AssessmentPlatform.Backend.Controllers
 
             return Ok("Password has been reset successfully.");
         }
-        
+
         //GET: All users with their permissions (Admin only)
         // GET: api/user/with-permissions
         [HttpGet("with-permissions")]

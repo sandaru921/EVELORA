@@ -33,14 +33,14 @@ namespace AssessmentPlatform.Backend.Service
 
             // Use BCrypt to hash the password
             string hashedPassword = PasswordHasher.Hash(registerDto.Password);
-            
+
             var user = new User
             {
                 Username = registerDto.Username,
                 Email = registerDto.Email,
                 HashPassword = hashedPassword
             };
-            
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
             return (user, null);
@@ -49,12 +49,12 @@ namespace AssessmentPlatform.Backend.Service
         //Login user and return token and permission list if valid
         public async Task<(User? User, string Token, List<string> Permissions)> AuthenticateUserAsync(UserLoginDTO loginDto)
         {
-            if (string.IsNullOrWhiteSpace(loginDto.Password) || 
+            if (string.IsNullOrWhiteSpace(loginDto.Password) ||
                 (string.IsNullOrWhiteSpace(loginDto.Email) && string.IsNullOrWhiteSpace(loginDto.Username)))
             {
                 return (null, string.Empty, new List<string>());
             }
-            
+
             // Fetch the user using either email or username
             var user = await _context.Users
                 .Include(u => u.UserPermissions)
@@ -62,7 +62,7 @@ namespace AssessmentPlatform.Backend.Service
                 .FirstOrDefaultAsync(u =>
                 (!string.IsNullOrWhiteSpace(loginDto.Email) && u.Email == loginDto.Email) ||
                 (!string.IsNullOrWhiteSpace(loginDto.Username) && u.Username == loginDto.Username));
-            
+
             if (user == null)
                 return (null, string.Empty, new List<string>());
 
@@ -70,14 +70,14 @@ namespace AssessmentPlatform.Backend.Service
             bool isPasswordValid = PasswordHasher.Verify(loginDto.Password, user.HashPassword);
             if (!isPasswordValid)
                 return (null, string.Empty, new List<string>());
-            
+
             // Generate JWT token
             var token = GenerateJwtToken(user);
             // Extract permission names
             var permissions = user.UserPermissions
                 .Select(up => up.Permission.Name)
                 .ToList();
-            
+
             return (user, token, permissions);
         }
 
@@ -97,7 +97,7 @@ namespace AssessmentPlatform.Backend.Service
 
             return null;
         }
-        
+
         // Get list of all users with their permissions
         public async Task<List<UserWithPermissionsDTO>> GetAllUsersWithPermissionsAsync()
         {
@@ -120,13 +120,13 @@ namespace AssessmentPlatform.Backend.Service
                     }).ToList()
             }).ToList();
         }
-        
+
         // Create JWT token with user claims
         private string GenerateJwtToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(_jwtSettings.SecretKey);
-            
+
             // Determine the user's role based on their permissions
             var role = user.UserPermissions.Any(up => up.Permission.Name == "Admin") ? "Admin" : "User";
 
