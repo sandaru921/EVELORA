@@ -1,16 +1,15 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-// using EveloraBlogAPI.Data;
-// using EveloraBlogAPI.Models;
+using Microsoft.Extensions.Configuration;
 using AssessmentPlatform.Backend.Data;
 using AssessmentPlatform.Backend.Models;
+using AssessmentPlatform.Backend.Repositories;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
 
 namespace AssessmentPlatform.Backend.Controllers
 {
@@ -19,66 +18,80 @@ namespace AssessmentPlatform.Backend.Controllers
     public class BlogsController : ControllerBase
     {
         private readonly AppDbContext _context;
-        private readonly IWebHostEnvironment _environment;
+        private readonly BlobServiceClient _blobServiceClient;
+        private readonly string _containerName;
+        private readonly IConfiguration _configuration;
+        private readonly IBlogRepository _blogRepository;
 
-        public BlogsController(AppDbContext context, IWebHostEnvironment environment)
+        public BlogsController(
+            AppDbContext context,
+            BlobServiceClient blobServiceClient,
+            IConfiguration configuration,
+            IBlogRepository blogRepository)
         {
             _context = context;
-            _environment = environment;
+            _blobServiceClient = blobServiceClient;
+            _configuration = configuration;
+            _blogRepository = blogRepository;
+            _containerName = configuration["AzureBlobStorage:BlogContainerName"]
+                ?? throw new InvalidOperationException("AzureBlobStorage:BlogContainerName is not configured.");
         }
 
         // GET: api/Blogs
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Blog>>> GetBlogs()
         {
-            return await _context.Blogs
-                .OrderByDescending(b => b.CreatedAt)
-                .ToListAsync();
+            return Ok(await _blogRepository.GetAllBlogsAsync());
         }
 
         // GET: api/Blogs/5
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Blog>> GetBlog(int id)
         {
-            var blog = await _context.Blogs.FindAsync(id);
-
+            var blog = await _blogRepository.GetBlogByIdAsync(id);
             if (blog == null)
             {
                 return NotFound();
             }
-
-            return blog;
+            return Ok(blog);
         }
 
         // GET: api/Blogs/slug/how-to-tackle-security-testing
         [HttpGet("slug/{slug}")]
         public async Task<ActionResult<Blog>> GetBlogBySlug(string slug)
         {
-            var blog = await _context.Blogs
-                .FirstOrDefaultAsync(b => b.Slug == slug);
-
+            var blog = await _blogRepository.GetBlogBySlugAsync(slug);
             if (blog == null)
             {
                 return NotFound();
             }
-
-            return blog;
+            return Ok(blog);
         }
 
         // GET: api/Blogs/category/Software
         [HttpGet("category/{category}")]
         public async Task<ActionResult<IEnumerable<Blog>>> GetBlogsByCategory(string category)
         {
-            return await _context.Blogs
-                .Where(b => b.Category == category)
-                .OrderByDescending(b => b.CreatedAt)
-                .ToListAsync();
+            return Ok(await _blogRepository.GetBlogsByCategoryAsync(category));
         }
 
         // POST: api/Blogs
         [HttpPost]
         public async Task<ActionResult<Blog>> PostBlog([FromForm] BlogCreateDto blogDto)
         {
+            // Validate image
+            if (blogDto.Image != null)
+            {
+                if (!new[] { "image/jpeg", "image/png", "image/gif" }.Contains(blogDto.Image.ContentType))
+                {
+                    return BadRequest("Only JPEG, PNG, and GIF images are allowed.");
+                }
+                if (blogDto.Image.Length > 5 * 1024 * 1024) // 5MB limit
+                {
+                    return BadRequest("Image size must be less than 5MB.");
+                }
+            }
+
             var blog = new Blog
             {
                 Title = blogDto.Title,
@@ -86,145 +99,203 @@ namespace AssessmentPlatform.Backend.Controllers
                 Category = blogDto.Category,
                 CreatedAt = DateTime.UtcNow
             };
-            
-            // Generate slug from title
             blog.GenerateSlug();
+
+            // Ensure slug is unique
+            int suffix = 1;
+            string baseSlug = blog.Slug;
+            while (await _context.Blogs.AnyAsync(b => b.Slug == blog.Slug && b.Id != blog.Id))
+            {
+                blog.Slug = $"{baseSlug}-{suffix++}";
+            }
 
             if (blogDto.Image != null)
             {
-                // Save image to server
-                string uploadsFolder = Path.Combine(_environment.WebRootPath, "images", "blogs");
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + blogDto.Image.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                
-                // Ensure directory exists
-                Directory.CreateDirectory(uploadsFolder);
-                
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                try
                 {
-                    await blogDto.Image.CopyToAsync(fileStream);
-                }
+                    var containerClient = _blobServiceClient.GetBlobContainerClient(_containerName);
+                    await containerClient.CreateIfNotExistsAsync();
+                    string uniqueFileName = $"{Guid.NewGuid()}_{Path.GetFileName(blogDto.Image.FileName)}";
+                    var blobClient = containerClient.GetBlobClient(uniqueFileName);
 
-                // Save image path to database
-                blog.ImageUrl = $"/images/blogs/{uniqueFileName}";
+                    using (var stream = blogDto.Image.OpenReadStream())
+                    {
+                        var blobHttpHeaders = new BlobHttpHeaders
+                        {
+                            ContentType = blogDto.Image.ContentType
+                        };
+                        await blobClient.UploadAsync(stream, new BlobUploadOptions { HttpHeaders = blobHttpHeaders });
+                    }
+
+                    blog.ImageUrl = blobClient.Uri.ToString();
+                }
+                catch (Azure.RequestFailedException ex)
+                {
+                    return StatusCode(500, $"Error uploading image to Blob Storage: {ex.Message}");
+                }
             }
 
-            _context.Blogs.Add(blog);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetBlog", new { id = blog.Id }, blog);
+            var createdBlog = await _blogRepository.CreateBlogAsync(blog);
+            return CreatedAtAction("GetBlog", new { id = createdBlog.Id }, createdBlog);
         }
 
         // PUT: api/Blogs/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBlog(int id, [FromForm] BlogUpdateDto blogDto)
         {
-            var blog = await _context.Blogs.FindAsync(id); // Fetch the blog from the database
+            var blog = await _blogRepository.GetBlogByIdAsync(id);
             if (blog == null)
             {
                 return NotFound();
             }
 
-            // Update the blog properties
+            // Validate image
+            if (blogDto.Image != null)
+            {
+                if (!new[] { "image/jpeg", "image/png", "image/gif" }.Contains(blogDto.Image.ContentType))
+                {
+                    return BadRequest("Only JPEG, PNG, and GIF images are allowed.");
+                }
+                if (blogDto.Image.Length > 5 * 1024 * 1024) // 5MB limit
+                {
+                    return BadRequest("Image size must be less than 5MB.");
+                }
+            }
+
             blog.Title = blogDto.Title;
             blog.Content = blogDto.Content;
             blog.Category = blogDto.Category;
             blog.UpdatedAt = DateTime.UtcNow;
-
-            // Regenerate slug from updated title
             blog.GenerateSlug();
+
+            // Ensure slug is unique
+            int suffix = 1;
+            string baseSlug = blog.Slug;
+            while (await _context.Blogs.AnyAsync(b => b.Slug == blog.Slug && b.Id != blog.Id))
+            {
+                blog.Slug = $"{baseSlug}-{suffix++}";
+            }
 
             if (blogDto.Image != null)
             {
-                // Delete old image if exists
-                if (!string.IsNullOrEmpty(blog.ImageUrl))
+                try
                 {
-                    string oldImagePath = Path.Combine(_environment.WebRootPath, blog.ImageUrl.TrimStart('/'));
-                    if (System.IO.File.Exists(oldImagePath))
+                    var containerClient = _blobServiceClient.GetBlobContainerClient(_containerName);
+                    await containerClient.CreateIfNotExistsAsync();
+
+                    // Delete old image if exists
+                    if (!string.IsNullOrEmpty(blog.ImageUrl))
                     {
-                        System.IO.File.Delete(oldImagePath);
+                        try
+                        {
+                            var oldBlobUri = new Uri(blog.ImageUrl);
+                            var oldBlobName = oldBlobUri.Segments.Last(); // More robust than Path.GetFileName
+                            var oldBlobClient = containerClient.GetBlobClient(oldBlobName);
+                            await oldBlobClient.DeleteIfExistsAsync();
+                        }
+                        catch (Azure.RequestFailedException ex)
+                        {
+                            // Log the error but continue with the update
+                            Console.WriteLine($"Error deleting old image: {ex.Message}");
+                        }
                     }
+
+                    // Upload new image
+                    string uniqueFileName = $"{Guid.NewGuid()}_{Path.GetFileName(blogDto.Image.FileName)}";
+                    var blobClient = containerClient.GetBlobClient(uniqueFileName);
+
+                    using (var stream = blogDto.Image.OpenReadStream())
+                    {
+                        var blobHttpHeaders = new BlobHttpHeaders
+                        {
+                            ContentType = blogDto.Image.ContentType
+                        };
+                        await blobClient.UploadAsync(stream, new BlobUploadOptions { HttpHeaders = blobHttpHeaders });
+                    }
+
+                    blog.ImageUrl = blobClient.Uri.ToString();
                 }
-
-                // Save new image
-                string uploadsFolder = Path.Combine(_environment.WebRootPath, "images", "blogs");
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + blogDto.Image.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                Directory.CreateDirectory(uploadsFolder);
-
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                catch (Azure.RequestFailedException ex)
                 {
-                    await blogDto.Image.CopyToAsync(fileStream);
-                }
-
-                blog.ImageUrl = $"/images/blogs/{uniqueFileName}";
-            }
-
-            try
-            {
-                await _context.SaveChangesAsync(); // Save changes to the database
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BlogExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
+                    return StatusCode(500, $"Error updating image in Blob Storage: {ex.Message}");
                 }
             }
 
-            return NoContent();
-        }
-
-        // DELETE: api/Blogs/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBlog(int id)
-        {
-            var blog = await _context.Blogs.FindAsync(id);
-            if (blog == null)
+            var success = await _blogRepository.UpdateBlogAsync(blog);
+            if (!success)
             {
                 return NotFound();
             }
 
-            // Delete image if exists
-            if (!string.IsNullOrEmpty(blog.ImageUrl))
-            {
-                string imagePath = Path.Combine(_environment.WebRootPath, blog.ImageUrl.TrimStart('/'));
-                if (System.IO.File.Exists(imagePath))
-                {
-                    System.IO.File.Delete(imagePath);
-                }
-            }
-
-            _context.Blogs.Remove(blog);
-            await _context.SaveChangesAsync();
-
             return NoContent();
         }
 
-        private bool BlogExists(int id)
+        
+    [HttpDelete("{id}")]
+public async Task<IActionResult> DeleteBlog(int id)
+{
+    var blog = await _blogRepository.GetBlogByIdAsync(id);
+    if (blog == null)
+    {
+        return NotFound(new { Message = $"Blog with ID {id} not found." });
+    }
+
+    // Delete image from Blob Storage if it's a valid Blob Storage URL
+    if (!string.IsNullOrEmpty(blog.ImageUrl))
+    {
+        try
         {
-            return _context.Blogs.Any(e => e.Id == id);
+            // Check if ImageUrl is a Blob Storage URL
+            if (blog.ImageUrl.StartsWith("https://") && blog.ImageUrl.Contains(_containerName))
+            {
+                var containerClient = _blobServiceClient.GetBlobContainerClient(_containerName);
+                var blobUri = new Uri(blog.ImageUrl);
+                var blobName = string.Join("", blobUri.Segments.Skip(blobUri.Segments.Length - 1)); // Get the blob name
+                var blobClient = containerClient.GetBlobClient(blobName);
+                await blobClient.DeleteIfExistsAsync();
+            }
+            // If ImageUrl is a local path (legacy), skip deletion
+            else
+            {
+                Console.WriteLine($"Skipping deletion of non-Blob Storage image: {blog.ImageUrl}");
+            }
+        }
+        catch (Exception ex) // Catch all exceptions, not just Azure.RequestFailedException
+        {
+            // Log the error but continue with blog deletion
+            Console.WriteLine($"Error deleting image: {ex.Message}");
         }
     }
 
+    var success = await _blogRepository.DeleteBlogAsync(id);
+    if (!success)
+    {
+        return NotFound(new { Message = $"Blog with ID {id} not found." });
+    }
+
+    return NoContent();
+}
+
+
+
+
+    }
+}
+
+    
     public class BlogCreateDto
     {
-        public required string Title { get; set; }
-        public required string Content { get; set; }
-        public required string Category { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public string Category { get; set; }
         public IFormFile? Image { get; set; }
     }
 
     public class BlogUpdateDto
     {
-        public required string Title { get; set; }
-        public required string Content { get; set; }
-        public required string Category { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public string Category { get; set; }
         public IFormFile? Image { get; set; }
     }
-}
+
