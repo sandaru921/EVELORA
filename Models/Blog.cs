@@ -1,7 +1,3 @@
-
-
-
-
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
@@ -26,8 +22,8 @@ namespace AssessmentPlatform.Backend.Models
         [MaxLength(50)]
         public string Category { get; set; } = string.Empty;
         
-        
-        public string ImageUrl { get; set; } = string.Empty;
+        [MaxLength(500)]
+        public string? ImageUrl { get; set; }
         
         [Required]
         [MaxLength(200)]

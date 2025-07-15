@@ -33,6 +33,10 @@ namespace AssessmentPlatform.Backend.Data
             modelBuilder.Entity<Blog>()
                 .Property(b => b.Slug)
                 .HasMaxLength(200);    
+
+                modelBuilder.Entity<Blog>()
+                .Property(b => b.ImageUrl)
+                .HasMaxLength(500);
         }
     }
 
