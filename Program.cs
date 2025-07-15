@@ -47,22 +47,22 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// Register Authorization Policies for Permissions 
+//Register Authorization Policies for Permissions 
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("CanEditQuiz", policy =>
         policy.Requirements.Add(new PermissionRequirement("EditQuiz")));
 
-    options.AddPolicy("CanDeleteQuiz", policy =>
-        policy.Requirements.Add(new PermissionRequirement("DeleteQuiz")));
+options.AddPolicy("CanDeleteQuiz", policy =>
+    policy.Requirements.Add(new PermissionRequirement("DeleteQuiz")));
 
-    options.AddPolicy("CanCreateQuestion", policy =>
-        policy.Requirements.Add(new PermissionRequirement("CreateQuestion")));
+options.AddPolicy("CanCreateQuestion", policy =>
+    policy.Requirements.Add(new PermissionRequirement("CreateQuestion")));
 
     // Add more policies as needed
 });
 
-// Register custom permission handler
+//Register custom permission handler
 builder.Services.AddScoped<IAuthorizationHandler, PermissionHandler>();
 
 // Add CORS (adjust origin as needed for frontend)
@@ -70,7 +70,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", builder =>
     {
-        builder.WithOrigins("http://localhost:5173") // React or frontend URL
+        builder.WithOrigins("http://localhost:5173", "http://localhost:5174") // React or frontend URL
                .AllowAnyHeader()
                .AllowAnyMethod();
     });
