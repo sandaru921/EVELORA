@@ -14,3 +14,6 @@ frontend/.env
 # General
 .DS_Store
 .vscode/
+
+# Environment Variables
+.env
