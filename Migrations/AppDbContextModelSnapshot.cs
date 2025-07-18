@@ -51,14 +51,13 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.ToTable("Messages");
                 });
 
-            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Permission", b =>
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Option", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
-
 
                     b.Property<string>("Key")
                         .IsRequired()
@@ -83,6 +82,58 @@ namespace AssessmentPlatform.Backend.Migrations
                         .HasDatabaseName("IX_Option_QuestionId_Key");
 
                     b.ToTable("Options");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Permission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Permissions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DisplayName = "Edit Quiz",
+                            Name = "EditQuiz"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DisplayName = "Delete Quiz",
+                            Name = "DeleteQuiz"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DisplayName = "Create Question",
+                            Name = "CreateQuestion"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DisplayName = "View Results",
+                            Name = "ViewResults"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DisplayName = "Admin",
+                            Name = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.Question", b =>
@@ -167,50 +218,6 @@ namespace AssessmentPlatform.Backend.Migrations
                         .HasDatabaseName("IX_Quiz_QuizName");
 
                     b.ToTable("Quizzes");
-
-                    b.Property<string>("DisplayName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Permissions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DisplayName = "Edit Quiz",
-                            Name = "EditQuiz"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DisplayName = "Delete Quiz",
-                            Name = "DeleteQuiz"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DisplayName = "Create Question",
-                            Name = "CreateQuestion"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            DisplayName = "View Results",
-                            Name = "ViewResults"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            DisplayName = "Admin",
-                            Name = "Admin"
-                        });
-
                 });
 
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.User", b =>
@@ -285,7 +292,6 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.ToTable("Jobs");
                 });
 
-
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.Option", b =>
                 {
                     b.HasOne("AssessmentPlatform.Backend.Models.Question", "Question")
@@ -307,15 +313,6 @@ namespace AssessmentPlatform.Backend.Migrations
 
                     b.Navigation("Quiz");
                 });
-
-            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Question", b =>
-                {
-                    b.Navigation("Options");
-                });
-
-            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Quiz", b =>
-                {
-                    b.Navigation("Questions");
 
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.UserPermission", b =>
                 {
@@ -341,10 +338,19 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.Navigation("UserPermissions");
                 });
 
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Question", b =>
+                {
+                    b.Navigation("Options");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Quiz", b =>
+                {
+                    b.Navigation("Questions");
+                });
+
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.User", b =>
                 {
                     b.Navigation("UserPermissions");
-
                 });
 #pragma warning restore 612, 618
         }
