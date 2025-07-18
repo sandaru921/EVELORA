@@ -17,6 +17,9 @@ namespace AssessmentPlatform.Backend.Models
 
         // Additional profile fields as shown in the frontend
         public string ProfilePicture { get; set; } = string.Empty; // URL or base64 string
+
+
+
         public string Education { get; set; } = string.Empty; // Multi-line text
         public string WorkExperience { get; set; } = string.Empty; // Multi-line text
         public string Skills { get; set; } = string.Empty; // Multi-line text
@@ -24,6 +27,8 @@ namespace AssessmentPlatform.Backend.Models
         public int? Age { get; set; } // Nullable integer
         public string Gender { get; set; } = string.Empty;
         public string LinkedIn { get; set; } = string.Empty;
+        
+        public string Title { get; set; } = string.Empty; // User's professional title
     }
 }
 

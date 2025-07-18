@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using AssessmentPlatform.Backend.Models;
 using System.Text.RegularExpressions;
 
+
+
 namespace AssessmentPlatform.Backend.Data
 {
     public class AppDbContext : DbContext
@@ -12,7 +14,7 @@ namespace AssessmentPlatform.Backend.Data
         public DbSet<Jobs> Jobs { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
-
+       public DbSet<QuizResult> QuizResults { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
@@ -48,7 +50,7 @@ namespace AssessmentPlatform.Backend.Data
             modelBuilder.Entity<Jobs>()
                 .Property(j => j.Id)
                 .UseIdentityAlwaysColumn();
-            
+
             modelBuilder.Entity<Permission>()
                 .Property(p => p.Id)
                 .UseIdentityAlwaysColumn();
@@ -66,7 +68,7 @@ namespace AssessmentPlatform.Backend.Data
                 .HasOne(up => up.Permission)
                 .WithMany(p => p.UserPermissions)
                 .HasForeignKey(up => up.PermissionId);
-            
+
             // Seed permissions with DisplayName
             var permissions = new[]
             {
@@ -76,8 +78,29 @@ namespace AssessmentPlatform.Backend.Data
                 new Permission { Id = 4, Name = "ViewResults", DisplayName = GenerateDisplayName("ViewResults") },
                 new Permission { Id = 5, Name = "Admin", DisplayName = GenerateDisplayName("Admin") }
             };
-            
+
             modelBuilder.Entity<Permission>().HasData(permissions);
+            
+             modelBuilder.Entity<QuizResult>(entity =>
+        {
+            entity.HasKey(q => q.Id);
+            entity.Property(q => q.UserId).HasMaxLength(50);
+            entity.Property(q => q.UserIdInt).IsRequired();
+            entity.Property(q => q.QuizId).IsRequired();
+            entity.Property(q => q.Score).IsRequired();
+            entity.Property(q => q.TotalMarks).IsRequired();
+            entity.Property(q => q.SubmissionTime).IsRequired();
+            entity.Property(q => q.TimeTaken).IsRequired();
+
+            entity.HasKey(e => e.Id);
+    entity.Property<int>("UserIdInt").HasColumnName("UserIdInt");
+
+    // FK to Users table
+    entity.HasOne<User>()
+          .WithMany()
+          .HasForeignKey("UserIdInt")
+          .OnDelete(DeleteBehavior.Cascade);
+        });
         }
         // Helper: convert camelCase to spaced words
         private string GenerateDisplayName(string name)
