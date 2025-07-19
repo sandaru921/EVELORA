@@ -11,7 +11,7 @@ namespace AssessmentPlatform.Backend.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<UserPermission> UserPermissions { get; set; }
-        public DbSet<Jobs> Jobs { get; set; }
+        public DbSet<Job> Jobs { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
        public DbSet<QuizResult> QuizResults { get; set; }
@@ -34,7 +34,7 @@ namespace AssessmentPlatform.Backend.Data
                 entity.HasKey(e => e.Id);
             });
 
-            modelBuilder.Entity<Jobs>(entity =>
+            modelBuilder.Entity<Job>(entity =>
             {
                 entity.HasKey(e => e.Id);
             });
@@ -47,7 +47,7 @@ namespace AssessmentPlatform.Backend.Data
                 .Property(u => u.Id)
                 .UseIdentityAlwaysColumn();
 
-            modelBuilder.Entity<Jobs>()
+            modelBuilder.Entity<Job>()
                 .Property(j => j.Id)
                 .UseIdentityAlwaysColumn();
 
