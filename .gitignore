@@ -19,3 +19,7 @@ frontend/
 # === General ===
 .DS_Store
 .vscode/
+
+.vs/
+
+*MigrationsSnapshot.cs
