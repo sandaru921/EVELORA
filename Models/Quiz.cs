@@ -10,5 +10,6 @@
         public string QuizLevel { get; set; }
 
         public ICollection<Question> Questions { get; set; }
+        public ICollection<QuizResults> QuizResults { get; set; }
     }
 }

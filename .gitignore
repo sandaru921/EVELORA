@@ -18,3 +18,5 @@ frontend/.env
 .vs/
 
 *MigrationsSnapshot.cs
+
+.env

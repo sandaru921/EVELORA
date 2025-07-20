@@ -11,5 +11,8 @@ namespace AssessmentPlatform.Backend.Models
         
         // Navigation property for the many-to-many relationship
         public ICollection<UserPermission> UserPermissions { get; set; }
+        
+        // Navigation property for quiz results
+        public ICollection<QuizResults> QuizResults { get; set; }
     }
 }

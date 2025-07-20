@@ -6,20 +6,30 @@ using AssessmentPlatform.Backend.Data;
 using AssessmentPlatform.Backend.Models; // For JwtSettings
 using Microsoft.OpenApi.Models;
 using AssessmentPlatform.Backend.Service;
+using AssessmentPlatform.Backend.Hubs;
 
 using AssessmentPlatform.Backend.Services;
 
 using AssessmentPlatform.Backend.Authorization; // Add this for custom auth
 using Microsoft.AspNetCore.Authorization;
 
+using AssessmentPlatform.Backend.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IQuizService, QuizService>();
+builder.Services.AddScoped<IQuizResultRepository, QuizResultRepository>();
+builder.Services.AddScoped<QuizAnalysisService>();
+builder.Services.AddSignalR();
+
+
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
-        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+        options.JsonSerializerOptions.PropertyNamingPolicy = null; // Use PascalCase
         options.JsonSerializerOptions.WriteIndented = true;
+        options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
     });
 
 // Configure JwtSettings from appsettings.json
@@ -72,7 +82,9 @@ builder.Services.AddCors(options =>
     {
         builder.WithOrigins("http://localhost:5173") // React or frontend URL
                .AllowAnyHeader()
-               .AllowAnyMethod();
+               .AllowAnyMethod()
+               .AllowCredentials();
+               
     });
 });
 
@@ -133,4 +145,8 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
+// New endpoint mapping for SignalR Hub
+app.MapHub<AnalysisHub>("/analysisHub");
+
 app.Run();

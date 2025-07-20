@@ -7,3 +7,4 @@
     "ConnectionString": "DefaultEndpointsProtocol=https;AccountName=evelorastorage;AccountKey= 1KTaVPytAkAm2hnKPVHy4U5gIK+zH7r/ey6PnCs77IfDmZtVcDu+8ebXue6SFZ7WGtpXZFV2eeXO+AStGoN/2A==;EndpointSuffix=core.windows.net",
     "ContainerName": "job-images"
   };
+  

@@ -14,6 +14,7 @@ namespace AssessmentPlatform.Backend.Data
         public DbSet<Quiz> Quizzes { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Option> Options { get; set; }
+        public DbSet<QuizResults> QuizResults { get; set; } // Added new table
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -33,7 +34,6 @@ namespace AssessmentPlatform.Backend.Data
             modelBuilder.Entity<Jobs>()
                 .Property(j => j.Id)
                 .UseIdentityAlwaysColumn();
-
 
             // Enhanced Quiz configuration
             modelBuilder.Entity<Quiz>(entity =>
@@ -60,8 +60,6 @@ namespace AssessmentPlatform.Backend.Data
 
                 entity.Property(e => e.QuizDuration)
                     .IsRequired();
-
-               
 
                 // Create unique index on QuizName
                 entity.HasIndex(e => e.QuizName)
@@ -152,7 +150,6 @@ namespace AssessmentPlatform.Backend.Data
 
             base.OnModelCreating(modelBuilder);
 
-            
             modelBuilder.Entity<Permission>()
                 .Property(p => p.Id)
                 .UseIdentityAlwaysColumn();
@@ -170,7 +167,7 @@ namespace AssessmentPlatform.Backend.Data
                 .HasOne(up => up.Permission)
                 .WithMany(p => p.UserPermissions)
                 .HasForeignKey(up => up.PermissionId);
-            
+
             // Seed permissions with DisplayName
             var permissions = new[]
             {
@@ -180,14 +177,60 @@ namespace AssessmentPlatform.Backend.Data
                 new Permission { Id = 4, Name = "ViewResults", DisplayName = GenerateDisplayName("ViewResults") },
                 new Permission { Id = 5, Name = "Admin", DisplayName = GenerateDisplayName("Admin") }
             };
-            
+
             modelBuilder.Entity<Permission>().HasData(permissions);
+
+            // New configuration for QuizResults
+            modelBuilder.Entity<QuizResults>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Id)
+                    .UseIdentityAlwaysColumn();
+
+                entity.Property(e => e.UserId)
+                    .IsRequired()
+                    .HasMaxLength(450);
+
+                entity.Property(e => e.QuizId)
+                    .IsRequired();
+
+                entity.Property(e => e.Score)
+                    .IsRequired();
+
+                entity.Property(e => e.TotalMarks)
+                    .IsRequired();
+
+                entity.Property(e => e.SubmissionTime)
+                    .IsRequired();
+
+                entity.Property(e => e.TimeTaken)
+                    .IsRequired();
+
+                entity.Property(e => e.UserIdInt)
+                    .IsRequired();
+
+                // Optional: Add index on UserId for better query performance
+                entity.HasIndex(e => e.UserId)
+                    .HasDatabaseName("IX_QuizResults_UserId");
+
+                // Configure foreign key relationships
+                entity.HasOne(e => e.User)
+                    .WithMany(u => u.QuizResults)
+                    .HasForeignKey(e => e.UserIdInt)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(e => e.Quiz)
+                    .WithMany(q => q.QuizResults)
+                    .HasForeignKey(e => e.QuizId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
         }
+
         // Helper: convert camelCase to spaced words
         private string GenerateDisplayName(string name)
         {
             return Regex.Replace(name, "(\\B[A-Z])", " $1");
-
         }
     }
 
