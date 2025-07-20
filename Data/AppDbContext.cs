@@ -1,7 +1,7 @@
-// AssessmentPlatform.Backend/Data/AppDbContext.cs
 using Microsoft.EntityFrameworkCore;
 using AssessmentPlatform.Backend.Models;
 using System.Text.RegularExpressions;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AssessmentPlatform.Backend.Data
 {
@@ -23,6 +23,11 @@ namespace AssessmentPlatform.Backend.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Value converter for List<string> to text (semicolon-separated)
+            var listToStringConverter = new ValueConverter<List<string>, string>(
+                v => v != null && v.Any() ? string.Join(";", v) : string.Empty,
+                v => !string.IsNullOrEmpty(v) ? v.Split(';', StringSplitOptions.RemoveEmptyEntries).ToList() : new List<string>());
+
             modelBuilder.Entity<Message>()
                 .Property(m => m.Id)
                 .UseIdentityAlwaysColumn();
@@ -31,9 +36,31 @@ namespace AssessmentPlatform.Backend.Data
                 .Property(u => u.Id)
                 .UseIdentityAlwaysColumn();
 
-            modelBuilder.Entity<Job>()
-                .Property(j => j.Id)
-                .UseIdentityAlwaysColumn();
+            modelBuilder.Entity<Job>(entity =>
+            {
+                entity.Property(j => j.Id).UseIdentityAlwaysColumn();
+                entity.Property(j => j.Title).IsRequired();
+                entity.Property(j => j.JobType).IsRequired();
+                entity.Property(j => j.WorkMode).HasDefaultValue(string.Empty);
+                entity.Property(j => j.ExpiringDate).HasDefaultValueSql("CURRENT_TIMESTAMP");
+                entity.Property(j => j.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
+                // Apply value converter to List<string> properties
+                entity.Property(j => j.KeyResponsibilities)
+                    .HasColumnType("text")
+                    .HasConversion(listToStringConverter);
+                entity.Property(j => j.EducationalBackground)
+                    .HasColumnType("text")
+                    .HasConversion(listToStringConverter);
+                entity.Property(j => j.TechnicalSkills)
+                    .HasColumnType("text")
+                    .HasConversion(listToStringConverter);
+                entity.Property(j => j.Experience)
+                    .HasColumnType("text")
+                    .HasConversion(listToStringConverter);
+                entity.Property(j => j.SoftSkills)
+                    .HasColumnType("text")
+                    .HasConversion(listToStringConverter);
+            });
 
             modelBuilder.Entity<Quiz>(entity =>
             {
@@ -89,15 +116,26 @@ namespace AssessmentPlatform.Backend.Data
 
             modelBuilder.Entity<JobQuiz>(entity =>
             {
-                entity.HasKey(jq => new { jq.JobId, jq.QuizId });
+                entity.ToTable("JobQuiz");
+                entity.HasKey(jq => jq.Id);
+                entity.Property(jq => jq.Id).UseIdentityAlwaysColumn();
+                entity.Property(jq => jq.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
                 entity.HasOne(jq => jq.Job)
                     .WithMany(j => j.JobQuizzes)
                     .HasForeignKey(jq => jq.JobId)
                     .OnDelete(DeleteBehavior.Cascade);
                 entity.HasOne(jq => jq.Quiz)
-                    .WithMany(q => q.JobQuizzes) // This now works with the updated Quiz model
+                    .WithMany(q => q.JobQuizzes)
                     .HasForeignKey(jq => jq.QuizId)
                     .OnDelete(DeleteBehavior.Cascade);
+                entity.HasOne(jq => jq.User)
+                    .WithMany()
+                    .HasForeignKey(jq => jq.UserId)
+                    .OnDelete(DeleteBehavior.SetNull)
+                    .IsRequired(false);
+                entity.HasIndex(jq => new { jq.JobId, jq.QuizId })
+                    .IsUnique()
+                    .HasDatabaseName("IX_JobQuiz_JobId_QuizId");
             });
 
             modelBuilder.Entity<Permission>()
