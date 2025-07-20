@@ -99,7 +99,7 @@ namespace AssessmentPlatform.Backend.Controllers
         public async Task<IActionResult> SubmitResult([FromBody] QuizResultDTO resultDto)
         {
             if (!ModelState.IsValid)
-            {
+        {
                 return BadRequest(ModelState);
             }
 
