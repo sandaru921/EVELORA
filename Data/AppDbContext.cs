@@ -16,6 +16,7 @@ namespace AssessmentPlatform.Backend.Data
         public DbSet<JobQuiz> JobQuizzes { get; set; }
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<UserPermission> UserPermissions { get; set; }
+        
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {

@@ -8,5 +8,6 @@ namespace AssessmentPlatform.Backend.Services
         Task<QuizResponseDto> CreateQuizAsync(CreateQuizDto createQuizDto);
         Task<Quiz?> GetQuizByIdAsync(int id);
         Task<IEnumerable<Quiz>> GetAllQuizzesAsync();
+        
     }
 }
