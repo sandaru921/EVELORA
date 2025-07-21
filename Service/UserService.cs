@@ -1,6 +1,6 @@
 using AssessmentPlatform.Backend.Models;
 using AssessmentPlatform.Backend.Data;
-using AssessmentPlatform.DTO;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System.Text;
@@ -8,8 +8,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using AssessmentPlatform.Backend.DTO;
+using BCrypt.Net;
 
-namespace AssessmentPlatform.Backend.Service
+namespace AssessmentPlatform.Backend.Services
 {
     public class UserService
     {
@@ -31,8 +32,8 @@ namespace AssessmentPlatform.Backend.Service
             if (await _context.Users.AnyAsync(u => u.Username == registerDto.Username))
                 return (null, "Username is already taken.");
 
-            // Use BCrypt to hash the password
-            string hashedPassword = PasswordHasher.Hash(registerDto.Password);
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(registerDto.Password);
+            hashedPassword = PasswordHasher.Hash(registerDto.Password);
             
             var user = new User
             {
@@ -66,8 +67,8 @@ namespace AssessmentPlatform.Backend.Service
             if (user == null)
                 return (null, string.Empty, new List<string>());
 
-            // Use BCrypt to verify the password
-            bool isPasswordValid = PasswordHasher.Verify(loginDto.Password, user.HashPassword);
+            bool isPasswordValid = BCrypt.Net.BCrypt.Verify(loginDto.Password, user.HashPassword);
+            isPasswordValid = PasswordHasher.Verify(loginDto.Password, user.HashPassword);
             if (!isPasswordValid)
                 return (null, string.Empty, new List<string>());
             
@@ -90,7 +91,7 @@ namespace AssessmentPlatform.Backend.Service
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
             if (user == null)
                 return "User not found.";
-
+            user.HashPassword = BCrypt.Net.BCrypt.HashPassword(dto.NewPassword);
             user.HashPassword = PasswordHasher.Hash(dto.NewPassword);
             _context.Users.Update(user);
             await _context.SaveChangesAsync();

@@ -1,6 +1,6 @@
 using BCryptLib = BCrypt.Net.BCrypt;
 
-namespace AssessmentPlatform.Backend.Service;
+namespace AssessmentPlatform.Backend.Services;
 
 public static class PasswordHasher
 {

@@ -22,6 +22,7 @@ builder.Services.AddLogging(logging =>
 });
 
 builder.Services.AddScoped<IQuizService, QuizService>();
+builder.Services.AddScoped<AssessmentPlatform.Backend.Services.UserService>();
 builder.Services.AddScoped<IAuthorizationHandler, PermissionHandler>();
 
 builder.Services.AddControllers()
