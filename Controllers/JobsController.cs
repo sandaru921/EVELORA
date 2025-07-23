@@ -356,7 +356,203 @@ namespace AssessmentPlatform.Backend.Controllers
             }
         }
 
+        [HttpGet("job-quiz-details/{id}")]
+        public async Task<ActionResult<JobQuizDetailsDto>> GetJobQuizDetails(int id)
+        {
+            _logger.LogInformation("Fetching job and quiz details for Job ID: {JobId}", id);
+            var job = await _context.Jobs
+                .Include(j => j.JobQuizzes)
+                .ThenInclude(jq => jq.Quiz)
+                .ThenInclude(q => q.Questions)
+                .FirstOrDefaultAsync(j => j.Id == id);
+
+            if (job == null)
+            {
+                _logger.LogWarning("Job with ID: {JobId} not found", id);
+                return NotFound("Job not found.");
+            }
+
+            var jobQuiz = job.JobQuizzes.FirstOrDefault();
+            var quiz = jobQuiz?.Quiz;
+
+            var response = new JobQuizDetailsDto
+            {
+                Id = job.Id,
+                Title = job.Title,
+                Description = job.Description,
+                JobType = job.JobType,
+                WorkMode = job.WorkMode,
+                ImageUrl = job.ImageUrl,
+                ExpiringDate = job.ExpiringDate.ToString("o"), // ISO 8601 format
+                CreatedBy = job.CreatedBy,
+                CreatedAt = job.CreatedAt,
+                KeyResponsibilities = job.KeyResponsibilities,
+                EducationalBackground = job.EducationalBackground,
+                TechnicalSkills = job.TechnicalSkills,
+                Experience = job.Experience,
+                SoftSkills = job.SoftSkills,
+                QuizId = quiz?.Id,
+                TestDuration = quiz?.QuizDuration ?? 0,
+                DifficultyLevel = quiz?.QuizLevel ?? "N/A",
+                NumberOfQuestions = quiz?.Questions?.Count ?? 0
+            };
+
+            _logger.LogInformation("Successfully fetched job and quiz details for Job ID: {JobId}", id);
+            return Ok(response);
+        }
+
+        [HttpPut("job-quiz-details/{id}")]
+        [AllowAnonymous] // Adjust authorization as needed
+        public async Task<IActionResult> UpdateJobQuizDetails(int id, [FromForm] JobQuizDetailsUpdateDto model)
+        {
+            _logger.LogInformation("Updating job and quiz details for Job ID: {JobId}", id);
+            var job = await _context.Jobs
+                .Include(j => j.JobQuizzes)
+                .FirstOrDefaultAsync(j => j.Id == id);
+
+            if (job == null)
+            {
+                _logger.LogWarning("Job with ID: {JobId} not found", id);
+                return NotFound("Job not found.");
+            }
+
+            // Validate WorkMode
+            if (string.IsNullOrEmpty(model.WorkMode) || !new[] { "remote", "online", "hybrid" }.Contains(model.WorkMode.ToLower()))
+            {
+                _logger.LogWarning("Invalid WorkMode: {WorkMode}", model.WorkMode);
+                return BadRequest("WorkMode must be 'remote', 'online', or 'hybrid'.");
+            }
+
+            // Validate QuizId if provided
+            if (model.QuizId.HasValue)
+            {
+                var quizExists = await _context.Quizzes.AnyAsync(q => q.Id == model.QuizId.Value);
+                if (!quizExists)
+                {
+                    _logger.LogWarning("Quiz with ID: {QuizId} does not exist", model.QuizId.Value);
+                    return BadRequest($"Quiz with ID {model.QuizId.Value} does not exist.");
+                }
+            }
+
+            // Update job fields
+            job.Title = model.Title;
+            job.Description = model.Description;
+            job.JobType = model.JobType;
+            job.ExpiringDate = DateTime.SpecifyKind(DateTime.Parse(model.ExpiringDate), DateTimeKind.Utc);
+            job.WorkMode = model.WorkMode;
+            job.KeyResponsibilities = model.KeyResponsibilities ?? new List<string>();
+            job.EducationalBackground = model.EducationalBackground ?? new List<string>();
+            job.TechnicalSkills = model.TechnicalSkills ?? new List<string>();
+            job.Experience = model.Experience ?? new List<string>();
+            job.SoftSkills = model.SoftSkills ?? new List<string>();
+
+            // Handle image upload if provided
+            if (model.ImageFile != null && model.ImageFile.Length > 0)
+            {
+                var blobServiceClient = new BlobServiceClient(_connectionString);
+                var containerClient = blobServiceClient.GetBlobContainerClient(_containerName);
+                await containerClient.CreateIfNotExistsAsync();
+
+                if (!string.IsNullOrEmpty(job.ImageUrl))
+                {
+                    try
+                    {
+                        var oldBlobName = Path.GetFileName(new Uri(job.ImageUrl).AbsolutePath);
+                        var oldBlobClient = containerClient.GetBlobClient(oldBlobName);
+                        await oldBlobClient.DeleteIfExistsAsync();
+                        _logger.LogInformation("Deleted old blob: {BlobName}", oldBlobName);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, "Error deleting old blob: {Message}", ex.Message);
+                    }
+                }
+
+                var blobName = Guid.NewGuid().ToString() + Path.GetExtension(model.ImageFile.FileName);
+                var blobClient = containerClient.GetBlobClient(blobName);
+                using (var stream = model.ImageFile.OpenReadStream())
+                {
+                    await blobClient.UploadAsync(stream, new Azure.Storage.Blobs.Models.BlobHttpHeaders
+                    {
+                        ContentType = model.ImageFile.ContentType
+                    });
+                }
+                job.ImageUrl = blobClient.Uri.ToString();
+                _logger.LogInformation("Uploaded new blob: {BlobName}", blobName);
+            }
+
+            // Update quiz association
+            using var transaction = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                _context.JobQuizzes.RemoveRange(job.JobQuizzes);
+                job.JobQuizzes.Clear();
+
+                if (model.QuizId.HasValue)
+                {
+                    job.JobQuizzes.Add(new JobQuiz { QuizId = model.QuizId.Value, CreatedAt = DateTime.UtcNow });
+                    _logger.LogInformation("Added new JobQuiz entry for JobId: {JobId}, QuizId: {QuizId}", job.Id, model.QuizId.Value);
+                }
+
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+                _logger.LogInformation("Job and quiz details updated successfully for JobId: {JobId}", job.Id);
+                return NoContent();
+            }
+            catch (DbUpdateException ex)
+            {
+                await transaction.RollbackAsync();
+                _logger.LogError(ex, "Database error updating job: {Message}, InnerException: {InnerMessage}", ex.Message, ex.InnerException?.Message);
+                return StatusCode(500, $"Failed to update job due to a database error: {ex.InnerException?.Message ?? ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                _logger.LogError(ex, "Unexpected error updating job: {Message}", ex.Message);
+                return StatusCode(500, $"Failed to update job due to an error: {ex.Message}");
+            }
+        }
+
         public class JobUploadModel
+        {
+            public string Title { get; set; }
+            public string Description { get; set; }
+            public IFormFile ImageFile { get; set; }
+            public string JobType { get; set; }
+            public string ExpiringDate { get; set; }
+            public string CreatedBy { get; set; }
+            public string WorkMode { get; set; }
+            public List<string> KeyResponsibilities { get; set; }
+            public List<string> EducationalBackground { get; set; }
+            public List<string> TechnicalSkills { get; set; }
+            public List<string> Experience { get; set; }
+            public List<string> SoftSkills { get; set; }
+            public int? QuizId { get; set; }
+        }
+
+        public class JobQuizDetailsDto
+        {
+            public int Id { get; set; }
+            public string Title { get; set; }
+            public string Description { get; set; }
+            public string JobType { get; set; }
+            public string WorkMode { get; set; }
+            public string ImageUrl { get; set; }
+            public string ExpiringDate { get; set; }
+            public string CreatedBy { get; set; }
+            public DateTime CreatedAt { get; set; }
+            public List<string> KeyResponsibilities { get; set; }
+            public List<string> EducationalBackground { get; set; }
+            public List<string> TechnicalSkills { get; set; }
+            public List<string> Experience { get; set; }
+            public List<string> SoftSkills { get; set; }
+            public int? QuizId { get; set; }
+            public int TestDuration { get; set; }
+            public string DifficultyLevel { get; set; }
+            public int NumberOfQuestions { get; set; }
+        }
+
+        public class JobQuizDetailsUpdateDto
         {
             public string Title { get; set; }
             public string Description { get; set; }
