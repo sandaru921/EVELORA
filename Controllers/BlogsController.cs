@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -79,6 +80,20 @@ namespace AssessmentPlatform.Backend.Controllers
         [HttpPost]
         public async Task<ActionResult<Blog>> PostBlog([FromForm] BlogCreateDto blogDto)
         {
+            // Field-specific validation for required fields
+            if (string.IsNullOrWhiteSpace(blogDto.Title))
+            {
+                return BadRequest("Title is required.");
+            }
+            if (string.IsNullOrWhiteSpace(blogDto.Content))
+            {
+                return BadRequest("Content is required.");
+            }
+            if (string.IsNullOrWhiteSpace(blogDto.Category))
+            {
+                return BadRequest("Category is required.");
+            }
+
             // Validate image
             if (blogDto.Image != null)
             {
@@ -147,6 +162,20 @@ namespace AssessmentPlatform.Backend.Controllers
             if (blog == null)
             {
                 return NotFound();
+            }
+
+            // Field-specific validation for required fields
+            if (string.IsNullOrWhiteSpace(blogDto.Title))
+            {
+                return BadRequest("Title is required.");
+            }
+            if (string.IsNullOrWhiteSpace(blogDto.Content))
+            {
+                return BadRequest("Content is required.");
+            }
+            if (string.IsNullOrWhiteSpace(blogDto.Category))
+            {
+                return BadRequest("Category is required.");
             }
 
             // Validate image
@@ -285,17 +314,39 @@ public async Task<IActionResult> DeleteBlog(int id)
     
     public class BlogCreateDto
     {
-        public string Title { get; set; }
-        public string Content { get; set; }
-        public string Category { get; set; }
+        [Required(ErrorMessage = "Title is required")]
+        [MaxLength(200, ErrorMessage = "Title cannot exceed 200 characters")]
+        [MinLength(1, ErrorMessage = "Title cannot be empty")]
+        public string Title { get; set; } = string.Empty;
+        
+        [Required(ErrorMessage = "Content is required")]
+        [MinLength(1, ErrorMessage = "Content cannot be empty")]
+        public string Content { get; set; } = string.Empty;
+        
+        [Required(ErrorMessage = "Category is required")]
+        [MaxLength(50, ErrorMessage = "Category cannot exceed 50 characters")]
+        [MinLength(1, ErrorMessage = "Category cannot be empty")]
+        public string Category { get; set; } = string.Empty;
+        
         public IFormFile? Image { get; set; }
     }
 
     public class BlogUpdateDto
     {
-        public string Title { get; set; }
-        public string Content { get; set; }
-        public string Category { get; set; }
+        [Required(ErrorMessage = "Title is required")]
+        [MaxLength(200, ErrorMessage = "Title cannot exceed 200 characters")]
+        [MinLength(1, ErrorMessage = "Title cannot be empty")]
+        public string Title { get; set; } = string.Empty;
+        
+        [Required(ErrorMessage = "Content is required")]
+        [MinLength(1, ErrorMessage = "Content cannot be empty")]
+        public string Content { get; set; } = string.Empty;
+        
+        [Required(ErrorMessage = "Category is required")]
+        [MaxLength(50, ErrorMessage = "Category cannot exceed 50 characters")]
+        [MinLength(1, ErrorMessage = "Category cannot be empty")]
+        public string Category { get; set; } = string.Empty;
+        
         public IFormFile? Image { get; set; }
     }
 
