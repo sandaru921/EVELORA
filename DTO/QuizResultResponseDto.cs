@@ -1,7 +1,6 @@
 namespace AssessmentPlatform.Backend.DTO
 {
 
-   
     public class QuizResultAnswerResponseDto
     {
         public int QuizResultId { get; set; }
