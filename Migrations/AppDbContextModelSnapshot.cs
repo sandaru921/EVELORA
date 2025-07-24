@@ -119,6 +119,9 @@ namespace AssessmentPlatform.Backend.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<bool>("IsGoogleUser")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("text");

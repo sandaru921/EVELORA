@@ -7,3 +7,13 @@
     "ConnectionString": "DefaultEndpointsProtocol=https;AccountName=evelorastorage;AccountKey= 1KTaVPytAkAm2hnKPVHy4U5gIK+zH7r/ey6PnCs77IfDmZtVcDu+8ebXue6SFZ7WGtpXZFV2eeXO+AStGoN/2A==;EndpointSuffix=core.windows.net",
     "ContainerName": "job-images"
   };
+  
+ Amaya database connection
+  "ConnectionStrings": {
+      "DefaultConnection": "Host=evelora123.postgres.database.azure.com;Database=postgres;Username=Admin_Evelora;Password=123@Amaya;SSL Mode=Require;Trust Server Certificate=true "
+  }
+  "AzureBlobStorage": {
+    "ConnectionString": "DefaultEndpointsProtocol=https;AccountName=storage1evelora;AccountKey=ToyWFg2+nWEc5C9P9Ekrk+rifpXx4dvpnkm1tmUHSK3g/PO06yuhpQ9A2TSzMHrqcL3dWOAphkBt+AStk0smYQ==;EndpointSuffix=core.windows.net",
+    "JobContainerName": "jobs",
+    "BlogContainerName": "blogs"
+  }

@@ -121,8 +121,24 @@ namespace AssessmentPlatform.Backend.Service
             }).ToList();
         }
         
+        public async Task<User?> GetByEmailAsync(string email)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        }
+        
+        public async Task CreateUserAsync(User user)
+        {
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+        }
+        
+        public string HashPassword(string password)
+        {
+            return PasswordHasher.Hash(password);
+        }
+        
         // Create JWT token with user claims
-        private string GenerateJwtToken(User user)
+        public string GenerateJwtToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(_jwtSettings.SecretKey);

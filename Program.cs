@@ -61,7 +61,8 @@ builder.Services.AddCors(options =>
     {
         builder.WithOrigins("http://localhost:5173") // React or frontend URL
                .AllowAnyHeader()
-               .AllowAnyMethod();
+               .AllowAnyMethod()
+               .AllowCredentials();
     });
 });
 
@@ -71,6 +72,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Register custom services
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<GoogleAuthService>();
 
 // Add Controllers and Swagger
 builder.Services.AddControllers();

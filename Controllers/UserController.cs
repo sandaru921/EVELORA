@@ -1,8 +1,12 @@
+using AssessmentPlatform.Backend.Data;
 using Microsoft.AspNetCore.Mvc;
 using AssessmentPlatform.DTO;
 using Microsoft.AspNetCore.Authorization;
 using AssessmentPlatform.Backend.Service; // Ensure this namespace contains UserService
 using AssessmentPlatform.Backend.DTO;
+using AssessmentPlatform.Backend.Models;
+using Google.Apis.Auth;
+using Microsoft.EntityFrameworkCore;
 
 namespace AssessmentPlatform.Backend.Controllers
 {
@@ -11,9 +15,14 @@ namespace AssessmentPlatform.Backend.Controllers
     public class UserController : ControllerBase
     {
         private readonly UserService _userService;
-        public UserController(UserService userService)
+        private readonly GoogleAuthService _googleAuthService;
+        private readonly AppDbContext _context;
+
+        public UserController(UserService userService, GoogleAuthService googleAuthService, AppDbContext context)
         {
             _userService = userService;
+            _googleAuthService = googleAuthService;
+            _context = context;
         }
 
         //POST: Register a new user
@@ -61,6 +70,68 @@ namespace AssessmentPlatform.Backend.Controllers
             {
                 token = token,
                 permissions = permissions
+            });
+        }
+        
+        [HttpPost("google-signup")]
+        public async Task<IActionResult> GoogleSignUp([FromBody] GoogleRegisterDto dto)
+        {
+            try
+            {
+                var payload = await GoogleJsonWebSignature.ValidateAsync(dto.Credential);
+                var email = payload.Email;
+
+                var existingUser = await _userService.GetByEmailAsync(email);
+                if (existingUser != null)
+                {
+                    return Ok(new { success = true, message = "User already registered." });
+                }
+
+                var user = new User
+                {
+                    Username = dto.Username,
+                    Email = email,
+                    HashPassword = _userService.HashPassword(Guid.NewGuid().ToString()), // Dummy
+                    IsGoogleUser = true
+                };
+
+                await _userService.CreateUserAsync(user);
+
+                return Ok(new { success = true, message = "User registered via Google." });
+            }
+            catch (InvalidJwtException)
+            {
+                return BadRequest(new { success = false, message = "Invalid Google token." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, message = "Server error: " + ex.Message });
+            }
+        }
+        
+        
+        [HttpPost("google-login")]
+        public async Task<IActionResult> GoogleLogin([FromBody] GoogleLoginDto dto)
+        {
+            var payload = await _googleAuthService.VerifyGoogleTokenAsync(dto.Credential);
+            if (payload == null)
+                return Unauthorized(new { message = "Invalid Google token" });
+
+            // Check if user exists
+            var user = await _userService.GetByEmailAsync(payload.Email);
+            if (user == null)
+                return Unauthorized(new { message = "User does not exist. Please register first." });
+
+            // Optional: Sync Google ID or update user data
+
+            // Generate JWT
+            var token = _userService.GenerateJwtToken(user);
+            var permissions = user.UserPermissions?.Select(p => p.Permission.Name).ToList() ?? new List<string>();
+            
+            return Ok(new
+            {
+                token,
+                permissions
             });
         }
         
