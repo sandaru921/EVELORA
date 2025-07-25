@@ -6,7 +6,6 @@ using AssessmentPlatform.Backend.Service; // Ensure this namespace contains User
 using AssessmentPlatform.Backend.DTO;
 using AssessmentPlatform.Backend.Models;
 using Google.Apis.Auth;
-using Microsoft.EntityFrameworkCore;
 
 namespace AssessmentPlatform.Backend.Controllers
 {
@@ -73,6 +72,7 @@ namespace AssessmentPlatform.Backend.Controllers
             });
         }
         
+        // POST: Register a new user via Google Sign-Up
         [HttpPost("google-signup")]
         public async Task<IActionResult> GoogleSignUp([FromBody] GoogleRegisterDto dto)
         {
@@ -109,7 +109,7 @@ namespace AssessmentPlatform.Backend.Controllers
             }
         }
         
-        
+        // POST: Log in with Google and get token with permissions
         [HttpPost("google-login")]
         public async Task<IActionResult> GoogleLogin([FromBody] GoogleLoginDto dto)
         {
@@ -150,17 +150,38 @@ namespace AssessmentPlatform.Backend.Controllers
             });
         }
         
-        // POST: api/user/reset-password
-        [HttpPost("reset-password")]
-        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDto dto)
+        // 1. Start OTP password reset (send OTP to email)
+        [HttpPost("send-reset-otp")]
+        public async Task<IActionResult> SendOtp([FromBody] SendOtpDto dto)
         {
-            var error = await _userService.ResetPasswordAsync(dto);
-            if (error != null)
-                return BadRequest(error);
-
-            return Ok("Password has been reset successfully.");
+            try
+            {
+                await _userService.SendOtpAsync(dto.Email);
+                return Ok("OTP sent to email.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         
+        // 2. Verify OTP and reset password
+        [HttpPost("verify-reset-otp")]
+        public async Task<IActionResult> VerifyOtpAndResetPassword([FromBody] ResetPasswordOtpDto dto)
+        {
+            try
+            {
+                var success = await _userService.VerifyOtpAndResetPassword(dto.Email, dto.Otp, dto.NewPassword);
+                if (success)
+                    return Ok("Password reset successfully.");
+                return BadRequest("Invalid or expired OTP.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Server error: " + ex.Message);
+            }
+        }
+
         //GET: All users with their permissions (Admin only)
         // GET: api/user/with-permissions
         [HttpGet("with-permissions")]
@@ -170,6 +191,5 @@ namespace AssessmentPlatform.Backend.Controllers
             var users = await _userService.GetAllUsersWithPermissionsAsync();
             return Ok(users);
         }
-
     }
 }

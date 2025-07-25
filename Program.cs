@@ -6,7 +6,8 @@ using AssessmentPlatform.Backend.Data;
 using AssessmentPlatform.Backend.Models; // For JwtSettings
 using Microsoft.OpenApi.Models;
 using AssessmentPlatform.Backend.Service;
-using AssessmentPlatform.Backend.Authorization; // Add this for custom auth
+using AssessmentPlatform.Backend.Authorization;
+using AssessmentPlatform.Backend.Configuration; // Add this for custom auth
 using Microsoft.AspNetCore.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -65,6 +66,9 @@ builder.Services.AddCors(options =>
                .AllowCredentials();
     });
 });
+
+// Configure MailSettings from appsettings.json
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 
 // Add EF Core DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>

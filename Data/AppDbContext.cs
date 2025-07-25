@@ -11,6 +11,7 @@ namespace AssessmentPlatform.Backend.Data
         public DbSet<UserPermission> UserPermissions { get; set; }
         public DbSet<Jobs> Jobs { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<OtpVerification> OtpVerifications { get; set; } = null!;
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {

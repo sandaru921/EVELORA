@@ -7,7 +7,10 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using AssessmentPlatform.Backend.Configuration;
 using AssessmentPlatform.Backend.DTO;
+using MailKit.Net.Smtp;
+using MimeKit;
 
 namespace AssessmentPlatform.Backend.Service
 {
@@ -15,11 +18,13 @@ namespace AssessmentPlatform.Backend.Service
     {
         private readonly AppDbContext _context;
         private readonly JwtSettings _jwtSettings;
+        private readonly MailSettings _mailSettings;
 
-        public UserService(AppDbContext context, IOptions<JwtSettings> jwtSettings)
+        public UserService(AppDbContext context, IOptions<JwtSettings> jwtSettings, IOptions<MailSettings> mailSettings)
         {
             _context = context;
             _jwtSettings = jwtSettings.Value;
+            _mailSettings = mailSettings.Value;
         }
 
         // Register new user after checking for duplicates and hashing password
@@ -80,24 +85,93 @@ namespace AssessmentPlatform.Backend.Service
             
             return (user, token, permissions);
         }
-
-        // Change user's password
-        public async Task<string?> ResetPasswordAsync(ResetPasswordDto dto)
+        
+        // Verify OTP and reset password
+        public async Task<bool> VerifyOtpAndResetPassword(string email, string otp, string newPassword)
         {
-            if (string.IsNullOrWhiteSpace(dto.Email) || string.IsNullOrWhiteSpace(dto.NewPassword))
-                return "Email and new password are required.";
+            var record = await _context.OtpVerifications.FirstOrDefaultAsync(x => x.Email == email && x.OtpCode == otp);
+           
+            if (record == null || record.ExpiryTime < DateTime.UtcNow)
+            {
+                return false;
+            }
 
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
             if (user == null)
-                return "User not found.";
+                return false;
 
-            user.HashPassword = PasswordHasher.Hash(dto.NewPassword);
+            user.HashPassword = PasswordHasher.Hash(newPassword);
             _context.Users.Update(user);
             await _context.SaveChangesAsync();
-
-            return null;
+            
+            // Optionally: remove OTP after success
+            _context.OtpVerifications.Remove(record);
+            await _context.SaveChangesAsync();
+            
+            return true;
         }
         
+        // Send OTP to user's email for password reset
+        public async Task SendOtpAsync(string email)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+            if (user == null)
+                throw new Exception("Email not registered.");
+
+            var otpCode = new Random().Next(100000, 999999).ToString(); // 6-digit OTP
+            var expiry = DateTime.UtcNow.AddMinutes(5);
+
+            var existing = await _context.OtpVerifications.FirstOrDefaultAsync(o => o.Email == email);
+            if (existing != null)
+            {
+                _context.OtpVerifications.Remove(existing);
+                await _context.SaveChangesAsync();
+            }
+
+            _context.OtpVerifications.Add(new OtpVerification
+            {
+                Email = email,
+                OtpCode = otpCode,
+                ExpiryTime = expiry
+            });
+
+            await _context.SaveChangesAsync();
+
+            // TODO: Send OTP via email (use SMTP or SendGrid/etc)
+            Console.WriteLine($"[DEBUG] OTP for {email}: {otpCode}");
+            
+            // Send OTP via email
+            await SendEmailAsync(email, "Password Reset OTP", $"Your OTP is: {otpCode}. It will expire in 5 minutes.");
+        }
+        
+        // Send email using SMTP (example with Gmail)
+        public async Task SendEmailAsync(string toEmail, string subject, string body)
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("evelora", "evelorawebapp@gmail.com"));
+            message.To.Add(MailboxAddress.Parse(toEmail));
+            message.Subject = subject;
+
+            message.Body = new TextPart("plain")
+            {
+                Text = body
+            };
+            
+            try
+            {
+                using var client = new SmtpClient();
+                await client.ConnectAsync("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
+                await client.AuthenticateAsync("evelorawebapp@gmail.com", "aakd hytr gboq iajt"); // Use App Password!
+                await client.SendAsync(message);
+                await client.DisconnectAsync(true);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[EMAIL ERROR] {ex.Message}");
+                throw; // optional: let the caller handle it
+            }
+        }
+
         // Get list of all users with their permissions
         public async Task<List<UserWithPermissionsDTO>> GetAllUsersWithPermissionsAsync()
         {
