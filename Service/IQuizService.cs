@@ -1,5 +1,8 @@
-﻿using AssessmentPlatform.Backend.DTOs;
+﻿using AssessmentPlatform.Backend.DTO;
+using AssessmentPlatform.Backend.DTOs;
 using AssessmentPlatform.Backend.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AssessmentPlatform.Backend.Services
 {
@@ -8,5 +11,12 @@ namespace AssessmentPlatform.Backend.Services
         Task<QuizResponseDto> CreateQuizAsync(CreateQuizDto createQuizDto);
         Task<Quiz?> GetQuizByIdAsync(int id);
         Task<IEnumerable<Quiz>> GetAllQuizzesAsync();
+        Task<QuizResultResponseDto> SaveQuizResultAsync(QuizSubmissionDto submissionDto);
+        Task<IEnumerable<QuizResultResponseDto>> GetAllQuizResultsAsync(); // New method
+        Task<QuizResultResponseDto?> GetQuizResultByIdAsync(int id);
+        Task<QuizResultAnswerResponseDto?> GetQuizAnswerByIdAsync(int id);
+        Task DeleteQuizAsync(int id);
+
+
     }
 }
