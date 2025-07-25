@@ -318,6 +318,49 @@ public async Task<QuizResultResponseDto?> GetQuizResultByIdAsync(int id)
                 Answers = answers
             };
         }
+        public async Task DeleteQuizAsync(int quizId)
+        {
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                // 1. Get all questions for the quiz
+                var questions = _context.Questions.Where(q => q.QuizId == quizId).ToList();
+
+                foreach (var question in questions)
+                {
+                    int questionId = question.Id;
+
+                    // 2. Delete related answers for each question
+                    var answers = _context.Answers.Where(a => a.QuestionId == questionId);
+                    _context.Answers.RemoveRange(answers);
+
+                    // 3. Delete related options for each question
+                    var options = _context.Options.Where(o => o.QuestionId == questionId);
+                    _context.Options.RemoveRange(options);
+                }
+
+                // 4. Delete all questions of the quiz
+                _context.Questions.RemoveRange(questions);
+
+                // 5. Delete the quiz
+                var quiz = await _context.Quizzes.FindAsync(quizId);
+                if (quiz != null)
+                {
+                    _context.Quizzes.Remove(quiz);
+                }
+
+                // 6. Save all changes and commit transaction
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
+        }
+
 
 
     }

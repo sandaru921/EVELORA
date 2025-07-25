@@ -15,5 +15,8 @@ namespace AssessmentPlatform.Backend.Services
         Task<IEnumerable<QuizResultResponseDto>> GetAllQuizResultsAsync(); // New method
         Task<QuizResultResponseDto?> GetQuizResultByIdAsync(int id);
         Task<QuizResultAnswerResponseDto?> GetQuizAnswerByIdAsync(int id);
+        Task DeleteQuizAsync(int id);
+
+
     }
 }

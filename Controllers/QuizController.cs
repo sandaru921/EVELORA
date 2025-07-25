@@ -8,6 +8,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using AssessmentPlatform.Backend.Data;
+using AssessmentPlatform.Backend.DTO;
 
 namespace AssessmentPlatform.Backend.Controllers
 {
@@ -17,11 +20,13 @@ namespace AssessmentPlatform.Backend.Controllers
     {
         private readonly IQuizService _quizService;
         private readonly ILogger<QuizController> _logger;
+        private readonly AppDbContext _context;
 
-        public QuizController(IQuizService quizService, ILogger<QuizController> logger)
+        public QuizController(IQuizService quizService, ILogger<QuizController> logger, AppDbContext context)
         {
             _quizService = quizService;
             _logger = logger;
+            _context = context;
         }
 
         [HttpPost]
@@ -321,5 +326,124 @@ namespace AssessmentPlatform.Backend.Controllers
 
             return Ok(result);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteQuiz(int id)
+        {
+            try
+            {
+                await _quizService.DeleteQuizAsync(id);
+                return NoContent(); // 204
+            }
+            catch
+            {
+                return StatusCode(500, "Error deleting quiz and its related data.");
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateQuiz(int id, [FromBody] QuizUpdateDto dto)
+        {
+            if (id != dto.Id)
+                return BadRequest("Quiz ID mismatch");
+
+            var quiz = await _context.Quizzes
+                .Include(q => q.Questions)
+                    .ThenInclude(qn => qn.Options)
+                .FirstOrDefaultAsync(q => q.Id == id);
+
+            if (quiz == null)
+                return NotFound();
+
+            // Update Quiz properties
+            quiz.QuizName = dto.QuizName;
+            quiz.JobCategory = dto.JobCategory;
+            quiz.Description = dto.Description;
+            quiz.QuizLevel = dto.QuizLevel;
+            quiz.QuizDuration = dto.QuizDuration;
+
+            // Update or add questions
+            foreach (var questionDto in dto.Questions)
+            {
+                var existingQuestion = quiz.Questions.FirstOrDefault(q => q.Id == questionDto.Id);
+                if (existingQuestion != null)
+                {
+                    // Update existing question
+                    existingQuestion.QuestionText = questionDto.QuestionText;
+                    existingQuestion.Type = questionDto.Type;
+                    existingQuestion.CodeSnippet = questionDto.CodeSnippet;
+                    existingQuestion.ImageURL = questionDto.ImageURL;
+                    existingQuestion.Marks = questionDto.Marks;
+                    existingQuestion.CorrectAnswers = questionDto.CorrectAnswers;
+
+                    // Update or add options
+                    foreach (var optionDto in questionDto.Options)
+                    {
+                        var existingOption = existingQuestion.Options.FirstOrDefault(o => o.Id == optionDto.Id);
+                        if (existingOption != null)
+                        {
+                            existingOption.Key = optionDto.Key;
+                            existingOption.Value = optionDto.Value;
+                        }
+                        else
+                        {
+                            existingQuestion.Options.Add(new Option
+                            {
+                                Key = optionDto.Key,
+                                Value = optionDto.Value
+                            });
+                        }
+                    }
+
+                    // Remove options not in DTO
+                    var optionIds = questionDto.Options.Select(o => o.Id).ToList();
+                    var optionsToRemove = existingQuestion.Options.Where(o => !optionIds.Contains(o.Id)).ToList();
+                    foreach (var optToRemove in optionsToRemove)
+                    {
+                        _context.Options.Remove(optToRemove);
+                    }
+                }
+                else
+                {
+                    // Add new question
+                    var newQuestion = new Question
+                    {
+                        QuestionText = questionDto.QuestionText,
+                        Type = questionDto.Type,
+                        CodeSnippet = questionDto.CodeSnippet,
+                        ImageURL = questionDto.ImageURL,
+                        Marks = questionDto.Marks,
+                        CorrectAnswers = questionDto.CorrectAnswers,
+                        Options = questionDto.Options.Select(o => new Option
+                        {
+                            Key = o.Key,
+                            Value = o.Value
+                        }).ToList()
+                    };
+                    quiz.Questions.Add(newQuestion);
+                }
+            }
+
+            // Remove questions not in DTO
+            var questionIds = dto.Questions.Select(q => q.Id).ToList();
+            var questionsToRemove = quiz.Questions.Where(q => !questionIds.Contains(q.Id)).ToList();
+            foreach (var qToRemove in questionsToRemove)
+            {
+                var hasAnswers = await _context.Answers.AnyAsync(a => a.QuestionId == qToRemove.Id);
+                if (hasAnswers)
+                {
+                    _logger.LogWarning("Cannot remove question ID {QuestionId} because it has associated answers.", qToRemove.Id);
+                    continue; // or handle it another way
+                }
+
+                _context.Questions.Remove(qToRemove);
+            }
+
+
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
+
     }
 }
