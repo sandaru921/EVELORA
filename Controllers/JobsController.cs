@@ -45,6 +45,33 @@ namespace AssessmentPlatform.Backend.Controllers
             }
         }
 
+        [HttpGet("expiring-soon")]
+        public async Task<ActionResult<IEnumerable<ExpiringJobDto>>> GetExpiringJobs()
+        {
+            _logger.LogInformation("Fetching jobs expiring within 7 days");
+            try
+            {
+                var thresholdDate = DateTime.UtcNow.AddDays(7);
+                var expiringJobs = await _context.Jobs
+                    .Where(j => j.ExpiringDate <= thresholdDate && j.ExpiringDate >= DateTime.UtcNow)
+                    .Select(j => new ExpiringJobDto
+                    {
+                        Id = j.Id,
+                        Title = j.Title,
+                        ExpiringDate = j.ExpiringDate
+                    })
+                    .ToListAsync();
+
+                _logger.LogInformation("Retrieved {Count} expiring jobs", expiringJobs.Count);
+                return Ok(expiringJobs);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error fetching expiring jobs: {Message}", ex.Message);
+                return StatusCode(500, $"Failed to retrieve expiring jobs: {ex.Message}");
+            }
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Job>> GetJob(int id)
         {
@@ -383,7 +410,7 @@ namespace AssessmentPlatform.Backend.Controllers
                 JobType = job.JobType,
                 WorkMode = job.WorkMode,
                 ImageUrl = job.ImageUrl,
-                ExpiringDate = job.ExpiringDate.ToString("o"), // ISO 8601 format
+                ExpiringDate = job.ExpiringDate.ToString("o"),
                 CreatedBy = job.CreatedBy,
                 CreatedAt = job.CreatedAt,
                 KeyResponsibilities = job.KeyResponsibilities,
@@ -402,7 +429,7 @@ namespace AssessmentPlatform.Backend.Controllers
         }
 
         [HttpPut("job-quiz-details/{id}")]
-        [AllowAnonymous] // Adjust authorization as needed
+        [AllowAnonymous]
         public async Task<IActionResult> UpdateJobQuizDetails(int id, [FromForm] JobQuizDetailsUpdateDto model)
         {
             _logger.LogInformation("Updating job and quiz details for Job ID: {JobId}", id);
@@ -416,14 +443,12 @@ namespace AssessmentPlatform.Backend.Controllers
                 return NotFound("Job not found.");
             }
 
-            // Validate WorkMode
             if (string.IsNullOrEmpty(model.WorkMode) || !new[] { "remote", "online", "hybrid" }.Contains(model.WorkMode.ToLower()))
             {
                 _logger.LogWarning("Invalid WorkMode: {WorkMode}", model.WorkMode);
                 return BadRequest("WorkMode must be 'remote', 'online', or 'hybrid'.");
             }
 
-            // Validate QuizId if provided
             if (model.QuizId.HasValue)
             {
                 var quizExists = await _context.Quizzes.AnyAsync(q => q.Id == model.QuizId.Value);
@@ -434,7 +459,6 @@ namespace AssessmentPlatform.Backend.Controllers
                 }
             }
 
-            // Update job fields
             job.Title = model.Title;
             job.Description = model.Description;
             job.JobType = model.JobType;
@@ -446,7 +470,6 @@ namespace AssessmentPlatform.Backend.Controllers
             job.Experience = model.Experience ?? new List<string>();
             job.SoftSkills = model.SoftSkills ?? new List<string>();
 
-            // Handle image upload if provided
             if (model.ImageFile != null && model.ImageFile.Length > 0)
             {
                 var blobServiceClient = new BlobServiceClient(_connectionString);
@@ -481,7 +504,6 @@ namespace AssessmentPlatform.Backend.Controllers
                 _logger.LogInformation("Uploaded new blob: {BlobName}", blobName);
             }
 
-            // Update quiz association
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
@@ -567,6 +589,13 @@ namespace AssessmentPlatform.Backend.Controllers
             public List<string> Experience { get; set; }
             public List<string> SoftSkills { get; set; }
             public int? QuizId { get; set; }
+        }
+
+        public class ExpiringJobDto
+        {
+            public int Id { get; set; }
+            public string Title { get; set; }
+            public DateTime ExpiringDate { get; set; }
         }
     }
 }
