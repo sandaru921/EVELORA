@@ -8,13 +8,14 @@ using Microsoft.OpenApi.Models;
 using AssessmentPlatform.Backend.Service;
 using AssessmentPlatform.Backend.Authorization; // Add this for custom auth
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
 var key = Encoding.UTF8.GetBytes(jwtSettings.SecretKey);
+
+
 
 builder.Services.AddAuthentication(options =>
 {
@@ -47,7 +48,8 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-;
+builder.Configuration.AddJsonFile("appsettings.json");
+builder.Services.Configure<AzureStorageConfig>(builder.Configuration.GetSection("AzureStorage"));
 
 // Register Authorization Policies for Permissions 
 builder.Services.AddAuthorization(options =>
@@ -67,12 +69,12 @@ builder.Services.AddAuthorization(options =>
 // Register custom permission handler
 builder.Services.AddScoped<IAuthorizationHandler, PermissionHandler>();
 
-// Add CORS (adjust origin as needed for frontend)
+// Add CORS (adjust origin to match HTTPS frontend)
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", builder =>
     {
-        builder.WithOrigins("http://localhost:5173")
+        builder.WithOrigins("https://localhost:5173") // Changed from http to https
                .AllowAnyHeader()
                .AllowAnyMethod()
                .AllowCredentials();
@@ -81,6 +83,9 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.Configure<AzureStorageConfig>(builder.Configuration.GetSection("AzureBlobStorage"));
+builder.Services.Configure<AzureStorageConfig>(builder.Configuration.GetSection("AzureEvidenceStorage"));
 
 builder.Services.AddScoped<UserService>();
 

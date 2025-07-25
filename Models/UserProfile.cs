@@ -1,34 +1,49 @@
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace AssessmentPlatform.Backend.Models
 {
     public class UserProfile
     {
-        // Primary key for the UserProfile table
         [Key]
         public int Id { get; set; }
 
-        // Foreign key to match User.Id (int)
-        public int UserIdInt { get; set; } // Added for foreign key relationship
+        public int UserIdInt { get; set; }
 
-        // Keep this for frontend compatibility (string userId)
         [Required]
         public string UserId { get; set; } = string.Empty;
 
-        // Additional profile fields as shown in the frontend
-        public string ProfilePicture { get; set; } = string.Empty; // URL or base64 string
+        public string ProfilePicture { get; set; } = string.Empty;
 
+        public UserEducation Education { get; set; } = new UserEducation();
+        public UserExperience WorkExperience { get; set; } = new UserExperience();
+        public UserSkills Skills { get; set; } = new UserSkills();
 
-
-        public string Education { get; set; } = string.Empty; // Multi-line text
-        public string WorkExperience { get; set; } = string.Empty; // Multi-line text
-        public string Skills { get; set; } = string.Empty; // Multi-line text
         public string Name { get; set; } = string.Empty;
-        public int? Age { get; set; } // Nullable integer
+        public int? Age { get; set; }
         public string Gender { get; set; } = string.Empty;
         public string LinkedIn { get; set; } = string.Empty;
-        
-        public string Title { get; set; } = string.Empty; // User's professional title
+        public string Title { get; set; } = string.Empty;
+    }
+
+    public class UserEducation
+    {
+        public string Text { get; set; } = string.Empty;
+        public string[] Evidence { get; set; } = new string[0]; // Array for PostgreSQL
+        public string Status { get; set; } = "pending"; // pending, approved, declined
+    }
+
+    public class UserExperience
+    {
+        public string Text { get; set; } = string.Empty;
+        public string[] Evidence { get; set; } = new string[0]; // Array for PostgreSQL
+        public string Status { get; set; } = "pending"; // pending, approved, declined
+    }
+
+    public class UserSkills
+    {
+        public string Text { get; set; } = string.Empty;
+        public string[] Evidence { get; set; } = new string[0]; // Array for PostgreSQL
+        public string Status { get; set; } = "pending"; // pending, approved, declined
     }
 }
-

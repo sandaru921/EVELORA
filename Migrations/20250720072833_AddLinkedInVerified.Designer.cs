@@ -3,6 +3,7 @@ using System;
 using AssessmentPlatform.Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AssessmentPlatform.Backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250720072833_AddLinkedInVerified")]
+    partial class AddLinkedInVerified
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -254,9 +257,16 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.Property<int?>("Age")
                         .HasColumnType("integer");
 
+                    b.Property<string>("Education")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Gender")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<bool>("IsLinkedInVerified")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("LinkedIn")
                         .IsRequired()
@@ -267,6 +277,10 @@ namespace AssessmentPlatform.Backend.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("ProfilePicture")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Skills")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -282,6 +296,10 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.Property<int>("UserIdInt")
                         .HasColumnType("integer")
                         .HasColumnName("UserIdInt");
+
+                    b.Property<string>("WorkExperience")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -325,99 +343,6 @@ namespace AssessmentPlatform.Backend.Migrations
                         .WithOne()
                         .HasForeignKey("AssessmentPlatform.Backend.Models.UserProfile", "UserIdInt")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.OwnsOne("AssessmentPlatform.Backend.Models.UserEducation", "Education", b1 =>
-                        {
-                            b1.Property<int>("UserProfileId")
-                                .HasColumnType("integer");
-
-                            b1.Property<string[]>("Evidence")
-                                .IsRequired()
-                                .HasColumnType("text[]")
-                                .HasColumnName("EducationEvidence");
-
-                            b1.Property<string>("Status")
-                                .IsRequired()
-                                .HasColumnType("text")
-                                .HasColumnName("EducationStatus");
-
-                            b1.Property<string>("Text")
-                                .IsRequired()
-                                .HasColumnType("text")
-                                .HasColumnName("EducationText");
-
-                            b1.HasKey("UserProfileId");
-
-                            b1.ToTable("UserProfiles");
-
-                            b1.WithOwner()
-                                .HasForeignKey("UserProfileId");
-                        });
-
-                    b.OwnsOne("AssessmentPlatform.Backend.Models.UserExperience", "WorkExperience", b1 =>
-                        {
-                            b1.Property<int>("UserProfileId")
-                                .HasColumnType("integer");
-
-                            b1.Property<string[]>("Evidence")
-                                .IsRequired()
-                                .HasColumnType("text[]")
-                                .HasColumnName("WorkExperienceEvidence");
-
-                            b1.Property<string>("Status")
-                                .IsRequired()
-                                .HasColumnType("text")
-                                .HasColumnName("WorkExperienceStatus");
-
-                            b1.Property<string>("Text")
-                                .IsRequired()
-                                .HasColumnType("text")
-                                .HasColumnName("WorkExperienceText");
-
-                            b1.HasKey("UserProfileId");
-
-                            b1.ToTable("UserProfiles");
-
-                            b1.WithOwner()
-                                .HasForeignKey("UserProfileId");
-                        });
-
-                    b.OwnsOne("AssessmentPlatform.Backend.Models.UserSkills", "Skills", b1 =>
-                        {
-                            b1.Property<int>("UserProfileId")
-                                .HasColumnType("integer");
-
-                            b1.Property<string[]>("Evidence")
-                                .IsRequired()
-                                .HasColumnType("text[]")
-                                .HasColumnName("SkillsEvidence");
-
-                            b1.Property<string>("Status")
-                                .IsRequired()
-                                .HasColumnType("text")
-                                .HasColumnName("SkillsStatus");
-
-                            b1.Property<string>("Text")
-                                .IsRequired()
-                                .HasColumnType("text")
-                                .HasColumnName("SkillsText");
-
-                            b1.HasKey("UserProfileId");
-
-                            b1.ToTable("UserProfiles");
-
-                            b1.WithOwner()
-                                .HasForeignKey("UserProfileId");
-                        });
-
-                    b.Navigation("Education")
-                        .IsRequired();
-
-                    b.Navigation("Skills")
-                        .IsRequired();
-
-                    b.Navigation("WorkExperience")
                         .IsRequired();
                 });
 
