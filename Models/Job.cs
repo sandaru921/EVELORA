@@ -29,5 +29,8 @@ namespace AssessmentPlatform.Backend.Models
         [Column(TypeName = "text")]
         public List<string> SoftSkills { get; set; } = new List<string>();
         public ICollection<JobQuiz> JobQuizzes { get; set; } = new List<JobQuiz>();
+        
+      
+
     }
 }
