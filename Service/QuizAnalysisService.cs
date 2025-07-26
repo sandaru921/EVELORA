@@ -20,14 +20,10 @@ namespace AssessmentPlatform.Backend.Services
             var results = await _repository.GetQuizResultsAsync();
 
             // FUTURE: Replace this with dynamic user lookup
-            // var userNames = await _context.Users
-            //     .ToDictionaryAsync(u => u.Id.ToString(), u => u.Username);
+            var userNames = await _context.Users
+                .ToDictionaryAsync(u => u.Id, u => u.Username);
             
-            // CURRENT: Hardcoded for testing
-            var userNames = new Dictionary<string, string>
-            {
-                { "8", "Test User" }
-            };
+           
 
             // Get quiz categories and details
             var quizDetails = await _context.Quizzes
@@ -48,16 +44,24 @@ namespace AssessmentPlatform.Backend.Services
 
                 // Calculate rankings within this job category only
                 var categoryRankings = categoryResults
-                    .Select(r => new Ranking
-                    {
-                        Name = userNames.ContainsKey(r.UserId) ? userNames[r.UserId] : r.UserId,
-                        Marks = r.Score,
-                        TotalMarks = r.TotalMarks,
-                        Percentage = r.TotalMarks > 0 ? (double)r.Score / r.TotalMarks * 100 : 0,
-                        TimeTaken = r.TimeTaken,
-                        Category = category,
-                        JobRole = category, // Add job role for clarity
-                        QuizName = quizDetails[r.QuizId].QuizName
+                    .Select(r => {
+                        int userIdInt;
+                        string name;
+                        if (int.TryParse(r.UserId?.Trim(), out userIdInt) && userNames.ContainsKey(userIdInt))
+                            name = userNames[userIdInt];
+                        else
+                            name = r.UserId;
+                        return new Ranking
+                        {
+                            Name = name,
+                            Marks = r.Score,
+                            TotalMarks = r.TotalMarks,
+                            Percentage = r.TotalMarks > 0 ? (double)r.Score / r.TotalMarks * 100 : 0,
+                            TimeTaken = r.TimeTaken,
+                            Category = category,
+                            JobRole = category, // Add job role for clarity
+                            QuizName = quizDetails[r.QuizId].QuizName
+                        };
                     })
                     .OrderByDescending(r => r.Marks)
                     .ThenBy(r => r.TimeTaken)
@@ -99,11 +103,9 @@ namespace AssessmentPlatform.Backend.Services
             // Filter results by category
             var categoryResults = results.Where(r => quizIdsInCategory.Contains(r.QuizId)).ToList();
 
-            // Get user names - for now hardcode user "8" as "Test User"
-            var userNames = new Dictionary<string, string>
-            {
-                { "8", "Test User" }
-            };
+            // Get user names as int keys
+            var userNames = await _context.Users
+                .ToDictionaryAsync(u => u.Id, u => u.Username);
 
             // Get quiz details for this category
             var quizDetails = await _context.Quizzes
@@ -111,16 +113,25 @@ namespace AssessmentPlatform.Backend.Services
                 .ToDictionaryAsync(q => q.Id, q => new { q.JobCategory, q.QuizName });
 
             var rankings = categoryResults
-                .Select(r => new Ranking
-                {
-                    Name = userNames.ContainsKey(r.UserId) ? userNames[r.UserId] : r.UserId,
-                    Marks = r.Score,
-                    TotalMarks = r.TotalMarks,
-                    Percentage = r.TotalMarks > 0 ? (double)r.Score / r.TotalMarks * 100 : 0,
-                    TimeTaken = r.TimeTaken,
-                    Category = category,
-                    JobRole = category,
-                    QuizName = quizDetails.ContainsKey(r.QuizId) ? quizDetails[r.QuizId].QuizName : "Unknown Quiz"
+                .Select(r => {
+                    int userIdInt;
+                    string name;
+                    // Always trim the UserId string before parsing
+                    if (int.TryParse(r.UserId?.Trim(), out userIdInt) && userNames.ContainsKey(userIdInt))
+                        name = userNames[userIdInt];
+                    else
+                        name = r.UserId;
+                    return new Ranking
+                    {
+                        Name = name,
+                        Marks = r.Score,
+                        TotalMarks = r.TotalMarks,
+                        Percentage = r.TotalMarks > 0 ? (double)r.Score / r.TotalMarks * 100 : 0,
+                        TimeTaken = r.TimeTaken,
+                        Category = category,
+                        JobRole = category,
+                        QuizName = quizDetails.ContainsKey(r.QuizId) ? quizDetails[r.QuizId].QuizName : "Unknown Quiz"
+                    };
                 })
                 .OrderByDescending(r => r.Marks)
                 .ThenBy(r => r.TimeTaken)
