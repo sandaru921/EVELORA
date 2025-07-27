@@ -61,6 +61,7 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+//Register Authorization Policies for Permissions 
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("CanEditQuiz", policy => policy.Requirements.Add(new PermissionRequirement("EditQuiz")));

@@ -20,7 +20,7 @@ namespace AssessmentPlatform.Backend.Controllers
 
         //PUT: Assign a list of permissions to a user (Admin only)
         // POST: api/permission/assign
-        [HttpPut("assign")] 
+        [HttpPut("assign")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AssignPermissions(AssignPermissionDTO dto)
         {
@@ -52,7 +52,7 @@ namespace AssessmentPlatform.Backend.Controllers
             await _context.SaveChangesAsync();
             return Ok("Permissions assigned successfully.");
         }
-        
+
         // GET: All permissions for a specific user (Admin only)
         // GET: api/permission/user/{userId}
         [HttpGet("user/{userId}")]
@@ -71,11 +71,11 @@ namespace AssessmentPlatform.Backend.Controllers
 
             return Ok(userPermissions);
         }
-        
+
         //GET: All available permissions in the system (Admin only)
         // GET: api/permission/all
         [HttpGet("all")]
-         [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllPermissions()
         {
             var permissions = await _context.Permissions

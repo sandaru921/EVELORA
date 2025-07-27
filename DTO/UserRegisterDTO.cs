@@ -4,7 +4,7 @@ namespace AssessmentPlatform.Backend.DTO
 {
     public class UserRegisterDTO
     {
-       public int Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [MaxLength(100)]
