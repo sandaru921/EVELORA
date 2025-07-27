@@ -131,10 +131,10 @@ namespace AssessmentPlatform.Backend.Controllers
                 return BadRequest("Image file is required.");
             }
 
-            if (string.IsNullOrEmpty(model.WorkMode) || !new[] { "remote", "online", "hybrid" }.Contains(model.WorkMode.ToLower()))
+            if (string.IsNullOrEmpty(model.WorkMode) || !new[] { "remote", "on-site", "hybrid" }.Contains(model.WorkMode.ToLower()))
             {
                 _logger.LogWarning("Invalid WorkMode: {WorkMode}", model.WorkMode);
-                return BadRequest("WorkMode must be 'remote', 'online', or 'hybrid'.");
+                return BadRequest("WorkMode must be 'remote', 'on-site', or 'hybrid'.");
             }
 
             if (model.QuizId.HasValue)

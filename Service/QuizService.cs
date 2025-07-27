@@ -227,75 +227,77 @@ namespace AssessmentPlatform.Backend.Services
                 throw;
             }
         }
+
         public async Task<IEnumerable<QuizResultResponseDto>> GetAllQuizResultsAsync()
-{
-    try
-    {
-        _logger.LogInformation("Retrieving all quiz results");
-
-        var quizResults = await _context.QuizResults
-            .Include(qr => qr.Answers)
-            .ToListAsync();
-
-        var quizResultDtos = quizResults.Select(qr => new QuizResultResponseDto
         {
-            Id = qr.Id,
-            UserId = qr.UserId,
-            QuizId = qr.QuizId,
-            Score = qr.Score,
-            TotalMarks = qr.TotalMarks,
-            SubmissionTime = qr.SubmissionTime,
-            TimeTaken = qr.TimeTaken
-        }).ToList();
+            try
+            {
+                _logger.LogInformation("Retrieving all quiz results");
 
-        _logger.LogInformation("Successfully retrieved {Count} quiz results", quizResultDtos.Count);
+                var quizResults = await _context.QuizResults
+                    .Include(qr => qr.Answers)
+                    .ToListAsync();
 
-        return quizResultDtos;
-    }
-    catch (Exception ex)
-    {
-        _logger.LogError(ex, "Error retrieving all quiz results");
-        throw;
-    }
-}
+                var quizResultDtos = quizResults.Select(qr => new QuizResultResponseDto
+                {
+                    Id = qr.Id,
+                    UserId = qr.UserId,
+                    QuizId = qr.QuizId,
+                    Score = qr.Score,
+                    TotalMarks = qr.TotalMarks,
+                    SubmissionTime = qr.SubmissionTime,
+                    TimeTaken = qr.TimeTaken
+                }).ToList();
 
-public async Task<QuizResultResponseDto?> GetQuizResultByIdAsync(int id)
-{
-    try
-    {
-        _logger.LogInformation("Retrieving quiz result with ID: {ResultId}", id);
+                _logger.LogInformation("Successfully retrieved {Count} quiz results", quizResultDtos.Count);
 
-        var quizResult = await _context.QuizResults
-            .Include(qr => qr.Answers)
-            .FirstOrDefaultAsync(qr => qr.Id == id);
-
-        if (quizResult == null)
-        {
-            _logger.LogWarning("Quiz result not found for ID: {ResultId}", id);
-            return null;
+                return quizResultDtos;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving all quiz results");
+                throw;
+            }
         }
 
-        var quizResultDto = new QuizResultResponseDto
+        public async Task<QuizResultResponseDto?> GetQuizResultByIdAsync(int id)
         {
-            Id = quizResult.Id,
-            UserId = quizResult.UserId,
-            QuizId = quizResult.QuizId,
-            Score = quizResult.Score,
-            TotalMarks = quizResult.TotalMarks,
-            SubmissionTime = quizResult.SubmissionTime,
-            TimeTaken = quizResult.TimeTaken
-        };
+            try
+            {
+                _logger.LogInformation("Retrieving quiz result with ID: {ResultId}", id);
 
-        _logger.LogInformation("Successfully retrieved quiz result with ID: {ResultId}", id);
+                var quizResult = await _context.QuizResults
+                    .Include(qr => qr.Answers)
+                    .FirstOrDefaultAsync(qr => qr.Id == id);
 
-        return quizResultDto;
-    }
-    catch (Exception ex)
-    {
-        _logger.LogError(ex, "Error retrieving quiz result with ID: {ResultId}", id);
-        throw;
-    }
-}
+                if (quizResult == null)
+                {
+                    _logger.LogWarning("Quiz result not found for ID: {ResultId}", id);
+                    return null;
+                }
+
+                var quizResultDto = new QuizResultResponseDto
+                {
+                    Id = quizResult.Id,
+                    UserId = quizResult.UserId,
+                    QuizId = quizResult.QuizId,
+                    Score = quizResult.Score,
+                    TotalMarks = quizResult.TotalMarks,
+                    SubmissionTime = quizResult.SubmissionTime,
+                    TimeTaken = quizResult.TimeTaken
+                };
+
+                _logger.LogInformation("Successfully retrieved quiz result with ID: {ResultId}", id);
+
+                return quizResultDto;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving quiz result with ID: {ResultId}", id);
+                throw;
+            }
+        }
+
         public async Task<QuizResultAnswerResponseDto?> GetQuizAnswerByIdAsync(int id)
         {
             var answers = await _context.Answers
@@ -319,7 +321,204 @@ public async Task<QuizResultResponseDto?> GetQuizResultByIdAsync(int id)
             };
         }
 
+        public async Task<bool> DeleteQuizAsync(int quizId)
+{
+    using var transaction = await _context.Database.BeginTransactionAsync();
 
+    try
+    {
+        var quiz = await _context.Quizzes.FindAsync(quizId);
+        if (quiz == null)
+        {
+            return false;
+        }
+
+        var questions = _context.Questions.Where(q => q.QuizId == quizId).ToList();
+
+        foreach (var question in questions)
+        {
+            int questionId = question.Id;
+
+            var answers = _context.Answers.Where(a => a.QuestionId == questionId);
+            _context.Answers.RemoveRange(answers);
+
+            var options = _context.Options.Where(o => o.QuestionId == questionId);
+            _context.Options.RemoveRange(options);
+        }
+
+        _context.Questions.RemoveRange(questions);
+        _context.Quizzes.Remove(quiz);
+
+        await _context.SaveChangesAsync();
+        await transaction.CommitAsync();
+
+        return true;
     }
+    catch
+    {
+        await transaction.RollbackAsync();
+        throw;
+    }
+}
 
+
+        public async Task<QuizResponseDto?> UpdateQuizAsync(int id, QuizUpdateDto updateQuizDto)
+        {
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                _logger.LogInformation("Starting quiz update for ID: {QuizId}", id);
+
+                var quiz = await _context.Quizzes
+                    .Include(q => q.Questions)
+                    .ThenInclude(q => q.Options)
+                    .FirstOrDefaultAsync(q => q.Id == id);
+
+                if (quiz == null)
+                {
+                    _logger.LogWarning("Quiz not found for ID: {QuizId}", id);
+                    return null;
+                }
+
+                // Check for associated answers to prevent question deletion
+                var questionIds = quiz.Questions.Select(q => q.Id).ToList();
+                var hasAnswers = await _context.Answers.AnyAsync(a => questionIds.Contains(a.QuestionId));
+                if (hasAnswers && updateQuizDto.Questions.Count < quiz.Questions.Count)
+                {
+                    _logger.LogWarning("Cannot update quiz ID {QuizId}: Some questions have associated answers", id);
+                    throw new InvalidOperationException("Cannot remove questions that have associated answers.");
+                }
+
+                // Update quiz properties
+                quiz.QuizName = updateQuizDto.QuizName?.Trim();
+                quiz.JobCategory = updateQuizDto.JobCategory?.Trim();
+                quiz.Description = updateQuizDto.Description?.Trim();
+                quiz.QuizDuration = updateQuizDto.QuizDuration;
+                quiz.QuizLevel = updateQuizDto.QuizLevel?.Trim();
+
+                // Update or add questions
+                var questionIdsInDto = updateQuizDto.Questions.Where(q => q.Id > 0).Select(q => q.Id).ToList();
+                var questionsToRemove = quiz.Questions.Where(q => !questionIdsInDto.Contains(q.Id)).ToList();
+                foreach (var questionToRemove in questionsToRemove)
+                {
+                    var hasQuestionAnswers = await _context.Answers.AnyAsync(a => a.QuestionId == questionToRemove.Id);
+                    if (hasQuestionAnswers)
+                    {
+                        _logger.LogWarning("Cannot remove question ID {QuestionId} because it has associated answers", questionToRemove.Id);
+                        throw new InvalidOperationException($"Cannot remove question ID {questionToRemove.Id} because it has associated answers.");
+                    }
+                    _context.Options.RemoveRange(questionToRemove.Options);
+                    _context.Questions.Remove(questionToRemove);
+                }
+
+                foreach (var questionDto in updateQuizDto.Questions)
+                {
+                    var existingQuestion = quiz.Questions.FirstOrDefault(q => q.Id == questionDto.Id);
+                    if (existingQuestion != null)
+                    {
+                        // Update existing question
+                        existingQuestion.QuestionText = questionDto.QuestionText?.Trim();
+                        existingQuestion.CodeSnippet = questionDto.CodeSnippet?.Trim();
+                        existingQuestion.ImageURL = questionDto.ImageURL?.Trim();
+                        existingQuestion.Type = questionDto.Type?.Trim();
+                        existingQuestion.Marks = questionDto.Marks;
+                        existingQuestion.CorrectAnswers = questionDto.CorrectAnswers ?? new List<string>();
+
+                        // Update or add options
+                        var optionIdsInDto = questionDto.Options.Where(o => o.Id > 0).Select(o => o.Id).ToList();
+                        var optionsToRemove = existingQuestion.Options.Where(o => !optionIdsInDto.Contains(o.Id)).ToList();
+                        foreach (var optionToRemove in optionsToRemove)
+                        {
+                            _context.Options.Remove(optionToRemove);
+                        }
+
+                        foreach (var optionDto in questionDto.Options)
+                        {
+                            var existingOption = existingQuestion.Options.FirstOrDefault(o => o.Id == optionDto.Id);
+                            if (existingOption != null)
+                            {
+                                existingOption.Key = optionDto.Key?.Trim();
+                                existingOption.Value = optionDto.Value?.Trim();
+                            }
+                            else
+                            {
+                                if (string.IsNullOrWhiteSpace(optionDto.Key) || string.IsNullOrWhiteSpace(optionDto.Value))
+                                {
+                                    _logger.LogWarning("Invalid option for question ID {QuestionId}: Key: {Key}, Value: {Value}",
+                                        existingQuestion.Id, optionDto.Key, optionDto.Value);
+                                    throw new ArgumentException($"Invalid option for question ID {existingQuestion.Id}");
+                                }
+                                existingQuestion.Options.Add(new Option
+                                {
+                                    Key = optionDto.Key?.Trim(),
+                                    Value = optionDto.Value?.Trim()
+                                });
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // Add new question
+                        var newQuestion = new Question
+                        {
+                            QuestionText = questionDto.QuestionText?.Trim(),
+                            CodeSnippet = questionDto.CodeSnippet?.Trim(),
+                            ImageURL = questionDto.ImageURL?.Trim(),
+                            Type = questionDto.Type?.Trim(),
+                            Marks = questionDto.Marks,
+                            CorrectAnswers = questionDto.CorrectAnswers ?? new List<string>(),
+                            Options = new List<Option>()
+                        };
+
+                        if (questionDto.Options != null)
+                        {
+                            foreach (var optionDto in questionDto.Options)
+                            {
+                                if (string.IsNullOrWhiteSpace(optionDto.Key) || string.IsNullOrWhiteSpace(optionDto.Value))
+                                {
+                                    _logger.LogWarning("Invalid option for new question: {QuestionText}, Key: {Key}, Value: {Value}",
+                                        questionDto.QuestionText, optionDto.Key, optionDto.Value);
+                                    throw new ArgumentException($"Invalid option for question: {questionDto.QuestionText}");
+                                }
+                                newQuestion.Options.Add(new Option
+                                {
+                                    Key = optionDto.Key?.Trim(),
+                                    Value = optionDto.Value?.Trim()
+                                });
+                            }
+                        }
+
+                        quiz.Questions.Add(newQuestion);
+                    }
+                }
+
+                _context.Quizzes.Update(quiz);
+                _logger.LogInformation("Saving updated quiz to database for ID: {QuizId}", id);
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                _logger.LogInformation("Quiz updated successfully with ID: {QuizId}", id);
+
+                return new QuizResponseDto
+                {
+                    Id = quiz.Id,
+                    QuizName = quiz.QuizName,
+                    JobCategory = quiz.JobCategory,
+                    Description = quiz.Description,
+                    QuizDuration = quiz.QuizDuration,
+                    QuizLevel = quiz.QuizLevel,
+                    QuestionCount = quiz.Questions.Count,
+                    CreatedAt = DateTime.UtcNow
+                };
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                _logger.LogError(ex, "Error updating quiz with ID: {QuizId}: {Message}, InnerException: {InnerMessage}, StackTrace: {StackTrace}",
+                    id, ex.Message, ex.InnerException?.Message, ex.StackTrace);
+                throw;
+            }
+        }
+    }
 }
