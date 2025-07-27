@@ -1,17 +1,22 @@
-# Backend
-bin/
-obj/
-.idea/
+# === Backend ===
+**/bin/
+**/obj/
+**/appsettings.Development.json
+**/*.dll
+**/*.exe
+**/*.pdb
+**/*.cache
+**/*.log
+**/*.json.cache
 
+# Ignore generated EF Core migration metadata
+**/Migrations/*.Designer.cs
 
-backend/appsettings.Development.json
+# === Frontend ===
+frontend/
+# (Excludes the whole frontend directory if you're no longer tracking it at all)
 
-# Frontend
-frontend/node_modules/
-frontend/build/
-frontend/.env
-
-# General
+# === General ===
 .DS_Store
 .vscode/
 

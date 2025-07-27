@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using AssessmentPlatform.DTO;
+
 using Microsoft.AspNetCore.Authorization;
-using AssessmentPlatform.Backend.Service; // Ensure this namespace contains UserService
+using AssessmentPlatform.Backend.Services; // Ensure this namespace contains UserService
 using AssessmentPlatform.Backend.DTO;
 
 namespace AssessmentPlatform.Backend.Controllers

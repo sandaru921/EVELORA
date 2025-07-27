@@ -1,33 +1,47 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using AssessmentPlatform.Backend.Data;
-using AssessmentPlatform.Backend.Models; // For JwtSettings
+using AssessmentPlatform.Backend.Models;
 using Microsoft.OpenApi.Models;
-using AssessmentPlatform.Backend.Service;
-
 using AssessmentPlatform.Backend.Services;
-
-using AssessmentPlatform.Backend.Authorization; // Add this for custom auth
+using AssessmentPlatform.Backend.Authorization;
 using Microsoft.AspNetCore.Authorization;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add logging
+builder.Services.AddLogging(logging =>
+{
+    logging.AddConsole();
+    logging.AddDebug();
+});
+
 builder.Services.AddScoped<IQuizService, QuizService>();
+builder.Services.AddScoped<AssessmentPlatform.Backend.Services.UserService>();
+builder.Services.AddScoped<IAuthorizationHandler, PermissionHandler>();
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
-        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
         options.JsonSerializerOptions.WriteIndented = true;
+        options.JsonSerializerOptions.PropertyNamingPolicy = null;
+        options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
     });
 
-// Configure JwtSettings from appsettings.json
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
+if (jwtSettings == null || string.IsNullOrEmpty(jwtSettings.SecretKey))
+{
+    throw new InvalidOperationException("JwtSettings or SecretKey is not configured properly in appsettings.json.");
+}
 var key = Encoding.UTF8.GetBytes(jwtSettings.SecretKey);
 
-// Add JWT Authentication
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -50,87 +64,40 @@ builder.Services.AddAuthentication(options =>
 //Register Authorization Policies for Permissions 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("CanEditQuiz", policy =>
-        policy.Requirements.Add(new PermissionRequirement("EditQuiz")));
-
-options.AddPolicy("CanDeleteQuiz", policy =>
-    policy.Requirements.Add(new PermissionRequirement("DeleteQuiz")));
-
-options.AddPolicy("CanCreateQuestion", policy =>
-    policy.Requirements.Add(new PermissionRequirement("CreateQuestion")));
-
-    // Add more policies as needed
+    options.AddPolicy("CanEditQuiz", policy => policy.Requirements.Add(new PermissionRequirement("EditQuiz")));
+    options.AddPolicy("CanDeleteQuiz", policy => policy.Requirements.Add(new PermissionRequirement("DeleteQuiz")));
+    options.AddPolicy("CanCreateQuestion", policy => policy.Requirements.Add(new PermissionRequirement("CreateQuestion")));
 });
 
-//Register custom permission handler
-builder.Services.AddScoped<IAuthorizationHandler, PermissionHandler>();
-
-// Add CORS (adjust origin as needed for frontend)
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend", builder =>
+    options.AddPolicy("AllowAll", builder =>
     {
-        builder.WithOrigins("http://localhost:5173", "http://localhost:5174") // React or frontend URL
-               .AllowAnyHeader()
-               .AllowAnyMethod();
+        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
     });
 });
 
-// Add EF Core DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Register custom services
-builder.Services.AddScoped<UserService>();
-
-// Add Controllers and Swagger
-builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-
-// Configure Swagger to support JWT auth
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "AssessmentPlatform API", Version = "v1" });
-
-    var jwtSecurityScheme = new OpenApiSecurityScheme
-    {
-        Name = "Authorization",
-        Type = SecuritySchemeType.Http,
-        Scheme = "bearer",
-        BearerFormat = "JWT",
-        In = ParameterLocation.Header,
-        Description = "Enter JWT Bearer token **_only_**",
-
-        Reference = new OpenApiReference
-        {
-            Id = JwtBearerDefaults.AuthenticationScheme,
-            Type = ReferenceType.SecurityScheme
-        }
-    };
-
-    c.AddSecurityDefinition(jwtSecurityScheme.Reference.Id, jwtSecurityScheme);
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        { jwtSecurityScheme, Array.Empty<string>() }
-    });
-});
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Middleware pipeline
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else
+{
+    app.UseHttpsRedirection();
+}
 
-// Enable CORS
-app.UseCors("AllowFrontend");
-
-app.UseHttpsRedirection();
-
-//Enable authentication and authorization
-app.UseAuthentication();
+app.UseCors("AllowAll");
 app.UseAuthorization();
 app.MapControllers();
+
 app.Run();

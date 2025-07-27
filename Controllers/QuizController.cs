@@ -1,9 +1,13 @@
-﻿// 1. UPDATED QuizController.cs with better error handling and logging
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using AssessmentPlatform.Backend.Services;
+using AssessmentPlatform.Backend.DTO;
 using AssessmentPlatform.Backend.DTOs;
-using System.ComponentModel.DataAnnotations;
 using AssessmentPlatform.Backend.Models;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace AssessmentPlatform.Backend.Controllers
 {
@@ -23,154 +27,125 @@ namespace AssessmentPlatform.Backend.Controllers
         [HttpPost]
         public async Task<ActionResult<QuizResponseDto>> CreateQuiz([FromBody] CreateQuizDto createQuizDto)
         {
-            try
-            {
-                _logger.LogInformation("Creating quiz with name: {QuizName}", createQuizDto?.QuizName ?? "NULL");
+            if (createQuizDto == null)
+                return BadRequest("Quiz data is required.");
 
-                // Check if the DTO is null
-                if (createQuizDto == null)
-                {
-                    _logger.LogWarning("CreateQuizDto is null");
-                    return BadRequest("Quiz data is required.");
-                }
+            var validationResult = ValidateQuizData(createQuizDto);
+            if (!validationResult.IsValid)
+                return BadRequest(validationResult.ErrorMessage);
 
-                // Validate the input
-                if (!ModelState.IsValid)
-                {
-                    _logger.LogWarning("ModelState is invalid: {Errors}",
-                        string.Join(", ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)));
-                    return BadRequest(ModelState);
-                }
-
-                // Additional validation
-                var validationResult = ValidateQuizData(createQuizDto);
-                if (!validationResult.IsValid)
-                {
-                    _logger.LogWarning("Custom validation failed: {Error}", validationResult.ErrorMessage);
-                    return BadRequest(validationResult.ErrorMessage);
-                }
-
-                var createdQuiz = await _quizService.CreateQuizAsync(createQuizDto);
-
-                _logger.LogInformation("Quiz created successfully with ID: {QuizId}", createdQuiz.Id);
-
-                return CreatedAtAction(
-                    nameof(GetQuiz),
-                    new { id = createdQuiz.Id },
-                    createdQuiz
-                );
-            }
-            catch (ArgumentException ex)
-            {
-                _logger.LogError(ex, "Argument error creating quiz: {Message}", ex.Message);
-                return BadRequest($"Invalid data: {ex.Message}");
-            }
-            catch (InvalidOperationException ex)
-            {
-                _logger.LogError(ex, "Invalid operation creating quiz: {Message}", ex.Message);
-                return BadRequest($"Operation error: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Unexpected error creating quiz: {Message} | StackTrace: {StackTrace}",
-                    ex.Message, ex.StackTrace);
-                return StatusCode(500, new
-                {
-                    error = "An error occurred while creating the quiz.",
-                    details = ex.Message,
-                    type = ex.GetType().Name
-                });
-            }
+            var createdQuiz = await _quizService.CreateQuizAsync(createQuizDto);
+            return CreatedAtAction(nameof(GetQuiz), new { id = createdQuiz.Id }, createdQuiz);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Quiz>> GetQuiz(int id)
         {
-            try
-            {
-                var quiz = await _quizService.GetQuizByIdAsync(id);
-
-                if (quiz == null)
-                {
-                    return NotFound($"Quiz with ID {id} not found.");
-                }
-
-                return Ok(quiz);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error retrieving quiz with ID: {QuizId}", id);
-                return StatusCode(500, "An error occurred while retrieving the quiz.");
-            }
+            var quiz = await _quizService.GetQuizByIdAsync(id);
+            if (quiz == null)
+                return NotFound();
+            return Ok(quiz);
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Quiz>>> GetAllQuizzes()
         {
-            try
-            {
-                var quizzes = await _quizService.GetAllQuizzesAsync();
-                return Ok(quizzes);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error retrieving all quizzes");
-                return StatusCode(500, "An error occurred while retrieving quizzes.");
-            }
+            var quizzes = await _quizService.GetAllQuizzesAsync();
+            return Ok(quizzes);
+        }
+
+        [HttpPost("save")]
+        public async Task<ActionResult<QuizResultResponseDto>> QuizSave([FromBody] QuizSubmissionDto submissionDto)
+        {
+            if (submissionDto == null)
+                return BadRequest("Submission data is required.");
+
+            var validationResult = ValidateQuizSubmission(submissionDto);
+            if (!validationResult.IsValid)
+                return BadRequest(validationResult.ErrorMessage);
+
+            var quizResult = await _quizService.SaveQuizResultAsync(submissionDto);
+            return Ok(quizResult);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateQuiz(int id, [FromBody] QuizUpdateDto updateQuizDto)
+        {
+            if (updateQuizDto == null)
+                return BadRequest("Quiz data is required.");
+
+            var validationResult = ValidateQuizData(updateQuizDto);
+            if (!validationResult.IsValid)
+                return BadRequest(validationResult.ErrorMessage);
+
+            var updatedQuiz = await _quizService.UpdateQuizAsync(id, updateQuizDto);
+            if (updatedQuiz == null)
+                return NotFound();
+
+            return Ok(updatedQuiz);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteQuiz(int id)
+        {
+            bool deleted = await _quizService.DeleteQuizAsync(id);
+            if (!deleted)
+                return NotFound();
+            return NoContent();
+        }
+
+        [HttpGet("results")]
+        public async Task<ActionResult<IEnumerable<QuizResultResponseDto>>> GetAllQuizResults()
+        {
+            var results = await _quizService.GetAllQuizResultsAsync();
+            return Ok(results);
+        }
+
+        [HttpGet("results/{id}")]
+        public async Task<ActionResult<QuizResultResponseDto>> GetQuizResult(int id)
+        {
+            var result = await _quizService.GetQuizResultByIdAsync(id);
+            if (result == null)
+                return NotFound();
+            return Ok(result);
+        }
+
+        [HttpGet("answers/{id}")]
+        public async Task<ActionResult<QuizResultAnswerResponseDto>> GetQuizAnswers(int id)
+        {
+            var result = await _quizService.GetQuizAnswerByIdAsync(id);
+            if (result == null)
+                return NotFound();
+            return Ok(result);
         }
 
         private (bool IsValid, string ErrorMessage) ValidateQuizData(CreateQuizDto quiz)
         {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(quiz.QuizName))
-                    return (false, "Quiz name is required.");
+            if (string.IsNullOrWhiteSpace(quiz.QuizName))
+                return (false, "Quiz name is required.");
+            if (quiz.Questions == null || !quiz.Questions.Any())
+                return (false, "At least one question is required.");
+            return (true, string.Empty);
+        }
 
-                if (string.IsNullOrWhiteSpace(quiz.JobCategory))
-                    return (false, "Job category is required.");
+        private (bool IsValid, string ErrorMessage) ValidateQuizData(QuizUpdateDto quiz)
+        {
+            if (string.IsNullOrWhiteSpace(quiz.QuizName))
+                return (false, "Quiz name is required.");
+            if (quiz.Questions == null || !quiz.Questions.Any())
+                return (false, "At least one question is required.");
+            return (true, string.Empty);
+        }
 
-                if (quiz.QuizDuration <= 0)
-                    return (false, "Quiz duration must be greater than 0.");
-
-                if (quiz.Questions == null || !quiz.Questions.Any())
-                    return (false, "At least one question is required.");
-
-                for (int i = 0; i < quiz.Questions.Count; i++)
-                {
-                    var question = quiz.Questions[i];
-
-                    if (string.IsNullOrWhiteSpace(question.QuestionText))
-                        return (false, $"Question text is required for question {i + 1}.");
-
-                    if (question.Marks <= 0)
-                        return (false, $"Question marks must be greater than 0 for question {i + 1}.");
-
-                    if (string.IsNullOrWhiteSpace(question.Type))
-                        return (false, $"Question type is required for question {i + 1}.");
-
-                    if (question.Type == "MultipleChoice" || question.Type == "SingleChoice")
-                    {
-                        if (question.Options == null || !question.Options.Any())
-                            return (false, $"Options are required for {question.Type} question {i + 1}.");
-
-                        if (question.CorrectAnswers == null || !question.CorrectAnswers.Any())
-                            return (false, $"Correct answers are required for question {i + 1}.");
-
-                        // Validate that correct answers exist in options
-                        var optionKeys = question.Options.Select(o => o.Key).ToList();
-                        var invalidAnswers = question.CorrectAnswers.Where(ca => !optionKeys.Contains(ca)).ToList();
-                        if (invalidAnswers.Any())
-                            return (false, $"Invalid correct answers for question {i + 1}: {string.Join(", ", invalidAnswers)}");
-                    }
-                }
-
-                return (true, string.Empty);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error during validation");
-                return (false, $"Validation error: {ex.Message}");
-            }
+        private (bool IsValid, string ErrorMessage) ValidateQuizSubmission(QuizSubmissionDto submission)
+        {
+            if (string.IsNullOrWhiteSpace(submission.UserId))
+                return (false, "User ID is required.");
+            if (submission.QuizId <= 0)
+                return (false, "Quiz ID is required.");
+            if (submission.Answers == null || !submission.Answers.Any())
+                return (false, "At least one answer is required.");
+            return (true, string.Empty);
         }
     }
 }

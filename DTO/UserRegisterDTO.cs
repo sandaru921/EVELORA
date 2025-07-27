@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace AssessmentPlatform.DTO
+namespace AssessmentPlatform.Backend.DTO
 {
     public class UserRegisterDTO
     {
