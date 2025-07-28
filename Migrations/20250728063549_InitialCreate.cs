@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AssessmentPlatform.Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class RebuiltMergedSnapshot : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -40,10 +40,18 @@ namespace AssessmentPlatform.Backend.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn),
                     Title = table.Column<string>(type: "text", nullable: false),
-                    JobType = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
                     ImageUrl = table.Column<string>(type: "text", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    JobType = table.Column<string>(type: "text", nullable: false),
+                    WorkMode = table.Column<string>(type: "text", nullable: false, defaultValue: ""),
+                    ExpiringDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    CreatedBy = table.Column<string>(type: "text", nullable: false),
+                    KeyResponsibilities = table.Column<string>(type: "text", nullable: false),
+                    EducationalBackground = table.Column<string>(type: "text", nullable: false),
+                    TechnicalSkills = table.Column<string>(type: "text", nullable: false),
+                    Experience = table.Column<string>(type: "text", nullable: false),
+                    SoftSkills = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -138,6 +146,69 @@ namespace AssessmentPlatform.Backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "JobQuizzes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    JobId = table.Column<int>(type: "integer", nullable: false),
+                    QuizId = table.Column<int>(type: "integer", nullable: false),
+                    UserId = table.Column<int>(type: "integer", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JobQuizzes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_JobQuizzes_Jobs_JobId",
+                        column: x => x.JobId,
+                        principalTable: "Jobs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_JobQuizzes_Quizzes_QuizId",
+                        column: x => x.QuizId,
+                        principalTable: "Quizzes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_JobQuizzes_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "QuizResults",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn),
+                    UserId = table.Column<string>(type: "character varying(450)", maxLength: 450, nullable: false),
+                    QuizId = table.Column<int>(type: "integer", nullable: false),
+                    Score = table.Column<int>(type: "integer", nullable: false),
+                    TotalMarks = table.Column<int>(type: "integer", nullable: false),
+                    SubmissionTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    TimeTaken = table.Column<int>(type: "integer", nullable: false),
+                    UserIdInt = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_QuizResults", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_QuizResults_Quizzes_QuizId",
+                        column: x => x.QuizId,
+                        principalTable: "Quizzes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_QuizResults_Users_UserIdInt",
+                        column: x => x.UserIdInt,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserPermissions",
                 columns: table => new
                 {
@@ -182,6 +253,52 @@ namespace AssessmentPlatform.Backend.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Answers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn),
+                    QuestionId = table.Column<int>(type: "integer", nullable: false),
+                    SelectedOptions = table.Column<string[]>(type: "text[]", nullable: false),
+                    IsCorrect = table.Column<bool>(type: "boolean", nullable: false),
+                    MarksObtained = table.Column<int>(type: "integer", nullable: false),
+                    QuizResultId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Answers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Answers_Questions_QuestionId",
+                        column: x => x.QuestionId,
+                        principalTable: "Questions",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Answers_QuizResults_QuizResultId",
+                        column: x => x.QuizResultId,
+                        principalTable: "QuizResults",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AnswerSelectedOptions",
+                columns: table => new
+                {
+                    AnswerId = table.Column<int>(type: "integer", nullable: false),
+                    SelectedOption = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AnswerSelectedOptions", x => new { x.AnswerId, x.SelectedOption });
+                    table.ForeignKey(
+                        name: "FK_AnswerSelectedOptions_Answers_AnswerId",
+                        column: x => x.AnswerId,
+                        principalTable: "Answers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Permissions",
                 columns: new[] { "Id", "DisplayName", "Name" },
@@ -193,6 +310,36 @@ namespace AssessmentPlatform.Backend.Migrations
                     { 4, "View Results", "ViewResults" },
                     { 5, "Admin", "Admin" }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Answer_QuestionId",
+                table: "Answers",
+                column: "QuestionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Answer_QuizResultId",
+                table: "Answers",
+                column: "QuizResultId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AnswerSelectedOption_AnswerId",
+                table: "AnswerSelectedOptions",
+                column: "AnswerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobQuizzes_JobId",
+                table: "JobQuizzes",
+                column: "JobId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobQuizzes_QuizId",
+                table: "JobQuizzes",
+                column: "QuizId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobQuizzes_UserId",
+                table: "JobQuizzes",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Option_QuestionId",
@@ -211,6 +358,21 @@ namespace AssessmentPlatform.Backend.Migrations
                 column: "QuizId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_QuizResult_QuizId",
+                table: "QuizResults",
+                column: "QuizId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_QuizResult_UserId",
+                table: "QuizResults",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_QuizResults_UserIdInt",
+                table: "QuizResults",
+                column: "UserIdInt");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Quiz_QuizName",
                 table: "Quizzes",
                 column: "QuizName",
@@ -226,10 +388,13 @@ namespace AssessmentPlatform.Backend.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "AnswerSelectedOptions");
+
+            migrationBuilder.DropTable(
                 name: "Blogs");
 
             migrationBuilder.DropTable(
-                name: "Jobs");
+                name: "JobQuizzes");
 
             migrationBuilder.DropTable(
                 name: "Messages");
@@ -241,16 +406,25 @@ namespace AssessmentPlatform.Backend.Migrations
                 name: "UserPermissions");
 
             migrationBuilder.DropTable(
-                name: "Questions");
+                name: "Answers");
+
+            migrationBuilder.DropTable(
+                name: "Jobs");
 
             migrationBuilder.DropTable(
                 name: "Permissions");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Questions");
+
+            migrationBuilder.DropTable(
+                name: "QuizResults");
 
             migrationBuilder.DropTable(
                 name: "Quizzes");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }
