@@ -15,12 +15,12 @@ namespace AssessmentPlatform.Backend.Data
         public DbSet<Question> Questions { get; set; }
         public DbSet<Option> Options { get; set; }
         public DbSet<JobQuiz> JobQuizzes { get; set; }
-         public DbSet<QuizResult> QuizResults { get; set; }
+        public DbSet<QuizResult> QuizResults { get; set; }
         public DbSet<Answer> Answers { get; set; }
         public DbSet<AnswerSelectedOption> AnswerSelectedOptions { get; set; }
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<UserPermission> UserPermissions { get; set; }
-        
+        public DbSet<Blog> Blogs { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -186,6 +186,15 @@ namespace AssessmentPlatform.Backend.Data
             modelBuilder.Entity<Permission>()
                 .Property(p => p.Id)
                 .UseIdentityAlwaysColumn();
+
+            // Configure the Blog entity
+            modelBuilder.Entity<Blog>()
+                .Property(b => b.Slug)
+                .HasMaxLength(200);    
+
+                modelBuilder.Entity<Blog>()
+                .Property(b => b.ImageUrl)
+                .HasMaxLength(500);
 
             modelBuilder.Entity<UserPermission>()
                 .HasKey(up => new { up.UserId, up.PermissionId });
