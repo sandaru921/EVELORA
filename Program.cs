@@ -87,15 +87,25 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddScoped<IAuthorizationHandler, PermissionHandler>();
 
 // CORS
+// builder.Services.AddCors(options =>
+// {
+//     options.AddPolicy("AllowFrontend", policy =>
+//     {
+//         policy.WithOrigins("http://localhost:5173", "http://localhost:5174")
+//               .AllowAnyHeader()
+//               .AllowAnyMethod()
+//               .AllowCredentials();
+//     });
+// });
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend", policy =>
-    {
-        policy.WithOrigins("http://localhost:5173", "http://localhost:5174")
-              .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials();
-    });
+    options.AddPolicy("AllowFrontend",
+        policy => policy
+            .WithOrigins("https://localhost:5173", "http://localhost:5174") // Your React dev server
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials()
+    );
 });
 
 // DB + Blob
