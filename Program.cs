@@ -1,23 +1,25 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
+using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 using AssessmentPlatform.Backend.Data;
 using AssessmentPlatform.Backend.Models;
-using AssessmentPlatform.Backend.Service;
-using AssessmentPlatform.Backend.Repositories;
-using Azure.Storage.Blobs;
 using Microsoft.OpenApi.Models;
+using AssessmentPlatform.Backend.Services;
+using AssessmentPlatform.Backend.Repositories;
+using AssessmentPlatform.Backend.Authorization;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
+using Azure.Storage.Blobs;
 using DotNetEnv;
+using System.Text;
 
-var builder = WebApplication.CreateBuilder(args);
-
-// Load environment variables from .env file (must be in project root)
+// Load .env
 DotNetEnv.Env.Load();
 
-// Read sensitive config from env variables
+// Environment variables
 var dbConnectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
 var azureBlobConnectionString = Environment.GetEnvironmentVariable("AZURE_BLOB_CONNECTION_STRING");
 var blobJobContainerName = Environment.GetEnvironmentVariable("BLOB_JOB_CONTAINER_NAME");
@@ -31,12 +33,22 @@ var jwtSettings = new JwtSettings
     ExpireMinutes = int.TryParse(Environment.GetEnvironmentVariable("JWT_EXPIRE_MINUTES"), out var exp) ? exp : 60
 };
 
-// Optional: inject these settings into configuration if needed
+var builder = WebApplication.CreateBuilder(args);
+
+// Optional: inject env vars into config if needed
 builder.Configuration["ConnectionStrings:DefaultConnection"] = dbConnectionString ?? "";
 builder.Configuration["AzureBlobStorage:ConnectionString"] = azureBlobConnectionString ?? "";
 builder.Configuration["AzureBlobStorage:JobContainerName"] = blobJobContainerName ?? "jobs";
 builder.Configuration["AzureBlobStorage:BlogContainerName"] = blobBlogContainerName ?? "blogs";
 
+// Logging
+builder.Services.AddLogging(logging =>
+{
+    logging.AddConsole();
+    logging.AddDebug();
+});
+
+// JWT
 builder.Services.Configure<JwtSettings>(options =>
 {
     options.SecretKey = jwtSettings.SecretKey;
@@ -44,15 +56,6 @@ builder.Services.Configure<JwtSettings>(options =>
     options.Audience = jwtSettings.Audience;
     options.ExpireMinutes = jwtSettings.ExpireMinutes;
 });
-
-// Add DbContext with PostgreSQL connection string
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(dbConnectionString));
-
-// Register Azure Blob Service Client singleton
-builder.Services.AddSingleton(x => new BlobServiceClient(azureBlobConnectionString));
-
-// JWT Authentication setup
 var key = Encoding.UTF8.GetBytes(jwtSettings.SecretKey);
 
 builder.Services.AddAuthentication(options =>
@@ -74,7 +77,16 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// CORS policy
+// Authorization
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("CanEditQuiz", policy => policy.Requirements.Add(new PermissionRequirement("EditQuiz")));
+    options.AddPolicy("CanDeleteQuiz", policy => policy.Requirements.Add(new PermissionRequirement("DeleteQuiz")));
+    options.AddPolicy("CanCreateQuestion", policy => policy.Requirements.Add(new PermissionRequirement("CreateQuestion")));
+});
+builder.Services.AddScoped<IAuthorizationHandler, PermissionHandler>();
+
+// CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
@@ -86,12 +98,27 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Register your services and repositories
+// DB + Blob
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(dbConnectionString));
+builder.Services.AddSingleton(x => new BlobServiceClient(azureBlobConnectionString));
+
+// Services + Repos
+builder.Services.AddScoped<IQuizService, QuizService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 
-// Add controllers and Swagger
-builder.Services.AddControllers();
+// Controllers
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.WriteIndented = true;
+        options.JsonSerializerOptions.PropertyNamingPolicy = null;
+        options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+    });
+
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -105,7 +132,6 @@ builder.Services.AddSwaggerGen(c =>
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
         Description = "Enter JWT Bearer token **_only_**",
-
         Reference = new OpenApiReference
         {
             Id = JwtBearerDefaults.AuthenticationScheme,
@@ -122,23 +148,25 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// Middleware pipeline
+// Middleware
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else
+{
+    app.UseHttpsRedirection();
+}
 
 app.UseCors("AllowFrontend");
-
-app.UseHttpsRedirection();
-
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 
-// Ensure DB is created and migrations applied
+// DB Ensure + Migration
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;

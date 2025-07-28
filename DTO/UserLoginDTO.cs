@@ -1,4 +1,4 @@
-namespace AssessmentPlatform.DTO
+namespace AssessmentPlatform.Backend.DTO
 {
     public class UserLoginDTO
     {

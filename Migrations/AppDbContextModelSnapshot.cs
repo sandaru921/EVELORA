@@ -51,6 +51,58 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.ToTable("Messages");
                 });
 
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Answer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsCorrect")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("MarksObtained")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("QuizResultId")
+                        .HasColumnType("integer");
+
+                    b.PrimitiveCollection<string[]>("SelectedOptions")
+                        .IsRequired()
+                        .HasColumnType("text[]");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId")
+                        .HasDatabaseName("IX_Answer_QuestionId");
+
+                    b.HasIndex("QuizResultId")
+                        .HasDatabaseName("IX_Answer_QuizResultId");
+
+                    b.ToTable("Answers");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.AnswerSelectedOption", b =>
+                {
+                    b.Property<int>("AnswerId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("SelectedOption")
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)");
+
+                    b.HasKey("AnswerId", "SelectedOption");
+
+                    b.HasIndex("AnswerId")
+                        .HasDatabaseName("IX_AnswerSelectedOption_AnswerId");
+
+                    b.ToTable("AnswerSelectedOptions");
+                });
+
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.Blog", b =>
                 {
                     b.Property<int>("Id")
@@ -93,6 +145,319 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.ToTable("Blogs");
                 });
 
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Job", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("EducationalBackground")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Experience")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("ExpiringDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("JobType")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("KeyResponsibilities")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("SoftSkills")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("TechnicalSkills")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("WorkMode")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("text")
+                        .HasDefaultValue("");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Jobs");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.JobQuiz", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("JobId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("QuizId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JobId");
+
+                    b.HasIndex("QuizId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("JobQuizzes");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Option", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId")
+                        .HasDatabaseName("IX_Option_QuestionId");
+
+                    b.HasIndex("QuestionId", "Key")
+                        .IsUnique()
+                        .HasDatabaseName("IX_Option_QuestionId_Key");
+
+                    b.ToTable("Options");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Permission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Permissions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DisplayName = "Edit Quiz",
+                            Name = "EditQuiz"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DisplayName = "Delete Quiz",
+                            Name = "DeleteQuiz"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DisplayName = "Create Question",
+                            Name = "CreateQuestion"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DisplayName = "View Results",
+                            Name = "ViewResults"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DisplayName = "Admin",
+                            Name = "Admin"
+                        });
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Question", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CodeSnippet")
+                        .HasMaxLength(4000)
+                        .HasColumnType("character varying(4000)");
+
+                    b.Property<string>("CorrectAnswers")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ImageURL")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<int>("Marks")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("QuestionText")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("character varying(2000)");
+
+                    b.Property<int>("QuizId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuizId")
+                        .HasDatabaseName("IX_Question_QuizId");
+
+                    b.ToTable("Questions");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Quiz", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
+
+                    b.Property<string>("JobCategory")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<int>("QuizDuration")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("QuizLevel")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("QuizName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuizName")
+                        .IsUnique()
+                        .HasDatabaseName("IX_Quiz_QuizName");
+
+                    b.ToTable("Quizzes");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.QuizResult", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("QuizId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Score")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("SubmissionTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("TimeTaken")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("TotalMarks")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("character varying(450)");
+
+                    b.Property<int>("UserIdInt")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuizId")
+                        .HasDatabaseName("IX_QuizResult_QuizId");
+
+                    b.HasIndex("UserId")
+                        .HasDatabaseName("IX_QuizResult_UserId");
+
+                    b.HasIndex("UserIdInt");
+
+                    b.ToTable("QuizResults");
+                });
+
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -118,36 +483,169 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Jobs", b =>
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.UserPermission", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("UserId")
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityAlwaysColumn(b.Property<int>("Id"));
+                    b.Property<int>("PermissionId")
+                        .HasColumnType("integer");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                    b.HasKey("UserId", "PermissionId");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.HasIndex("PermissionId");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.ToTable("UserPermissions");
+                });
 
-                    b.Property<string>("JobType")
-                        .IsRequired()
-                        .HasColumnType("text");
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Answer", b =>
+                {
+                    b.HasOne("AssessmentPlatform.Backend.Models.Question", "Question")
+                        .WithMany()
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.HasOne("AssessmentPlatform.Backend.Models.QuizResult", "QuizResult")
+                        .WithMany("Answers")
+                        .HasForeignKey("QuizResultId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasKey("Id");
+                    b.Navigation("Question");
 
-                    b.ToTable("Jobs");
+                    b.Navigation("QuizResult");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.AnswerSelectedOption", b =>
+                {
+                    b.HasOne("AssessmentPlatform.Backend.Models.Answer", "Answer")
+                        .WithMany("AnswerSelectedOptions")
+                        .HasForeignKey("AnswerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Answer");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.JobQuiz", b =>
+                {
+                    b.HasOne("AssessmentPlatform.Backend.Models.Job", "Job")
+                        .WithMany("JobQuizzes")
+                        .HasForeignKey("JobId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AssessmentPlatform.Backend.Models.Quiz", "Quiz")
+                        .WithMany()
+                        .HasForeignKey("QuizId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AssessmentPlatform.Backend.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Job");
+
+                    b.Navigation("Quiz");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Option", b =>
+                {
+                    b.HasOne("AssessmentPlatform.Backend.Models.Question", "Question")
+                        .WithMany("Options")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Question");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Question", b =>
+                {
+                    b.HasOne("AssessmentPlatform.Backend.Models.Quiz", "Quiz")
+                        .WithMany("Questions")
+                        .HasForeignKey("QuizId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Quiz");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.QuizResult", b =>
+                {
+                    b.HasOne("AssessmentPlatform.Backend.Models.Quiz", "Quiz")
+                        .WithMany()
+                        .HasForeignKey("QuizId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AssessmentPlatform.Backend.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserIdInt")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Quiz");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.UserPermission", b =>
+                {
+                    b.HasOne("AssessmentPlatform.Backend.Models.Permission", "Permission")
+                        .WithMany("UserPermissions")
+                        .HasForeignKey("PermissionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AssessmentPlatform.Backend.Models.User", "User")
+                        .WithMany("UserPermissions")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Permission");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Answer", b =>
+                {
+                    b.Navigation("AnswerSelectedOptions");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Job", b =>
+                {
+                    b.Navigation("JobQuizzes");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Permission", b =>
+                {
+                    b.Navigation("UserPermissions");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Question", b =>
+                {
+                    b.Navigation("Options");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.Quiz", b =>
+                {
+                    b.Navigation("Questions");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.QuizResult", b =>
+                {
+                    b.Navigation("Answers");
+                });
+
+            modelBuilder.Entity("AssessmentPlatform.Backend.Models.User", b =>
+                {
+                    b.Navigation("UserPermissions");
                 });
 #pragma warning restore 612, 618
         }
