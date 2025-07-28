@@ -17,7 +17,7 @@ builder.Services.AddScoped<IQuizService, QuizService>();
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
-        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+        options.JsonSerializerOptions.ReferenceHandler = null;
         options.JsonSerializerOptions.WriteIndented = true;
     });
 
