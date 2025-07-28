@@ -27,8 +27,4 @@
     <Content Include=".github\workflows\dotnet-pr-run.yml" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

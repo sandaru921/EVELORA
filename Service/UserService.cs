@@ -67,7 +67,7 @@ namespace AssessmentPlatform.Backend.Service
                 .FirstOrDefaultAsync(u =>
                 (!string.IsNullOrWhiteSpace(loginDto.Email) && u.Email == loginDto.Email) ||
                 (!string.IsNullOrWhiteSpace(loginDto.Username) && u.Username == loginDto.Username));
-            
+
             if (user == null)
                 return (null, string.Empty, new List<string>());
 
@@ -171,7 +171,7 @@ namespace AssessmentPlatform.Backend.Service
                 throw; // optional: let the caller handle it
             }
         }
-
+        
         // Get list of all users with their permissions
         public async Task<List<UserWithPermissionsDTO>> GetAllUsersWithPermissionsAsync()
         {

@@ -8,9 +8,18 @@ using Microsoft.OpenApi.Models;
 using AssessmentPlatform.Backend.Service;
 using AssessmentPlatform.Backend.Authorization;
 using AssessmentPlatform.Backend.Configuration; // Add this for custom auth
+using AssessmentPlatform.Backend.Services;
 using Microsoft.AspNetCore.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddScoped<IQuizService, QuizService>();
+
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+        options.JsonSerializerOptions.WriteIndented = true;
+    });
 
 // Configure JwtSettings from appsettings.json
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));

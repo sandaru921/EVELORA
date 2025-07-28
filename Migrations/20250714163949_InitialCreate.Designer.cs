@@ -2,6 +2,7 @@
 using AssessmentPlatform.Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AssessmentPlatform.Backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250714163949_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,30 +55,6 @@ namespace AssessmentPlatform.Backend.Migrations
                         .HasDatabaseName("IX_Option_QuestionId_Key");
 
                     b.ToTable("Options");
-                });
-
-            modelBuilder.Entity("AssessmentPlatform.Backend.Models.OtpVerification", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("ExpiryTime")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("OtpCode")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OtpVerifications");
                 });
 
             modelBuilder.Entity("AssessmentPlatform.Backend.Models.Permission", b =>
@@ -229,9 +208,6 @@ namespace AssessmentPlatform.Backend.Migrations
                     b.Property<string>("HashPassword")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<bool>("IsGoogleUser")
-                        .HasColumnType("boolean");
 
                     b.Property<string>("Username")
                         .IsRequired()

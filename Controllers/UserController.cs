@@ -181,7 +181,7 @@ namespace AssessmentPlatform.Backend.Controllers
                 return StatusCode(500, "Server error: " + ex.Message);
             }
         }
-
+        
         //GET: All users with their permissions (Admin only)
         // GET: api/user/with-permissions
         [HttpGet("with-permissions")]
@@ -191,5 +191,6 @@ namespace AssessmentPlatform.Backend.Controllers
             var users = await _userService.GetAllUsersWithPermissionsAsync();
             return Ok(users);
         }
+
     }
 }
