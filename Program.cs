@@ -101,7 +101,8 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend",
         policy => policy
-            .WithOrigins("https://localhost:5173", "http://localhost:5174") // Your React dev server
+
+            .WithOrigins("http://localhost:5173", "https://localhost:5173", "http://localhost:5174") // Your React dev server
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials()
